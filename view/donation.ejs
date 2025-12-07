@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -61,5 +61,89 @@
             bagisSayfasiJS(); 
         });
     </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bağış Yap</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/stylePuan.css">
+</head>
+
+<body data-theme="light">
+    
+    <header id="top-menu">
+        <h1>Ödül ve Bağış Yönetimi</h1>
+        
+        <nav>
+            <a href="/rewards">Ödül Pazarı</a>
+            <a href="/donation" class="active">Bağış Yap</a>
+        </nav>
+        
+        <div id="user-info-area">
+            <div id="profile-box" class="profile-box">
+                
+                <!-- Profil fotoğrafı EJS'den geliyor -->
+                <img src="<%= fotoURL || '/images/default.png' %>" 
+                     alt="Profil Fotoğrafı" 
+                     class="profile-pic" 
+                     id="profile-pic">
+
+                <div id="profile-details">
+                    <p id="ad-soyad"><%= adSoyad || 'Yükleniyor...' %></p>
+                    <p id="okul-no">No: <%= okulNo || 'Yükleniyor...' %></p>
+                    <p id="program-adi">Program: <%= programAdi || 'Yükleniyor...' %></p>
+                </div>
+            </div>
+            
+            <div class="puan-bilgisi">
+                <p>Mevcut Puan: 
+                    <span id="mevcut-puan"><%= mevcutPuan || 'Yükleniyor...' %></span>
+                </p>
+            </div>
+            
+            <!-- Tema butonunu aktif tutuyorum ama çalışmıyor (çalışsın dersen düzeltirim) -->
+            <button id="theme-toggle-btn" title="Temayı Değiştir">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main id="content" class="bagis-formu-main">
+        <h2 class="main-title">
+            <i class="fas fa-hand-holding-usd"></i> Okul Fonuna Bağış
+        </h2>
+
+        <p id="mesaj-alani"></p>
+
+        <section class="bagis-formu card-kutu">
+            <h3>Bağış Miktarı Seçin</h3>
+            <p>Okul gelişim fonuna katkıda bulunabilirsiniz.</p>
+            
+            <div class="miktar-secimi">
+                <button class="miktar-btn" data-miktar="50">50 ₺</button>
+                <button class="miktar-btn" data-miktar="100">100 ₺</button>
+                <button class="miktar-btn" data-miktar="200">200 ₺</button>
+                <button class="miktar-btn" data-miktar="Diger">Diğer Miktar</button>
+            </div>
+            
+            <div id="diger-miktar-alani" style="display: none;">
+                <label for="ozel-miktar">Özel Miktar (₺):</label>
+                <input type="number" id="ozel-miktar" min="10" placeholder="Minimum 10 ₺">
+            </div>
+
+            <div class="bagis-ozet">
+                <p>Seçilen Miktar: <span id="secilen-miktar">0 ₺</span></p>
+                <button id="odeme-btn" disabled>Ödeme Yap</button>
+                <p id="bagis-durum-mesaj"></p>
+            </div>
+        </section>
+    </main>
+
+    <script src="/scriptPuan.js"></script>
 </body>
 </html>
