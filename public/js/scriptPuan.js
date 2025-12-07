@@ -54,12 +54,12 @@ function sepeteEkle(id) {
     var urun = null;
 
     for (var i = 0; i < oduller.length; i++) {
-        if (oduller[i].id === id) {
+        if (oduller[i].id == id) {
             urun = oduller[i];
         }
     }
 
-    if (urun === null) return;
+    if (urun == null) return;
 
     if (ogrenciPuan < urun.puan_maliyeti) {
         gosterMesaj("Yetersiz puan!", "red");
@@ -71,7 +71,7 @@ function sepeteEkle(id) {
     var bulundu = false;
 
     for (var i = 0; i < sepet.length; i++) {
-        if (sepet[i].id === id) {
+        if (sepet[i].id == id) {
             sepet[i].miktar++;
             bulundu = true;
         }
@@ -92,7 +92,7 @@ function sepeteEkle(id) {
 
 function sepettenCikar(id) {
     for (var i = 0; i < sepet.length; i++) {
-        if (sepet[i].id === id) {
+        if (sepet[i].id == id) {
             ogrenciPuan += sepet[i].puan_maliyeti;
 
             if (sepet[i].miktar > 1) {
@@ -153,7 +153,7 @@ for (var i = 0; i < miktarButonlari.length; i++) {
         this.classList.add("selected");
         var miktar = this.getAttribute("data-miktar");
 
-        if (miktar === "Diger") {
+        if (miktar == "Diger") {
             digerMiktarAlani.style.display = "block";
             secilenMiktar = 0;
             secilenText.textContent = "Özel miktar giriniz...";
