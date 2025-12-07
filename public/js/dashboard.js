@@ -1,6 +1,4 @@
-// ======================================================
-// 1. CLASS VE KALITIM YAPISI (User -> Student)
-// ======================================================
+
 
 class User {
     constructor(name, lastLogin, profilePic) {
@@ -9,22 +7,18 @@ class User {
         this._profilePic = profilePic;
     }
 
-    // GET Metodu: İsmi okumak için
     get name() {
         return this._name;
     }
 
-    // GET Metodu: Son giriş tarihini okumak için
     get lastLogin() {
         return this._lastLogin;
     }
 
-    // GET Metodu: Profil fotoğrafını okumak için
     get profilePic() {
         return this._profilePic;
     }
 
-    // SET Metodu: Profil fotoğrafını güncellemek gerekirse
     set profilePic(newUrl) {
         this._profilePic = newUrl;
     }
@@ -34,23 +28,15 @@ class Student extends User {
     constructor(name, lastLogin, profilePic, studentId) {
         super(name, lastLogin, profilePic);
         this.studentId = studentId;
-        // MAP Kullanımı: Ödülleri bir Map içinde saklıyoruz
         this.rewards = new Map();
     }
 
-    // GET Metodu: Öğrenciye özel formatlı isim
     get formattedName() {
         return `${this._name} (${this.studentId})`;
     }
 }
-
-// ======================================================
-// 2. VERİ YÖNETİMİ (StudentDocument Class)
-// ======================================================
-
 class StudentDocument {
     constructor() {
-        // Ham veriyi burada tutuyoruz
         this.rawData = {
             tc: "242523",
             ad: "ZEYNEP",
@@ -68,22 +54,14 @@ class StudentDocument {
 
 
     get info() {
-        return { ...this.rawData }; // SPREAD OPERATÖRÜ (...) Kullanımı
+        return { ...this.rawData }; 
     }
 }
-
-// ======================================================
-// 3. UI YÖNETİMİ (OBSSystem Class)
-// ======================================================
-
 class OBSSystem {
     constructor(student) {
         this.student = student;
         this.documentData = new StudentDocument();
-        
-        // MAP Kullanımı: Sayfa içeriklerini (pageContents) Map yapısında tutuyoruz
-        // Not: pageContents değişkeninin dışarıda tanımlı olduğu varsayılmıştır.
-        // Eğer dışarıda tanımlı değilse, buraya manuel olarak set edilmelidir.
+
         this.contentMap = new Map();
         if (typeof pageContents !== 'undefined') {
             Object.entries(pageContents).forEach(([key, value]) => {
@@ -97,10 +75,8 @@ class OBSSystem {
 
     initElements() {
         this.mainArea = document.getElementById("main-area");
-        // DİZİLER (Arrays): NodeList'i Array'e çevirip işlemler yapabiliriz
-        this.menuItems = [...document.querySelectorAll(".menu-item")]; // Spread ile Array'e çevirme
+        this.menuItems = [...document.querySelectorAll(".menu-item")];
         
-        // UI Başlangıç Güncellemeleri
         const profileNameEl = document.getElementById("profile-name");
         const lastLoginEl = document.getElementById("last-login");
         const profilePicEl = document.getElementById("profile-pic");
@@ -111,26 +87,19 @@ class OBSSystem {
     }
 
     initListeners() {
-        // DİZİLER: Array metodları (forEach) kullanımı
         this.menuItems.forEach(item => {
             item.addEventListener('click', () => {
-                this.activePage = item.id; // SET metodunu tetikler
+                this.activePage = item.id;
             });
         });
     }
-
-    // SET Metodu: Sayfa değişim mantığını burada kuruyoruz
     set activePage(menuId) {
-        // Aktif sınıfını yönetme
         this.menuItems.forEach(item => item.classList.remove('active'));
         const activeItem = document.getElementById(menuId);
         if(activeItem) activeItem.classList.add('active');
-
-        // MAP Kullanımı: İçeriği Map'ten çekme
         const content = this.contentMap.get(menuId) || `<div class="content-box"><h2>Merhaba,Hoşgeldiniz!</h2><p>Menüden devam ediniz..</p></div>`;
         this.mainArea.innerHTML = content;
-
-        // Dinamik Render İşlemleri
+        
         this.triggerRenderFunctions(menuId);
     }
 
@@ -140,7 +109,7 @@ class OBSSystem {
                 if(typeof renderTranskript === 'function') renderTranskript(); 
                 break;
             case 'ogrenci-belgesi': 
-                this.renderOgrenciBelgesi(); // Sınıf içindeki metodu çağırıyoruz
+                this.renderOgrenciBelgesi(); 
                 break;
             case 'not-paylasim': 
                 if(typeof renderNotPaylasim === 'function') renderNotPaylasim(); 
@@ -158,7 +127,6 @@ class OBSSystem {
     }
 
     renderOgrenciBelgesi() {
-        // GET ve SPREAD kullanımı: Veriyi alırken yeni bir obje oluşturuyoruz
         const data = this.documentData.info;
 
         const setText = (id, text) => {
@@ -186,7 +154,6 @@ class OBSSystem {
     }
 
     static updateCartItemCount() {
-        // DİZİLER: Reduce kullanımı (Sepet değişkeninin global olduğu varsayılmıştır)
         const cartCountElement = document.getElementById('cart-item-count-header');
         if (cartCountElement && typeof sepet !== 'undefined') {
             const totalItemsInCart = sepet.reduce((total, item) => total + item.miktar, 0);
@@ -204,7 +171,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     obsSystem.activePage = 'transkript';
 
-    // Profil Menüsü Olayları
     const profileBox = document.getElementById("profile-box");
     const profileMenu = document.getElementById("profile-menu");
 
@@ -221,7 +187,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// Global Fonksiyonları dışarıdan erişilebilir kılmak için (HTML onclick vs için gerekirse)
 window.openProfileSettings = () => {
     alert("Profil Ayarları Açılacak! (istersen sayfa tasarlayabilirim)");
 };
