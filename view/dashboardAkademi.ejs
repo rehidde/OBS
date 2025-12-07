@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -63,4 +63,86 @@
     <a href="dashboardOgr.html" class="switch-btn">➔ Öğrenci Moduna Geç</a>
 
 </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğretmen Paneli</title>
+
+    <!-- Public klasöründen CSS çekmek için -->
+    <link rel="stylesheet" href="/css/dashboardAca.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo">AKADEMİSYEN OBS</div>
+
+        <ul class="menu-list">
+            <li><a href="#ders_programi_bolumu"><span class="icon">📅</span> Ders Programı</a></li>
+            <li><a href="#not_girisi_bolumu"><span class="icon">✏️</span> Not Girişi</a></li>
+            <li><a href="#yoklama_listesi_bolumu"><span class="icon">📋</span> Yoklama Listesi</a></li>
+            <li><a href="#duyuru_yayinla_bolumu"><span class="icon">📢</span> Duyuru Yayınla</a></li>
+            <li><a href="#mesajlar_bolumu"><span class="icon">💬</span> Mesajlar</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+
+        <header>
+            <div class="profile-info">
+                <!-- Dinamik hale getirildi -->
+                <div class="name"><%= adSoyad || "Dr. Ahmet Demir" %></div>
+                <div class="last-login">Son Giriş: <%= sonGiris || "Bugün 09:00" %></div>
+            </div>
+
+            <!-- Profil fotoğrafı da dinamik -->
+            <img src="<%= profilFoto || 'https://via.placeholder.com/150/d35400/ffffff?text=AD' %>" 
+                 alt="Profil" 
+                 class="profile-img">
+        </header>
+
+        <div class="content">
+
+            <section id="ders_programi_bolumu">
+                <h2>📅 Ders Programı</h2>
+                <p>Haftalık ders programınız burada listelenecektir.</p>
+                <p>Pazartesi: 10:00 - 12:00 Yapay Zeka I (D-201)</p>
+            </section>
+            
+            <section id="not_girisi_bolumu">
+                <h2>✏️ Not Girişi</h2>
+                <p>Öğrenci notlarını sisteme girmek için bu bölümü kullanın.</p>
+                <p>Aktif Ders: Veri Tabanı Yönetimi</p>
+                <p>Sınav Türü: Vize</p>
+            </section>
+
+            <section id="yoklama_listesi_bolumu">
+                <h2>📋 Yoklama Listesi</h2>
+                <p>Dersleriniz için yoklama listelerine ve öğrenci devamsızlık durumlarına buradan ulaşabilirsiniz.</p>
+            </section>
+
+            <section id="duyuru_yayinla_bolumu">
+                <h2>📢 Duyuru Yayınla</h2>
+                <p>Öğrencilerinize yönelik yeni bir duyuru yayınlamak için bu formu kullanın.</p>
+            </section>
+
+            <section id="mesajlar_bolumu">
+                <h2>💬 Mesajlar</h2>
+                <p>Öğrencilerinizden ve diğer akademisyenlerden gelen mesajlar.</p>
+            </section>
+
+        </div>
+    </div>
+
+</body>
 </html>
+<!-- router.get("/akademisyen", (req, res) => {
+    res.render("dashboardAca", {
+        adSoyad: "Dr. Ahmet Demir",
+        sonGiris: "Bugün 09:00",
+        profilFoto: "https://via.placeholder.com/150/d35400/ffffff?text=AD"
+    });
+}); -->
+
