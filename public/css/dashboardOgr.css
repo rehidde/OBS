@@ -1,0 +1,418 @@
+
+:root {
+    --primary-color: #ffffff; /* Ana Mavi */
+    --secondary-color: #800000; /* Koyu Lacivert */
+    --accent-color: #e74c3c; /* Vurgu Kırmızısı */
+    --success-color: #27ae60; /* Yeşil*/
+    --bg-color: #ffffff; /* Arka Plan */
+    --text-color: #000000;
+    --border-radius: 8px;
+    --shadow: 0 4px 6px rgb(0, 0, 0);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    height: 100vh;
+    overflow: hidden;
+}
+
+#sidebar {
+    width: 260px;
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+#sidebar h2 {
+    text-align: center;
+    padding: 25px 0;
+    margin: 0;
+    background-color: #800000;
+    font-size: 24px;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #800000;
+}
+
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item {
+    padding: 18px 25px;
+    cursor: pointer;
+    border-bottom: 1px solid #ffffff;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+
+/* İkonlar için boşluk (Eğer i etiketi eklersen) */
+.menu-item i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.menu-item:hover {
+    background-color: #610e0e;
+    padding-left: 30px; /* Hover'da hafif sağa kayma efekti */
+}
+
+.menu-item.active {
+    background-color: var(--primary-color);
+    border-left: 5px solid #ffffff;
+}
+
+#content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+#topbar {
+    background-color: #800000;
+    height: 70px;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    box-shadow: 0 2px 4px rgb(255, 255, 255);
+    z-index: 10;
+}
+
+#profile-pic {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 2px solid var(--primary-color);
+}
+
+#profile-info {
+    text-align: right;
+}
+
+#profile-name {
+    margin: 0;
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--secondary-color);
+}
+
+#last-login {
+    margin: 0;
+    font-size: 12px;
+    color: #7f8c8d;
+}
+
+
+#main-area {
+    padding: 30px;
+    overflow-y: auto;
+    height: 100%;
+}
+/* Sol Menüdeki OBS Başlığı */
+#sidebar h2 {
+    color: #ffffff !important; /* Yazıyı Beyaz Yapar */
+    background-color: transparent; /* Arka planı menü rengiyle aynı bırakır */
+    text-align: center;
+    margin: 0;
+    padding: 25px 0;
+    border-bottom: 1px solid rgb(255, 255, 255); /* Altına hafif beyaz çizgi */
+}
+
+h1, h2, h3 {
+    color: var(--secondary-color);
+    
+}
+
+.content-box, .kart, .container {
+    background: #fff;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: #fff;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+input[type="text"], 
+textarea, 
+select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: inherit;
+    transition: border 0.3s;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(138, 13, 13);
+}
+
+button, .btn {
+    background-color: var(--primary-color);
+    color: rgb(110, 17, 17);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s, transform 0.1s;
+    display: inline-block;
+    text-decoration: none;
+}
+
+button:hover, .btn:hover {
+    background-color: #770b0b;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.primary-btn { background-color: var(--success-color); }
+.primary-btn:hover { background-color: #ffffff; }
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #ffffff; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #bdc3c7; 
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4f0c04; 
+}
+/* PROFIL KUTUSU */
+#profile-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #800000 ;
+    padding: 12px 16px;
+    border-radius: 14px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    position: relative;
+    cursor: pointer;
+}
+
+#profile-box:hover {
+    transform: scale(1.02);
+    transition: 0.2s;
+}
+
+/* PP */
+#profile-pic {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+#profile-texts {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    gap: 2px;
+}
+
+#student-id {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#student-name {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#student-faculty, 
+#student-department {
+    font-size: 13px;
+    color: #666;
+}
+
+/* PROFIL KUTUSU */
+#profile-box {
+    display: flex;
+    align-items: center;
+    gap:5px;
+    background: rgb(255, 255, 255);
+    padding: 0.1px 6px;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    position: relative;
+    cursor: pointer;
+}
+
+#profile-box:hover {
+    transform: scale(1.02);
+    transition: 0.2s;
+}
+
+/* PP */
+#profile-pic {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+/* METINLER */
+#profile-texts {
+    display: flex;
+    flex-direction: column;
+    line-height: 0.03;
+    gap: 2px;
+}
+
+#student-id {
+    font-weight: 400;
+    font-size: 8px;
+}
+
+#student-name {
+    font-size: 10px;
+    font-weight: 400;
+}
+
+#student-faculty, 
+#student-department {
+    font-size: 10px;
+    color: #666;
+}
+
+/* Açılır menü */
+#profile-menu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 160px;
+    background: rgb(104, 18, 18);
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+#profile-menu button {
+    padding: 12px;
+    width: 100%;
+    border: none;
+    background: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#profile-menu button:hover {
+    background: #800000;
+}
+#profile-area {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+#profile-info p {
+    margin: 0;
+    font-size: 13px;
+}
+
+#profile-dropdown {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background: white;
+    width: 160px;
+    border-radius: 10px;
+    padding: 10px 0;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}
+
+.dropdown-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+.dropdown-btn:hover {
+    background: #f0f0f0;
+}
+#sidebar-title {
+    color: #ffffff;   /* BEYAZ */
+    font-size: 22px;
+    font-weight: bold;
+    margin-right: auto; /* Sola sabitler */
+}

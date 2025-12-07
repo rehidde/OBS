@@ -1,0 +1,646 @@
+{
+    "ogrenciler": [
+        {
+            "ogrenci": {
+                "id": "242596",
+                "ad": "Uğur",
+                "soyad": "Sezer",
+                "bolum": "Bilgisayar Mühendisliği",
+                "numara": "242596",
+                "sifre": "2360",
+                "dersler": [
+                    {
+                        "ad": "Programlamaya Giriş",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 90,
+                        "ogretmen": "Tatu Akgündüz"
+                    },
+                    {
+                        "ad": "Devre Analizi",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 58,
+                        "ogretmen": "Dr. Yönetmen Şafak"
+                    },
+                    {
+                        "ad": "Veri Yapıları",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 60,
+                        "ogretmen": "Prof. Nazimet Ömriye Tevetoğlu Arsoy"
+                    },
+                    {
+                        "ad": "Bilgisayar Görmesi",
+                        "kredi": 3,
+                        "akts": 6,
+                        "not": 63,
+                        "ogretmen": "Öğr. Aliseydi Verim Arsoy"
+                    },
+                    {
+                        "ad": "Web Programlama",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 58,
+                        "ogretmen": "Ledün Göken Erdoğan Erdoğan"
+                    },
+                    {
+                        "ad": "Yapay Zeka",
+                        "kredi": 3,
+                        "akts": 6,
+                        "not": 69,
+                        "ogretmen": "Mihin Abdulkadir Bilgin"
+                    },
+                    {
+                        "ad": "Veri İletişimi",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 89,
+                        "ogretmen": "Prof. Harbinaz Eraslan Yıldırım"
+                    }
+                ]
+            },
+            "detay": {
+                "tc": "50452822010",
+                "ad": "UĞUR",
+                "soyad": "SEZER",
+                "anne": "Gülfari",
+                "baba": "Bayzettin",
+                "dogum": "25.07.2004 / TÜRKİYE CUMHURİYETİ",
+                "kayit": "24.03.2025",
+                "egitim": "ÖRGÜN ÖĞRETİM / 4",
+                "durum": "AKTİF ÖĞRENCİ",
+                "sinif": "2. SINIF",
+                "program": "KIRŞEHİR AHİ EVRAN ÜNİVERSİTESİ / Bilgisayar Mühendisliği"
+            }
+        },
+        {
+            "ogrenci": {
+                "id": "242525",
+                "ad": "Naide",
+                "soyad": "Akçay",
+                "bolum": "Bilgisayar Mühendisliği",
+                "numara": "242525",
+                "sifre": "1347",
+                "dersler": [
+                    {
+                        "ad": "Veri İletişimi",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 89,
+                        "ogretmen": "Öğr. Ağmur Balatekin Hançer"
+                    },
+                    {
+                        "ad": "Bilgisayar Görmesi",
+                        "kredi": 3,
+                        "akts": 6,
+                        "not": 96,
+                        "ogretmen": "Olca Aksu"
+                    },
+                    {
+                        "ad": "Programlamaya Giriş",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 73,
+                        "ogretmen": "Tümkurt Erik Korutürk"
+                    },
+                    {
+                        "ad": "Yapay Zeka",
+                        "kredi": 3,
+                        "akts": 6,
+                        "not": 76,
+                        "ogretmen": "Kutun Sakarya Akçay"
+                    },
+                    {
+                        "ad": "Veri Yapıları",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 71,
+                        "ogretmen": "Tuğcan Öcalan"
+                    },
+                    {
+                        "ad": "Web Programlama",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 62,
+                        "ogretmen": "İyiyürek Bilge"
+                    },
+                    {
+                        "ad": "Devre Analizi",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 76,
+                        "ogretmen": "Öğr. Şüküfe Ildız Tevetoğlu Zengin"
+                    }
+                ]
+            },
+            "detay": {
+                "tc": "68702343830",
+                "ad": "NAIDE",
+                "soyad": "AKÇAY",
+                "anne": "Nazi",
+                "baba": "Bilgütay",
+                "dogum": "11.09.2005 / TÜRKİYE CUMHURİYETİ",
+                "kayit": "16.08.2024",
+                "egitim": "ÖRGÜN ÖĞRETİM / 4",
+                "durum": "AKTİF ÖĞRENCİ",
+                "sinif": "2. SINIF",
+                "program": "KIRŞEHİR AHİ EVRAN ÜNİVERSİTESİ / Bilgisayar Mühendisliği"
+            }
+        },
+        {
+            "ogrenci": {
+                "id": "242535",
+                "ad": "Güzey",
+                "soyad": "Yüksel",
+                "bolum": "Bilgisayar Mühendisliği",
+                "numara": "242535",
+                "sifre": "7448",
+                "dersler": [
+                    {
+                        "ad": "Devre Analizi",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 76,
+                        "ogretmen": "Dr. Nesfe Aslan Zengin"
+                    },
+                    {
+                        "ad": "Bilgisayar Görmesi",
+                        "kredi": 3,
+                        "akts": 6,
+                        "not": 88,
+                        "ogretmen": "Duracan Duran"
+                    },
+                    {
+                        "ad": "Web Programlama",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 57,
+                        "ogretmen": "Rana Zengin Bilgin"
+                    },
+                    {
+                        "ad": "Yapay Zeka",
+                        "kredi": 3,
+                        "akts": 6,
+                        "not": 80,
+                        "ogretmen": "Sefer Arsoy İhsanoğlu"
+                    },
+                    {
+                        "ad": "Programlamaya Giriş",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 100,
+                        "ogretmen": "İmam Efe Ertaş Çorlu"
+                    },
+                    {
+                        "ad": "Veri İletişimi",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 67,
+                        "ogretmen": "Tekbay Çetin"
+                    }
+                ]
+            },
+            "detay": {
+                "tc": "96172581026",
+                "ad": "GÜZEY",
+                "soyad": "YÜKSEL",
+                "anne": "Aral",
+                "baba": "Toy",
+                "dogum": "28.11.2001 / TÜRKİYE CUMHURİYETİ",
+                "kayit": "02.03.2024",
+                "egitim": "ÖRGÜN ÖĞRETİM / 4",
+                "durum": "AKTİF ÖĞRENCİ",
+                "sinif": "2. SINIF",
+                "program": "KIRŞEHİR AHİ EVRAN ÜNİVERSİTESİ / Bilgisayar Mühendisliği"
+            }
+        },
+        {
+            "ogrenci": {
+                "id": "242540",
+                "ad": "Fersan",
+                "soyad": "Güçlü",
+                "bolum": "Bilgisayar Mühendisliği",
+                "numara": "242540",
+                "sifre": "5915",
+                "dersler": [
+                    {
+                        "ad": "Yapay Zeka",
+                        "kredi": 3,
+                        "akts": 6,
+                        "not": 98,
+                        "ogretmen": "Yunt Suat Akgündüz Tevetoğlu"
+                    },
+                    {
+                        "ad": "Veri Yapıları",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 52,
+                        "ogretmen": "Dinçsü Bilgen İhsanoğlu"
+                    },
+                    {
+                        "ad": "Devre Analizi",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 81,
+                        "ogretmen": "Burakhan Arslan"
+                    },
+                    {
+                        "ad": "Programlamaya Giriş",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 73,
+                        "ogretmen": "Şerman Demir"
+                    },
+                    {
+                        "ad": "Veri İletişimi",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 92,
+                        "ogretmen": "Dr. Elamiye Melikkan Yüksel Erdoğan"
+                    }
+                ]
+            },
+            "detay": {
+                "tc": "26059601837",
+                "ad": "FERSAN",
+                "soyad": "GÜÇLÜ",
+                "anne": "Rumeysa",
+                "baba": "Dolun",
+                "dogum": "01.04.2004 / TÜRKİYE CUMHURİYETİ",
+                "kayit": "12.08.2024",
+                "egitim": "ÖRGÜN ÖĞRETİM / 4",
+                "durum": "AKTİF ÖĞRENCİ",
+                "sinif": "3. SINIF",
+                "program": "KIRŞEHİR AHİ EVRAN ÜNİVERSİTESİ / Bilgisayar Mühendisliği"
+            }
+        },
+        {
+            "ogrenci": {
+                "id": "242523",
+                "ad": "Baltaş",
+                "soyad": "Yaman",
+                "bolum": "Bilgisayar Mühendisliği",
+                "numara": "242523",
+                "sifre": "1354",
+                "dersler": [
+                    {
+                        "ad": "Devre Analizi",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 60,
+                        "ogretmen": "Duruöz Tevetoğlu"
+                    },
+                    {
+                        "ad": "Yapay Zeka",
+                        "kredi": 3,
+                        "akts": 6,
+                        "not": 89,
+                        "ogretmen": "Vefia Soylu"
+                    },
+                    {
+                        "ad": "Web Programlama",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 86,
+                        "ogretmen": "Arş. Gör. Ayyaruk Mansız Çorlu"
+                    },
+                    {
+                        "ad": "Veri İletişimi",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 70,
+                        "ogretmen": "Bay Tulun Çetin"
+                    },
+                    {
+                        "ad": "Bilgisayar Görmesi",
+                        "kredi": 3,
+                        "akts": 6,
+                        "not": 53,
+                        "ogretmen": "Yaşattin Ekber Akça"
+                    },
+                    {
+                        "ad": "Veri Yapıları",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 51,
+                        "ogretmen": "Uz. Cannur Göksev Türk"
+                    },
+                    {
+                        "ad": "Programlamaya Giriş",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 55,
+                        "ogretmen": "Çev. Göken Hayrioğlu"
+                    }
+                ]
+            },
+            "detay": {
+                "tc": "43167390973",
+                "ad": "BALTAŞ",
+                "soyad": "YAMAN",
+                "anne": "Birben",
+                "baba": "Umman",
+                "dogum": "06.04.2002 / TÜRKİYE CUMHURİYETİ",
+                "kayit": "18.08.2024",
+                "egitim": "ÖRGÜN ÖĞRETİM / 4",
+                "durum": "AKTİF ÖĞRENCİ",
+                "sinif": "2. SINIF",
+                "program": "KIRŞEHİR AHİ EVRAN ÜNİVERSİTESİ / Bilgisayar Mühendisliği"
+            }
+        },
+        {
+            "ogrenci": {
+                "id": "242546",
+                "ad": "Bayzettin",
+                "soyad": "Soylu",
+                "bolum": "Bilgisayar Mühendisliği",
+                "numara": "242546",
+                "sifre": "8068",
+                "dersler": [
+                    {
+                        "ad": "Veri Yapıları",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 59,
+                        "ogretmen": "Beyzade Akçay"
+                    },
+                    {
+                        "ad": "Bilgisayar Görmesi",
+                        "kredi": 3,
+                        "akts": 6,
+                        "not": 56,
+                        "ogretmen": "Rafia Öcalan"
+                    },
+                    {
+                        "ad": "Programlamaya Giriş",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 52,
+                        "ogretmen": "Uz. İsra Şirivan Tevetoğlu"
+                    },
+                    {
+                        "ad": "Yapay Zeka",
+                        "kredi": 3,
+                        "akts": 6,
+                        "not": 76,
+                        "ogretmen": "Fayize Karadeniz"
+                    },
+                    {
+                        "ad": "Devre Analizi",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 52,
+                        "ogretmen": "Bayruhan Bilir"
+                    },
+                    {
+                        "ad": "Web Programlama",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 50,
+                        "ogretmen": "Selvi Ertaş"
+                    },
+                    {
+                        "ad": "Veri İletişimi",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 77,
+                        "ogretmen": "Badegül Durmuş İhsanoğlu"
+                    }
+                ]
+            },
+            "detay": {
+                "tc": "29416281617",
+                "ad": "BAYZETTIN",
+                "soyad": "SOYLU",
+                "anne": "Mufide",
+                "baba": "Çokan",
+                "dogum": "23.11.2004 / TÜRKİYE CUMHURİYETİ",
+                "kayit": "18.11.2024",
+                "egitim": "ÖRGÜN ÖĞRETİM / 4",
+                "durum": "AKTİF ÖĞRENCİ",
+                "sinif": "2. SINIF",
+                "program": "KIRŞEHİR AHİ EVRAN ÜNİVERSİTESİ / Bilgisayar Mühendisliği"
+            }
+        },
+        {
+            "ogrenci": {
+                "id": "242570",
+                "ad": "Anka",
+                "soyad": "Karadeniz",
+                "bolum": "Bilgisayar Mühendisliği",
+                "numara": "242570",
+                "sifre": "3297",
+                "dersler": [
+                    {
+                        "ad": "Veri Yapıları",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 96,
+                        "ogretmen": "Canur Seniha Soylu"
+                    },
+                    {
+                        "ad": "Veri İletişimi",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 96,
+                        "ogretmen": "Dr. Çalım Zülbiye Eraslan"
+                    },
+                    {
+                        "ad": "Programlamaya Giriş",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 60,
+                        "ogretmen": "Dr. Erksoy Sezgin"
+                    },
+                    {
+                        "ad": "Bilgisayar Görmesi",
+                        "kredi": 3,
+                        "akts": 6,
+                        "not": 73,
+                        "ogretmen": "Arısoy Dumanlı"
+                    }
+                ]
+            },
+            "detay": {
+                "tc": "20736636156",
+                "ad": "ANKA",
+                "soyad": "KARADENIZ",
+                "anne": "Buşra",
+                "baba": "Sancak",
+                "dogum": "03.11.2005 / TÜRKİYE CUMHURİYETİ",
+                "kayit": "21.07.2024",
+                "egitim": "ÖRGÜN ÖĞRETİM / 4",
+                "durum": "AKTİF ÖĞRENCİ",
+                "sinif": "3. SINIF",
+                "program": "KIRŞEHİR AHİ EVRAN ÜNİVERSİTESİ / Bilgisayar Mühendisliği"
+            }
+        },
+        {
+            "ogrenci": {
+                "id": "242584",
+                "ad": "Amaç",
+                "soyad": "Ülker",
+                "bolum": "Bilgisayar Mühendisliği",
+                "numara": "242584",
+                "sifre": "8337",
+                "dersler": [
+                    {
+                        "ad": "Veri Yapıları",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 78,
+                        "ogretmen": "Temizkal Tevetoğlu"
+                    },
+                    {
+                        "ad": "Yapay Zeka",
+                        "kredi": 3,
+                        "akts": 6,
+                        "not": 51,
+                        "ogretmen": "Erseç Mansız"
+                    },
+                    {
+                        "ad": "Veri İletişimi",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 90,
+                        "ogretmen": "Habibe Şayan Arsoy"
+                    },
+                    {
+                        "ad": "Bilgisayar Görmesi",
+                        "kredi": 3,
+                        "akts": 6,
+                        "not": 76,
+                        "ogretmen": "Erkinel Hayrioğlu"
+                    }
+                ]
+            },
+            "detay": {
+                "tc": "98318436062",
+                "ad": "AMAÇ",
+                "soyad": "ÜLKER",
+                "anne": "Akise",
+                "baba": "Terlan",
+                "dogum": "02.01.2007 / TÜRKİYE CUMHURİYETİ",
+                "kayit": "26.12.2024",
+                "egitim": "ÖRGÜN ÖĞRETİM / 4",
+                "durum": "AKTİF ÖĞRENCİ",
+                "sinif": "2. SINIF",
+                "program": "KIRŞEHİR AHİ EVRAN ÜNİVERSİTESİ / Bilgisayar Mühendisliği"
+            }
+        },
+        {
+            "ogrenci": {
+                "id": "242580",
+                "ad": "Çıvgın",
+                "soyad": "Bilge",
+                "bolum": "Bilgisayar Mühendisliği",
+                "numara": "242580",
+                "sifre": "6685",
+                "dersler": [
+                    {
+                        "ad": "Web Programlama",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 57,
+                        "ogretmen": "Mengüç Günser Bilir"
+                    },
+                    {
+                        "ad": "Programlamaya Giriş",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 75,
+                        "ogretmen": "Prof. Eraycan Sakarya"
+                    },
+                    {
+                        "ad": "Veri İletişimi",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 64,
+                        "ogretmen": "Solma Aysevim Karadeniz"
+                    },
+                    {
+                        "ad": "Devre Analizi",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 87,
+                        "ogretmen": "Seracettin Ülfet Sezgin"
+                    }
+                ]
+            },
+            "detay": {
+                "tc": "76495053499",
+                "ad": "ÇIVGIN",
+                "soyad": "BILGE",
+                "anne": "Kefser",
+                "baba": "Çelikkan",
+                "dogum": "08.07.2001 / TÜRKİYE CUMHURİYETİ",
+                "kayit": "01.09.2024",
+                "egitim": "ÖRGÜN ÖĞRETİM / 4",
+                "durum": "AKTİF ÖĞRENCİ",
+                "sinif": "3. SINIF",
+                "program": "KIRŞEHİR AHİ EVRAN ÜNİVERSİTESİ / Bilgisayar Mühendisliği"
+            }
+        },
+        {
+            "ogrenci": {
+                "id": "242528",
+                "ad": "Kâzime",
+                "soyad": "Çetin",
+                "bolum": "Bilgisayar Mühendisliği",
+                "numara": "242528",
+                "sifre": "5441",
+                "dersler": [
+                    {
+                        "ad": "Yapay Zeka",
+                        "kredi": 3,
+                        "akts": 6,
+                        "not": 88,
+                        "ogretmen": "Arş. Gör. Birgit Ertaş"
+                    },
+                    {
+                        "ad": "Veri Yapıları",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 73,
+                        "ogretmen": "Recepali Hindal Demirel Manço"
+                    },
+                    {
+                        "ad": "Web Programlama",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 66,
+                        "ogretmen": "Sevdi Demir"
+                    },
+                    {
+                        "ad": "Bilgisayar Görmesi",
+                        "kredi": 3,
+                        "akts": 6,
+                        "not": 76,
+                        "ogretmen": "Prof. Saydam Görgünay Dumanlı"
+                    },
+                    {
+                        "ad": "Devre Analizi",
+                        "kredi": 3,
+                        "akts": 5,
+                        "not": 58,
+                        "ogretmen": "Mukbile Akçay Aslan"
+                    }
+                ]
+            },
+            "detay": {
+                "tc": "76609837413",
+                "ad": "KÂZIME",
+                "soyad": "ÇETIN",
+                "anne": "İde",
+                "baba": "Kocabaş",
+                "dogum": "02.10.2003 / TÜRKİYE CUMHURİYETİ",
+                "kayit": "18.02.2024",
+                "egitim": "ÖRGÜN ÖĞRETİM / 4",
+                "durum": "AKTİF ÖĞRENCİ",
+                "sinif": "1. SINIF",
+                "program": "KIRŞEHİR AHİ EVRAN ÜNİVERSİTESİ / Bilgisayar Mühendisliği"
+            }
+        }
+    ]
+}

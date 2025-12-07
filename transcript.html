@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transkript</title>
+<link rel="stylesheet" href="css/transcript.css">
+<script src="js/transcript.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>Transkript Belgesi</h1>
+        <button class="btn-primary" onclick="window.print()">PDF İndir</button>
+    </header>
+
+    <section class="student-info">
+        <h2>Öğrenci Bilgileri</h2>
+        <div class="info-grid">
+            <div><strong>Ad Soyad:</strong> <span id="adSoyad">---</span></div>
+            <div><strong>Numara:</strong> <span id="numara">---</span></div>
+            <div><strong>Bölüm:</strong> <span id="bolum">---</span></div>
+        </div>
+    </section>
+
+    <section class="transcript-table">
+        <h2>Dersler</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ders Adı</th>
+                    <th>Kredi</th>
+                    <th>AKTS</th>
+                    <th>Not</th>
+                    <th>Öğretmen</th>
+                </tr>
+            </thead>
+            <tbody id="dersler-body">
+                <!-- JS ile doldurulacak -->
+            </tbody>
+        </table>
+    </section>
+
+    <section class="average">
+        <h3>Genel Ortalama: <span id="ortalama">---</span></h3>
+    </section>
+</body>
+</html>

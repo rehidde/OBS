@@ -1,0 +1,77 @@
+body {
+    font-family: "Times New Roman", serif;
+    background: #fff;
+    padding: 40px;
+    margin: 0;
+}
+
+.container {
+    width: 800px;
+    margin: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 90px;
+}
+
+.title {
+    text-align: center;
+}
+
+.title h2, h3, h4 {
+    margin: 2px 0;
+}
+
+.meta {
+    text-align: right;
+    font-size: 14px;
+}
+
+.belge-baslik {
+    text-align: center;
+    margin: 30px 0 20px;
+    text-decoration: underline;
+}
+
+.info {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.info .row span {
+    display: inline-block;
+    width: 220px;
+}
+
+.makam {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.makam h3 {
+    margin-bottom: 15px;
+}
+
+.makam p {
+    font-size: 15px;
+    width: 80%;
+    margin: auto;
+    line-height: 1.6;
+}
+
+
+@media print {
+    body {
+        padding: 0;
+    }
+    .container {
+        width: 100%;
+    }
+}
