@@ -1,267 +1,215 @@
 let ogrenciPuan = 450; 
-let sepet = []; 
+let sepet = [];
 
-const mevcutOgrenci = {
-    ad: "Ahmet",
-    soyad: "Yılmaz",
-    okulNo: "20241503",
-    profilFotoUrl: "profil.png" 
-};
 const oduller = [
     { id: 1, urun: "Ücretsiz Kahve Kuponu", puan_maliyeti: 100 },
     { id: 2, urun: "Kırtasiye Seti", puan_maliyeti: 150 },
     { id: 3, urun: "1 Haftalık Kantin İndirimi", puan_maliyeti: 200 },
     { id: 4, urun: "Okul Logolu Kupa", puan_maliyeti: 250 },
-    { id: 5, urun: "Öğretmenle 1-1 Mentörlük Seansı", puan_maliyeti: 300 },
+    { id: 5, urun: "Öğretmenle 1-1 Mentörlük Seansı", puan_maliyeti: 300 }
 ];
 
-const PUAN_KAZANIM_DEGERI = 40; 
-
 function gosterMesaj(mesaj, renk) {
-    const mesajAlani = document.getElementById('mesaj-alani');
+    var mesajAlani = document.getElementById("mesaj-alani");
     if (mesajAlani) {
         mesajAlani.style.color = renk;
         mesajAlani.textContent = mesaj;
-        setTimeout(() => {
-            mesajAlani.textContent = '';
-        }, 5000);
-    }
-}
 
-function updateCartItemCount() {
-    const cartCountElement = document.getElementById('cart-item-count-header');
-    const totalItemsInCart = sepet.reduce((total, item) => total + item.miktar, 0); 
-    if (cartCountElement) {
-        cartCountElement.textContent = totalItemsInCart;
+        setTimeout(function () {
+            mesajAlani.textContent = "";
+        }, 3000);
     }
 }
 
 function arayuzuGuncelle() {
-    const userInfoElement = document.getElementById('user-info');
-    if (userInfoElement) {
-        userInfoElement.innerHTML = `
-            <div class="profile-pic-container">
-                <img src="${mevcutOgrenci.profilFotoUrl}" alt="${mevcutOgrenci.ad} Profil Fotoğrafı" class="profile-pic">
-            </div>
-            <div class="profile-details">
-                ${mevcutOgrenci.ad} ${mevcutOgrenci.soyad} <br>
-                <strong>No:</strong> ${mevcutOgrenci.okulNo}
-            </div>
-        `;
+    var puanAlani = document.getElementById("mevcut-puan");
+    if (puanAlani) {
+        puanAlani.textContent = ogrenciPuan;
     }
+
+    sepetiListele(); 
 }
-    const puanElement = document.getElementById('mevcut-puan');
-    if (puanElement) {
-        puanElement.textContent = ogrenciPuan;
-    }
-
-    const sepetListesi = document.getElementById('sepet-listesi');
-    const sepetToplamPuan = document.getElementById('sepet-toplam-puan');
-    const toplamMaliyet = sepet.reduce((toplam, item) => toplam + (item.puan_maliyeti * item.miktar), 0);
-
-    if (sepetListesi) {
-        sepetListesi.innerHTML = '';
-        
-        if (sepet.length = 0) {
-            sepetListesi.innerHTML = `<li style="text-align: center; color: #7f8c8d;">Sepetinizde ürün bulunmamaktadır.</li>`;
-        } else {
-            sepet.forEach(item => {
-                const li = document.createElement('li');
-                const maliyet = item.puan_maliyeti * item.miktar;
-                
-                li.innerHTML = `${item.urun} (${item.miktar} Adet) <span class="cart-item-cost">${maliyet} Puan</span>`;
-                
-                const cikarBtn = document.createElement('button');
-                cikarBtn.innerHTML = `<i class="fas fa-trash-alt"></i>`;
-                cikarBtn.onclick = () => sepettenCikar(item.id); 
-                
-                li.appendChild(cikarBtn); 
-                sepetListesi.appendChild(li);
-            });
-        }
-    }
-    
-    if (sepetToplamPuan) {
-        sepetToplamPuan.textContent = toplamMaliyet;
-        const satinAlBtn = document.getElementById('satin-al-btn');
-        if (satinAlBtn) {
-            satinAlBtn.disabled = toplamMaliyet = 0;
-            satinAlBtn.textContent = toplamMaliyet = 0 ? 'Sepet Boş' : 'Satın Almayı Tamamla';
-        }
-    }
-    updateCartItemCount(); 
 
 function odulleriYukle() {
-    const listContainer = document.getElementById('odul-listesi');
-    if (!listContainer) return;
+    var liste = document.getElementById("odul-listesi");
+    if (!liste) return;
 
-    listContainer.innerHTML = ''; 
-    
-    oduller.forEach(odul => {
-        const kart = document.createElement('div');
-        kart.className = 'odul-kart';
-        const yeterliPuanVar = ogrenciPuan >= odul.puan_maliyeti;
-        const disabledAttr = yeterliPuanVar ? '' : 'disabled';
-        const buttonText = yeterliPuanVar ? 'Sepete Ekle' : 'Yetersiz Puan';
+    liste.innerHTML = "";
 
-        kart.innerHTML = `
-            <h4>${odul.urun}</h4>
-            <span class="odul-puan">${odul.puan_maliyeti} Puan</span>
-            <button onclick="sepeteEkle(${odul.id})" ${disabledAttr}>
-                <i class="fas fa-cart-plus"></i> ${buttonText}
-            </button>
-        `;
-        listContainer.appendChild(kart);
-    });
+    for (var i = 0; i < oduller.length; i++) {
+        var odul = oduller[i];
+        var kart = document.createElement("div");
+        kart.className = "odul-kart";
+
+        kart.innerHTML =
+            "<h3>" + odul.urun + "</h3>" +
+            "<p>" + odul.puan_maliyeti + " Puan</p>" +
+            "<button onclick='sepeteEkle(" + odul.id + ")'>Sepete Ekle</button>";
+
+        liste.appendChild(kart);
+    }
 }
-function sepeteEkle(odulId) {
-    const urun = oduller.find(o => o.id = odulId);
-    if (!urun) return;
+
+function sepeteEkle(id) {
+    var urun = null;
+
+    for (var i = 0; i < oduller.length; i++) {
+        if (oduller[i].id === id) {
+            urun = oduller[i];
+        }
+    }
+
+    if (urun === null) return;
 
     if (ogrenciPuan < urun.puan_maliyeti) {
-        gosterMesaj("Ürünü sepete eklemek için yeterli puanınız yok.", 'red');
+        gosterMesaj("Yetersiz puan!", "red");
         return;
     }
 
-    const sepetItem = sepet.find(item => item.id = odulId);
+    ogrenciPuan -= urun.puan_maliyeti;
 
-    ogrenciPuan -= urun.puan_maliyeti; 
+    var bulundu = false;
 
-    if (sepetItem) {
-        sepetItem.miktar++;
-    } else {
-        sepet.push({ ...urun, miktar: 1 });
-    }
-
-    gosterMesaj(`${urun.urun} sepete eklendi. ${urun.puan_maliyeti} puan düştü.`, 'blue');
-    arayuzuGuncelle();
-    odulleriYukle(); 
-}
-
-function sepettenCikar(odulId) {
-    const index = sepet.findIndex(item => item.id = odulId);
-
-    if (index != -1) {
-        const urun = sepet[index];
-        const puanMaliyeti = urun.puan_maliyeti;
-
-        ogrenciPuan += puanMaliyeti; 
-
-        if (urun.miktar > 1) {
-            urun.miktar--;
-        } else {
-            sepet.splice(index, 1);
+    for (var i = 0; i < sepet.length; i++) {
+        if (sepet[i].id === id) {
+            sepet[i].miktar++;
+            bulundu = true;
         }
-
-        gosterMesaj(`${urun.urun} sepetten çıkarıldı. ${puanMaliyeti} puan geri yüklendi.`, 'blue');
-        arayuzuGuncelle();
-        odulleriYukle(); 
-    }
-}
-
-function sepetiOnayla() {
-    const toplamMaliyet = sepet.reduce((toplam, item) => toplam + (item.puan_maliyeti * item.miktar), 0);
-    
-    if (toplamMaliyet === 0) {
-        gosterMesaj('Sepetiniz boş.', 'red');
-        return;
     }
 
-    gosterMesaj(`Tebrikler! ${toplamMaliyet} puanlık ödülleriniz başarıyla satın alındı.`, 'green');
-
-    sepet = [];
-    arayuzuGuncelle(); 
-    odulleriYukle();
-}
-function dosyaYukleVePuanKazan() {
-    ogrenciPuan += PUAN_KAZANIM_DEGERI;
-    
-    gosterMesaj(`Başarılı dosya paylaşımı! +${PUAN_KAZANIM_DEGERI} puan kazandınız. Yeni Puanınız: ${ogrenciPuan}`, 'green');
-    
-    arayuzuGuncelle();
-    odulleriYukle(); 
-}
-
-function bagisSayfasiJS() {
-    const miktarDugmeleri = document.querySelectorAll('.miktar-btn');
-    const digerMiktarAlani = document.getElementById('diger-miktar-alani');
-    const ozelMiktarInput = document.getElementById('ozel-miktar');
-    const secilenMiktarSpan = document.getElementById('secilen-miktar');
-    const odemeBtn = document.getElementById('odeme-btn');
-    const durumMesaj = document.getElementById('bagis-durum-mesaj');
-
-    let secilenMiktar = 0;
-
-    const miktarGuncelle = (miktar) => {
-        miktar = parseFloat(miktar) || 0;
-        secilenMiktar = miktar;
-        secilenMiktarSpan.textContent = `${secilenMiktar} ₺`;
-        odemeBtn.disabled = secilenMiktar <= 0; 
-    };
-
-    miktarDugmeleri.forEach(btn => {
-        btn.addEventListener('click', () => {
-            miktarDugmeleri.forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-            const miktarTipi = btn.getAttribute('data-miktar');
-            if (miktarTipi = 'Diger') {
-                digerMiktarAlani.style.display = 'block';
-                miktarGuncelle(parseFloat(ozelMiktarInput.value));
-            } else {
-                digerMiktarAlani.style.display = 'none';
-                ozelMiktarInput.value = '';
-                miktarGuncelle(parseFloat(miktarTipi));
-            }
-            durumMesaj.textContent = '';
+    if (!bulundu) {
+        sepet.push({
+            id: urun.id,
+            urun: urun.urun,
+            puan_maliyeti: urun.puan_maliyeti,
+            miktar: 1
         });
-    });
+    }
 
-    ozelMiktarInput.addEventListener('input', () => {
-        const digerBtn = document.querySelector('.miktar-btn[data-miktar="Diger"]');
-        miktarDugmeleri.forEach(b => b.classList.remove('selected'));
-        if (digerBtn) digerBtn.classList.add('selected');
-        miktarGuncelle(parseFloat(ozelMiktarInput.value));
-        durumMesaj.textContent = '';
-    });
-    
-    odemeBtn.addEventListener('click', () => {
-        if (secilenMiktar > 0) {
-            durumMesaj.style.color = 'green';
-            durumMesaj.textContent = `${secilenMiktar} ₺ bağışınız için teşekkürler! Ödeme işlemi başlatılıyor...`;
-            odemeBtn.disabled = true; 
-            setTimeout(() => {
-                durumMesaj.textContent = 'Ödeme başarılı! Destekleriniz için minnettarız.';
-                miktarGuncelle(0);
-                secilenMiktarSpan.textContent = "0 ₺";
-                digerMiktarAlani.style.display = 'none';
-                ozelMiktarInput.value = '';
-                miktarDugmeleri.forEach(b => b.classList.remove('selected'));
-                odemeBtn.disabled = true; 
-            }, 3000);
+    gosterMesaj(urun.urun + " sepete eklendi.", "green");
+    arayuzuGuncelle();
+}
+
+function sepettenCikar(id) {
+    for (var i = 0; i < sepet.length; i++) {
+        if (sepet[i].id === id) {
+            ogrenciPuan += sepet[i].puan_maliyeti;
+
+            if (sepet[i].miktar > 1) {
+                sepet[i].miktar--;
+            } else {
+                sepet.splice(i, 1);
+            }
+            break;
+        }
+    }
+
+    gosterMesaj("Ürün sepetten çıkarıldı.", "blue");
+    arayuzuGuncelle();
+}
+
+function sepetiListele() {
+    var liste = document.getElementById("sepet-listesi");
+    var toplamAlani = document.getElementById("sepet-toplam-puan");
+
+    if (!liste) return;
+
+    liste.innerHTML = "";
+    var toplam = 0;
+
+    for (var i = 0; i < sepet.length; i++) {
+        var item = sepet[i];
+        toplam += item.miktar * item.puan_maliyeti;
+
+        var li = document.createElement("li");
+        li.innerHTML =
+            item.urun + " (" + item.miktar + ") - " +
+            (item.miktar * item.puan_maliyeti) +
+            " Puan <button onclick='sepettenCikar(" + item.id + ")'>Kaldır</button>";
+
+        liste.appendChild(li);
+    }
+
+    if (toplamAlani) {
+        toplamAlani.textContent = toplam;
+    }
+}
+
+var miktarButonlari = document.querySelectorAll(".miktar-btn");
+var digerMiktarAlani = document.getElementById("diger-miktar-alani");
+var ozelInput = document.getElementById("ozel-miktar");
+var secilenText = document.getElementById("secilen-miktar");
+var odemeBtn = document.getElementById("odeme-btn");
+var bagisMesaj = document.getElementById("bagis-durum-mesaj");
+
+var secilenMiktar = 0;
+
+for (var i = 0; i < miktarButonlari.length; i++) {
+    miktarButonlari[i].addEventListener("click", function () {
+            for (var j = 0; j < miktarButonlari.length; j++) {
+            miktarButonlari[j].classList.remove("selected");
+        }
+
+        this.classList.add("selected");
+        var miktar = this.getAttribute("data-miktar");
+
+        if (miktar === "Diger") {
+            digerMiktarAlani.style.display = "block";
+            secilenMiktar = 0;
+            secilenText.textContent = "Özel miktar giriniz...";
+            odemeBtn.disabled = true;
         } else {
-            durumMesaj.style.color = 'red';
-            durumMesaj.textContent = 'Lütfen geçerli bir bağış miktarı seçin.';
+            digerMiktarAlani.style.display = "none";
+            secilenMiktar = Number(miktar);
+            secilenText.textContent = miktar + " ₺";
+            odemeBtn.disabled = false;
         }
     });
 }
-document.addEventListener('DOMContentLoaded', () => {
-     arayuzuGuncelle();
-    
-     const kazanBtn = document.getElementById('puan-kazan-btn');
-    if (kazanBtn) {
-        kazanBtn.addEventListener('click', dosyaYukleVePuanKazan);
-    }
 
-    const satinAlBtn = document.getElementById('satin-al-btn');
-    if (satinAlBtn) {
-        satinAlBtn.addEventListener('click', sepetiOnayla);
-    }
+if (ozelInput) {
+    ozelInput.addEventListener("input", function () {
+        var girilen = Number(ozelInput.value);
 
-    if (document.querySelector('.bagis-formu')) {
-        bagisSayfasiJS();
-    }
+        if (girilen >= 10) {
+            secilenMiktar = girilen;
+            secilenText.textContent = girilen + " ₺";
+            odemeBtn.disabled = false;
+        } else {
+            secilenText.textContent = "Minimum 10 ₺";
+            odemeBtn.disabled = true;
+        }
+    });
+}
 
-    if (document.getElementById('odul-listesi')) {
-        odulleriYukle();
-    }
+if (odemeBtn) {
+    odemeBtn.addEventListener("click", function () {
+
+        if (secilenMiktar <= 0) {
+            bagisMesaj.style.color = "red";
+            bagisMesaj.textContent = "Geçerli miktar seçiniz.";
+            return;
+        }
+
+        bagisMesaj.style.color = "green";
+        bagisMesaj.textContent = secilenMiktar + " ₺ bağışınız alınmıştır.";
+
+        secilenText.textContent = "0 ₺";
+        secilenMiktar = 0;
+        odemeBtn.disabled = true;
+
+        for (var j = 0; j < miktarButonlari.length; j++) {
+            miktarButonlari[j].classList.remove("selected");
+        }
+
+        digerMiktarAlani.style.display = "none";
+        if (ozelInput) {
+            ozelInput.value = "";
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    arayuzuGuncelle();
+    odulleriYukle();
 });
