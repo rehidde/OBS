@@ -1,19 +1,12 @@
-/* --- Ortak Renkler ve Genel Sıfırlama --- */
-
-
-
-
-/* notes.css */
-
 :root {
-    --bg-light: #800000;      /* Koyu Kırmızı Arka Plan */
+    --bg-light: #800000;     
     --bg-main: #ffffff; 
-    --color-primary: #fff;       /* Ana Yazı Rengi: Beyaz */
-    --color-secondary: #ccc;     /* İkincil Yazı Rengi: Açık Beyaz */
-    --color-card-bg: #fff;       /* Kart Arka Planı: Beyaz (Daha Okunaklı olması için) */
-    --color-teacher: #ccc;    /* Akademisyen Vurgu Rengi (Koyu kırmızıda iyi görünmesi için sarı tonu) */
-    --color-student: #4a90b0;    /* Öğrenci Vurgu Rengi */
-    --shadow-card: 0 4px 10px rgba(0, 0, 0, 0.4); /* Koyu Arka Plana uygun gölge */
+    --color-primary: #fff;       
+    --color-secondary: #ccc;     
+    --color-card-bg: #fff;      
+    --color-teacher: #ccc;    
+    --color-student: #4a90b0;    
+    --shadow-card: 0 4px 10px rgba(0, 0, 0, 0.4); 
 }
 
 
@@ -37,10 +30,10 @@ body {
 
 
 
-/* --- Sol Menü --- */
+
 .sol-menu {
     width: 200px;
-    background-color: var(--bg-light); /* ARTIK KOYU KIRMIZI */
+    background-color: var(--bg-light); 
     border-right: 1px solid var(--color-secondary);
     display: flex;
     flex-direction: column;
@@ -76,14 +69,14 @@ body {
     align-items: center; 
 }
 
-/* Aktif Menü Vurgusu */
+
 .sol-menu nav a.aktif-menu {
     background-color: #a00000; 
     color: #fff;
     border-left: 5px solid #fff;
 }
 
-/* --- İçerik Alanı --- */
+
 .icerik {
     flex-grow: 1;
     padding: 40px;
@@ -105,7 +98,7 @@ h2 {
     color: var(--color-primary);
 }
 
-/* --- Kart --- */
+
 .kart {
     background-color: var(--color-card-bg);
     border-radius: 12px;
@@ -113,9 +106,9 @@ h2 {
     padding: 20px;
     margin-bottom: 20px;
 }
-/* --- YÜKLEME FORMU STİLLERİ --- */
 
-/* Form Inputları */
+
+
 .yukleme-formu input[type="text"],
 .yukleme-formu textarea {
     width: 100%;
@@ -130,7 +123,7 @@ h2 {
     margin-bottom: 10px;
 }
 
-/* YÜKLE BUTONU (Yeni Stiller) */
+
 .yukleme-formu .buton-gonder {
     background-color: var(--color-primary);
     color: #fff;
@@ -202,7 +195,7 @@ h2 {
     margin-right: 5px;
 }
 
-/* Renk Ayrımları */
+
 .akademisyen {
     border-left-color: var(--color-teacher);
 }
@@ -270,37 +263,37 @@ h2 {
     border-left: 4px solid var(--color-secondary);
     font-size: 0.9em;
 }
-/* --- PROFİL KUTUSU (SAĞ ÜST KÖŞE) --- */
 
-/* --- PROFİL KUTUSU (SAĞ ÜST KÖŞE) --- */
+
+
 
 .user-info {
-    /* Sağ üst köşeye sabitleme (Konum korunur) */
+    
     position: absolute;
     top: 15px;
     right: 20px;
     z-index: 10; 
 
-    /* Temaya uygun görseller */
-    background-color: #ecf0f1; /* Açık gri/beyaz arka plan */
-    color: #34495e; /* Koyu yazı rengi */
     
-    /* BOYUT KÜÇÜLTÜLDÜ (Düzeltilen Kısım) */
-    padding: 12px 15px; /* İç boşluk küçüldü */
-    min-width: 170px; /* Minimum genişlik küçüldü */
-    font-size: 0.9em; /* Yazı boyutu küçüldü */
-    line-height: 1.4; /* Satır aralığı azaldı */
+    background-color: #ecf0f1; 
+    color: #34495e; 
+    
+    
+    padding: 12px 15px; 
+    min-width: 170px; 
+    font-size: 0.9em; 
+    line-height: 1.4; 
 
     border-radius: 8px;
     border: 1px solid #bdc3c7;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15); 
     
-    /* İçerik Düzeni */
+    
     display: flex;
     flex-direction: row; 
     align-items: center; 
     justify-content: flex-end; 
-    gap: 10px; /* Boşluk azaldı */
+    gap: 10px; 
 }
 
 .user-info strong {
@@ -308,9 +301,9 @@ h2 {
     color: #34495e;
 }
 
-/* Profil Fotoğrafı Stilleri */
+
 .profile-pic {
-    width: 50px; /* Fotoğraf boyutu küçüldü */
+    width: 50px; 
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
