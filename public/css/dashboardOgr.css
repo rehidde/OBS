@@ -28,7 +28,7 @@ body {
 #sidebar {
     width: 260px;
     background-color: var(--secondary-color);
-    color: #ffffff;
+    color: #800000;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;

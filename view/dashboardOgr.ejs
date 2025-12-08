@@ -1,83 +1,29 @@
-<!-- <!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Öğrenci Paneli</title>
-        <link rel="stylesheet" href="../public/css/dashboardOgr.css">
-</head>
-<body>
-
-    <div class="sidebar">
-        <div class="logo">OBS ÖĞRENCİ</div>
-        <ul class="menu-list">
-            <li class="menu-item" id="transkript"><a href="transcript.html"><span class="icon">📑</span> Transkript</a></li>
-            <li class="menu-item" id="ogrenci-belgesi"><a href="studentDoc.html"><span class="icon">🧑‍🎓</span> Öğrenci Belgesi</a></li>
-            <li class="menu-item" id="not-paylasim"><a href="notes.html"><span class="icon">📗</span> Not Paylaşım Sistemi</a></li>
-            <li class="menu-item" id="mesajlasma"><a href="messaging.html"><span class="icon">💬</span> Mesajlaşma</a></li>
-            <li class="menu-item" id="puanlarim"><a href="points.html"><span class="icon">⭐</span> Puanlarım</a></li>
-            <li class="menu-item" id="oduller"><a href="rewards.html"><span class="icon">🏆</span> Ödüller</a></li>
-        </ul>
-    </div>                                                               
-
-
-    <div id="content">
-       <div id="topbar">
-         <div id="profile-box">
-        <img src="https://via.placeholder.com/50" alt="Profil Fotoğrafı" id="profile-pic"> 
-
-        <div id="profile-texts">
-            <p id="id">2024103014</p>
-            <p id="ad">İrem </p>
-            <p id="soyad">YILMAZ</p>
-            <p id="program">Mimarlık Ve Mühendislik Fakültesi Bilgisayar Mühendisliği Pr.</p>
-        </div>
-
-        Açılır Menü -->
-        <!-- <div id="profile-menu">
-            <button onclick="openProfileSettings()">Profil Ayarları</button>
-            <button onclick="logout()">Çıkış</button>
-        </div>
-    </div>
-</div>
-
-
-        <div id="main-area">
-            <h1>Hoşgeldiniz, kullanıcı!</h1>
-            <p>Buradan menüleri kullanabilirsiniz.</p>
-        </div>
-    </div>
-
-    <script src="app.js"></script>
-    
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Öğrenci Paneli</title>
-    <link rel="stylesheet" href="/public/css/dashboardOgr.css">
+    <link rel="stylesheet" href="/css/dashboardOgr.css">
 </head>
 <body>
 
     <div class="sidebar">
         <div class="logo">OBS ÖĞRENCİ</div>
         <ul class="menu-list">
-            <li class="menu-item" id="transkript"><a href="/transcript"><span class="icon">📑</span> Transkript</a></li>
-            <li class="menu-item" id="ogrenci-belgesi"><a href="/studentDoc"><span class="icon">🧑‍🎓</span> Öğrenci Belgesi</a></li>
-            <li class="menu-item" id="not-paylasim"><a href="/notes"><span class="icon">📗</span> Not Paylaşım Sistemi</a></li>
-            <li class="menu-item" id="mesajlasma"><a href="/messaging"><span class="icon">💬</span> Mesajlaşma</a></li>
-            <li class="menu-item" id="puanlarim"><a href="/points"><span class="icon">⭐</span> Puanlarım</a></li>
-            <li class="menu-item" id="oduller"><a href="/rewards"><span class="icon">🏆</span> Ödüller</a></li>
+            <li class="menu-item" id="transkript"><a href="#"><span class="icon">📑</span> Transkript</a></li>
+            <li class="menu-item" id="ogrenci-belgesi"><a href="#"><span class="icon">🧑‍🎓</span> Öğrenci Belgesi</a></li>
+            <li class="menu-item" id="not-paylasim"><a href="#"><span class="icon">📗</span> Not Paylaşım Sistemi</a></li>
+            <li class="menu-item" id="mesajlasma"><a href="#"><span class="icon">💬</span> Mesajlaşma</a></li>
+            <li class="menu-item" id="puanlarim"><a href="#"><span class="icon">⭐</span> Puanlarım</a></li>
+            <li class="menu-item" id="oduller"><a href="#"><span class="icon">🏆</span> Ödüller</a></li>
         </ul>
     </div>
 
     <div id="content">
         <div id="topbar">
             <div id="profile-box">
-                <img src="<%= profilePic || 'https://via.placeholder.com/50' %>" 
+                <img src="<%= profilePic ? profilePic : 'https://via.placeholder.com/50' %>" 
                      alt="Profil Fotoğrafı" id="profile-pic">
 
                 <div id="profile-texts">
@@ -87,8 +33,7 @@
                     <p id="program"><%= program %></p>
                 </div>
 
-                <!-- Açılır Menü -->
-                <div id="profile-menu">
+                <div id="profile-menu" style="display: none;"> 
                     <button onclick="openProfileSettings()">Profil Ayarları</button>
                     <button onclick="logout()">Çıkış</button>
                 </div>
@@ -97,20 +42,20 @@
 
         <div id="main-area">
             <h1>Hoşgeldiniz, <%= ad %>!</h1>
-            <p>Buradan menüleri kullanabilirsiniz.</p>
+            <p>Sol taraftaki menüden işlem yapabilirsiniz.</p>
         </div>
     </div>
 
-    <script src="/public/js/app.js"></script>
+    <script src="/js/dashboardOgr.js"></script>
 </body>
 </html>
 <!-- app.get("/dashboard", (req, res) => {
+    // dashboard.ejs dosyasını render et ve verileri gönder
     res.render("dashboard", {
         id: "2024103014",
         ad: "İrem",
         soyad: "YILMAZ",
         program: "Mimarlık ve Mühendislik Fakültesi Bilgisayar Mühendisliği",
-        profilePic: null
+        profilePic: null // Resim yoksa null gönderiyoruz, EJS varsayılanı koyuyor
     });
 }); -->
-<!-- üstteki studentDashboard.js kısmına yazılcakmış route eklendiğinde -->
