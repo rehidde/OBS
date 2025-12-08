@@ -1,6 +1,3 @@
-
-
-
 :root {
     --bg-light: #800000;      
     --bg-main: #ffffff; 
@@ -29,9 +26,6 @@ body {
     min-height: 100vh;
 }
 
-
-
-/* --- Sol Menü --- */
 .sol-menu {
     width: 200px;
     background-color: var(--bg-light); 
@@ -56,9 +50,6 @@ body {
     margin-right: 5px;
 }
 
-
-
-/* Menü Linklerini Beyaz Yapma */
 .sol-menu nav a {
     color: #fff; 
     text-decoration: none;
@@ -69,20 +60,15 @@ body {
     align-items: center; 
 }
 
-/* Aktif Menü Vurgusu */
+
 .sol-menu nav a.aktif-menu {
     background-color: #a00000; 
     color: #fff;
     border-left: 5px solid #fff;
 }
 
-
-
-
-
-/* --- Sohbet Filtre Linklerini Gri Yapma --- */
 .sohbet-filtre-linki {
-    color: #000000; /* ARTIK SİYAH */
+    color: #000000; 
     text-decoration: none;
     padding: 15px 10px;
     text-align: center;
@@ -90,11 +76,11 @@ body {
     border-bottom: 1px solid #800000;
 }
 
-/* Linkin üzerine gelindiğinde (Hover) */
+
 .sohbet-filtre-linki:hover {
     background-color: #a00000; 
 }
-/* --- Ana İçerik --- */
+
 .icerik {
     flex-grow: 1;
     padding: 40px;
@@ -116,7 +102,7 @@ h2 {
     text-align: center;
 }
 
-/* --- Mesajlaşma Arayüzü --- */
+
 
 .mesaj-arayuzu {
     display: flex;
@@ -145,16 +131,12 @@ h2 {
     border-bottom: 1px solid #800000;
 }
 
-
-
-/* TIKLANAN AKTİF FİLTRE VURGUSU */
 .sohbet-filtre-linki.aktif-filtre {
-    color: #800000; /* YAZI RENGİ KOYU KIRMIZI */
-    background-color: var(--color-card-bg); /* ARKA PLAN BEYAZ */
+    color: #800000; 
+    background-color: var(--color-card-bg); 
     font-weight: bold;
 }
 
-/* Linkin üzerine gelindiğinde (Hover) */
 .sohbet-filtre-linki:hover {
     background-color: #800000;
 }
@@ -182,7 +164,7 @@ h2 {
     flex-direction: column;
 }
 
-/* --- Mesajların olduğu kutu --- */
+
 .mesajlar {
     flex-grow: 1;
     padding: 20px;
@@ -190,7 +172,7 @@ h2 {
     max-height: calc(100vh - 200px);
 }
 
-/* --- Mesaj Kartı --- */
+
 .mesaj-kart {
     padding: 15px;
     border-radius: 10px;
@@ -233,7 +215,7 @@ h2 {
     color: #888;
 }
 
-/* --- Mesaj Yazma Alanı --- */
+
 .mesaj-yazma-alani {
     display: flex;
     padding: 15px;
@@ -260,13 +242,13 @@ h2 {
 
 
 .user-info {
-    /* Sağ üst köşeye sabitleme (Konum korunur) */
+    
     position: absolute;
     top: 15px;
     right: 20px;
     z-index: 10; 
 
-    /* Temaya uygun görseller */
+    
     background-color: #ecf0f1; 
     color: #34495e; 
     
@@ -280,7 +262,7 @@ h2 {
     border: 1px solid #bdc3c7;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15); 
     
-    /* İçerik Düzeni */
+    
     display: flex;
     flex-direction: row; 
     align-items: center; 
@@ -293,7 +275,7 @@ h2 {
     color: #34495e;
 }
 
-/* Profil Fotoğrafı Stilleri */
+
 .profile-pic {
     width: 50px; 
     height: 50px;
