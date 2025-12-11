@@ -1,6 +1,6 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #71b7e6, #f4f7f6);
+    background: linear-gradient(135deg, #800000, #800000);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,14 +63,14 @@ header p {
 
 .input-group input:focus,
 .input-group select:focus {
-    border-color: #71b7e6; 
+    border-color: #800000; 
     outline: none; 
 }
 
 #loginButton {
     width: 100%;
     padding: 12px;
-    background-color: #5cb85c;
+    background-color: #A52A2A;
     color: white;
     border: none;
     border-radius: 6px;
@@ -82,7 +82,7 @@ header p {
 }
 
 #loginButton:hover {
-    background-color: #4cae4c; 
+    background-color: #800000; 
 }
 
 #loginButton:active {
