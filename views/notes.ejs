@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBS | Not Yönetim Sistemi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/notes.css"> 
+</head>
+<body>
+
+    <div class="sayfa-konteyner">
+        <div id="user-info" class="user-info card-kutu"></div>
+        
+        <aside class="sol-menu">
+            <div class="menu-baslik">
+                <i class="fas fa-university"></i> OBS
+            </div>
+            <nav>
+                <a href="/notes.html" class="aktif-menu"><i class="fas fa-file-alt"></i> Not Yönetim Sistemi</a>
+                <a href="/messaging.html"><i class="fas fa-comments"></i> Mesajlaşma Sistemi</a>
+            </nav>
+        </aside>
+
+        <main class="icerik">
+
+            <section id="not-paylasim" class="ana-modul">
+                <h2>NOT YÖNETİM SİSTEMİ</h2>
+
+                <div id="not-listesi" class="paylasim-listesi">
+                    
+                    <% // Notlar veritabanından çekilirken ters sırada gelmesi beklenir %>
+                    <% notlarListesi.slice().reverse().forEach(function(not) { %>
+                    <div class="paylasim-kutu kart <%= not.tip %>" data-id="<%= not.id %>">
+                        <div class="paylasim-header">
+                            <div class="user-icon"><i class="fas fa-user-circle"></i></div>
+                            <span class="kullanici-adi"><%= not.kullanici.ad_soyad %></span>
+                            <span class="zaman-damgasi"><%= not.tarih %></span> 
+                        </div>
+
+                        <p class="not-metni"><%= not.aciklama %></p> 
+
+                        <div class="yukleme-notu-alani">
+                            <span class="not-etiketi">Ders Kodu:</span> <%= not.ders_kodu %> 
+                            <span class="not-etiketi">Dosya:</span> 
+                            <a href="#" class="dosya-adi"><%= not.dosya_adi %> <i class="fas fa-download"></i></a>
+                        </div>
+                        
+                        <div class="not-yorum-alani">
+                            <button class="btn-tesekkur">Teşekkür Et</button>
+                            <button class="btn-soru">Soru Sor</button>
+
+                            <textarea class="yorum-input" placeholder="Yorum yaz..."></textarea>
+                            <input type="file" class="yorum-dosya"> 
+                            <button class="btn-gonder">Gönder</button>
+
+                            <div class="yorumlar-listesi">
+                                <% not.yorumlar.forEach(function(yorum) { %>
+                                    <p class="yorum-satiri">
+                                        <b><%= yorum.kullanici.ad_soyad %>:</b> <%= yorum.icerik %>
+                                    </p>
+                                <% }); %>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+                    
+                </div>
+                <div class="yukleme-formu kart">
+                    <h3>Dosya Yükle</h3>
+
+                    <form id="not-yukleme-formu">
+                       <input type="text" id="ders_kodu" placeholder="Ders Kodu (Örn: WEB201)" required>
+
+                       <div class="dosya-input-grup">
+                           <input type="text" id="dosya-adi-goster" placeholder="Henüz dosya seçilmedi." readonly>
+                           <input type="file" id="dosya" hidden required> 
+                           <button type="button" class="btn-dosya-sec"><i class="fas fa-plus"></i> Dosya Ekle</button> 
+                       </div>
+                       
+                       <textarea id="not" placeholder="Dosya notu / açıklama yazın..." rows="3" required></textarea>
+
+                       <button type="submit" class="buton-gonder">Notu Yükle</button>
+                    </form>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="/js/js_msgnotes.js"></script>
+</body>
+</html>
