@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistem Girişi</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+  <div class="login-container">
+    <header class="header">
+      <h1>Sistem Giriş Ekranı 🔑</h1>
+      <p>Lütfen kullanıcı adı, şifre ve rolünüzü seçerek giriş yapınız.</p>
+    </header>
+
+    <form id="loginForm" action="/login" method="POST">
+      <div class="input-group">
+        <label for="username">Kullanıcı Adı:</label>
+        <input type="text" id="username" name="username" placeholder="Öğrenci No / Personel ID" required>
+      </div>
+
+      <div class="input-group">
+        <label for="password">Şifre:</label>
+        <div class="password-container">
+          <input type="password" id="password" name="password" placeholder="Şifreniz" required>
+          <button type="button" id="togglePassword" aria-label="toggle password">👁️</button>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="role">Rol Seçimi:</label>
+        <select id="role" name="role" required>
+          <option value="" disabled selected>Rolünüzü Seçin</option>
+          <option value="student">Öğrenci</option>
+          <option value="teacher">Öğretmen</option>
+        </select>
+      </div>
+
+      <button type="submit" id="loginButton">Giriş Yap</button>
+    </form>
+
+    <% if (typeof error !== "undefined" && error) { %>
+      <div class="message">
+        <% if (error === "invalid") { %>
+          <p class="error">❌ Kullanıcı adı, şifre veya rol eşleşmedi!</p>
+        <% } else if (error === "db_error") { %>
+          <p class="warning">⚠️ Sunucu veya Veritabanı Hatası. Lütfen daha sonra tekrar deneyin.</p>
+        <% } else { %>
+          <p><%= error %></p>
+        <% } %>
+      </div>
+    <% } %>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("togglePassword");
+      const pass = document.getElementById("password");
+      toggle.addEventListener("click", () => {
+        pass.type = pass.type === "password" ? "text" : "password";
+      });
+    });
+  </script>
+</body>
+</html>
