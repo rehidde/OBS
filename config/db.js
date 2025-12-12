@@ -1,8 +1,10 @@
 
-// db.js
-require("dotenv").config();
+
 const mysql = require('mysql2');
 
+
+// daha sonra buraya dotenv diye bir
+// bilgileri güvende tutma sistemini kuracağız
 const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
@@ -10,4 +12,9 @@ const pool = mysql.createPool({
   database: 'OBS',
 
 });
+
+
+
+module.exports = pool;
+
 
