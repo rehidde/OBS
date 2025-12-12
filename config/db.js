@@ -1,6 +1,6 @@
 
 
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 
 
 // daha sonra buraya dotenv diye bir
@@ -10,6 +10,9 @@ const pool = mysql.createPool({
   user: 'root',
   password: '31415',
   database: 'OBS',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
 
 });
 
