@@ -214,27 +214,3 @@ document.addEventListener("DOMContentLoaded", function () {
     odulleriYukle();
 });
 
-app.get("/puan", (req, res) => {
-    res.render("puan", {
-        ad: "Berfin",
-        soyad: "Kaya",
-        okulNo: "20241503",
-        program: "Bilgisayar Programcılığı",
-        foto_url: "/images/profil.png",
-        mevcutPuan: 450
-    });
-});
-app.get("/rewards", (req, res) => {
-    res.render("rewards", {
-        mevcutPuan: 450
-    });
-});
-app.get("/donation", (req, res) => {
-    res.render("donation", {
-        adSoyad: "Berfin Kaya",
-        okulNo: "20241503",
-        programAdi: "Bilgisayar Programcılığı",
-        fotoURL: "/images/default.png",
-        mevcutPuan: 450
-    });
-});
