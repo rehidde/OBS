@@ -8,7 +8,7 @@ const mysql = require('mysql2/promise');
 const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  password: '31415',
+  password: 'brfn2005',
   database: 'OBS',
   waitForConnections: true,
   connectionLimit: 10,
