@@ -10,13 +10,7 @@ const kullanici = require('../models/student.model');
 const pages = [
   { path: '/', view: 'index', title: 'Ana Sayfa' },
   { path: '/dashboardAkademi', view: 'dashboardAkademi', title: 'Akademisyen Paneli' },
-  { path: '/donation', view: 'donation', title: 'Bağış sayfası' },
-  { path: '/notes', view: 'notes', title: 'Not Paylaşım Sistemi' },
-  { path: '/messaging', view: 'messaging', title: 'Mesajlaşma Sistemi' },
-  { path: '/points', view: 'points', title: 'Puan Sistemi' },
-  { path: '/rewards', view: 'rewards', title: 'Ödüller' },
-  { path: '/sinavOnline', view: 'sinavOnline', title: 'Online sınav sistemi' },
-  { path: '/studentDoc', view: 'studentDoc', title: 'Öğrenci Belgesi' },
+  { path: '/sinavOnline', view: 'sinavOnline', title: 'Online sınav sistemi' }
 ];
 
 pages.forEach(p => {

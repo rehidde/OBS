@@ -32,8 +32,23 @@
                     <th>Not</th>
                     <th>Öğretmen</th>
                 </tr>
-            <tbody id="dersler-body">
-            </tbody>
+<tbody>
+    <% if (dersler.length > 0) { %>
+        <% dersler.forEach(ders => { %>
+            <tr>
+                <td><%= ders.ders_ad %></td>
+                <td><%= ders.kredi %></td>
+                <td><%= ders.akts %></td>
+                <td><%= ders.notu %></td>
+                <td><%= ders.ogretmen %></td>
+            </tr>
+        <% }) %>
+    <% } else { %>
+        <tr>
+            <td>ders bulunamadı</td>
+        </tr>
+    <% } %>
+</tbody>
         </table>
     </section>
 

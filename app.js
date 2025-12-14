@@ -28,16 +28,34 @@ app.use((req, res, next) => {
     next();
 })
 
-//tek router kullandık, değerler router/indexte döngüyle çağrılıyor
+
 const indexRouter = require("./routes/index");
 app.use("/", indexRouter);
 
 const dashRouter = require("./routes/dashboard");
 app.use("/dashboardOgr", dashRouter);
 
+const donationRouter = require("./routes/donation");
+app.use("/donation", donationRouter);
+
+const pointRouter = require("./routes/points");
+app.use("/points", pointRouter);
+
+const noteRouter = require("./routes/notes");
+app.use("/notes", noteRouter);
+
+const messageRouter = require("./routes/messaging");
+app.use("/messaging", messageRouter);
+
+const rewardRouter = require("./routes/rewards");
+app.use("/rewards", rewardRouter);
+
+const studentDocRouter = require("./routes/studentDoc");
+app.use("/studentDoc", studentDocRouter);
 
 const transcriptRouter = require("./routes/transcript");
 app.use("/transcript", transcriptRouter);
+
 
 app.use((req, res) => {
   res.status(404).render('404', { title: 'Sayfa Bulunamadı, doğru değerleri girdiğinizden emin olun!' });

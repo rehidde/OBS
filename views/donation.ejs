@@ -6,7 +6,7 @@
     <title>Bağış Yap</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="./css/stylePuan.css">
+    <link rel="stylesheet" href="/css/stylePuan.css">
 </head>
 
 <body data-theme="light">
@@ -21,14 +21,14 @@
         <div id="user-info-area">
             <div id="profile-box" class="profile-box">
                 
-                <img src="<%= fotoURL || '/images/default.png' %>" 
+                <img src="<%= detay.foto_url%>" 
                      alt="Profil Fotoğrafı" 
                      class="profile-pic" 
                      id="profile-pic">
 
                 <div id="profile-details">
-                    <p id="ad-soyad"><%= adSoyad || 'Yükleniyor...' %></p>
-                    <p id="okul-no">No: <%= okulNo || 'Yükleniyor...' %></p>
+                    <p id="ad-soyad"><%= ogrenci.ad || 'Yükleniyor...' %></p>
+                    <p id="okul-no">No: <%= ogrenci.numara || 'Yükleniyor...' %></p>
                     <p id="program-adi">Program: <%= programAdi || 'Yükleniyor...' %></p>
                 </div>
             </div>

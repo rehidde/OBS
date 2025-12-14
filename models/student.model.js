@@ -3,7 +3,7 @@ const db = require('../config/db');
 // LOGIN (BUNA DOKUNMUYORUZ)
 async function isimdenBul(id, sifre) {
     const [rows] = await db.query(
-        `SELECT id, ad, soyad, tc, rol
+        `SELECT id, ad, soyad, rol
          FROM Kullanici
          WHERE id = ? AND sifre = ?`,
         [id, sifre]
@@ -14,7 +14,7 @@ async function isimdenBul(id, sifre) {
 // TRANSCRIPT - öğrenci temel bilgileri
 async function ogrenciBilgiGetir(id) {
     const [rows] = await db.query(
-        `SELECT ad, soyad, numara, tc
+        `SELECT ad, soyad, numara, tc, foto_url
          FROM Kullanici
          WHERE id = ?`,
         [id]
@@ -35,7 +35,7 @@ async function ogrenciDersleriGetir(ogrenciId) {
 
 async function ogrenciDetay(kullanici_id) {
     const [rows] = await db.query(
-        `SELECT anne, baba, dogum, kayit, egitim, durum, sinif, program FROM OgrenciDetay
+        `SELECT anne, baba, dogum, kayit, egitim, durum, sinif, puan, program FROM OgrenciDetay
         WHERE kullanici_id = ?`,
         [kullanici_id]
     );
