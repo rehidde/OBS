@@ -17,7 +17,6 @@ const pages = [
   { path: '/rewards', view: 'rewards', title: 'Ödüller' },
   { path: '/sinavOnline', view: 'sinavOnline', title: 'Online sınav sistemi' },
   { path: '/studentDoc', view: 'studentDoc', title: 'Öğrenci Belgesi' },
-  { path: '/transcript', view: 'transcript', title: 'Transkript Sistemi' },
 ];
 
 pages.forEach(p => {
@@ -73,10 +72,6 @@ router.post('/', async (req, res, next) => {
 
             });
 
-
-router.get('/dashboardOgr', (req, res) => {
-  res.render('dashboardOgr', { title: 'Öğrenci panel ekranı'});
-});
 
 module.exports = router;
 

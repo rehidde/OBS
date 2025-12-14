@@ -32,7 +32,12 @@ app.use((req, res, next) => {
 const indexRouter = require("./routes/index");
 app.use("/", indexRouter);
 
+const dashRouter = require("./routes/dashboard");
+app.use("/dashboardOgr", dashRouter);
 
+
+const transcriptRouter = require("./routes/transcript");
+app.use("/transcript", transcriptRouter);
 
 app.use((req, res) => {
   res.status(404).render('404', { title: 'Sayfa Bulunamadı, doğru değerleri girdiğinizden emin olun!' });
