@@ -8,6 +8,7 @@
 </head>
 <body>
 
+
     <div class="sidebar">
         <div class="logo">OBS ÖĞRENCİ</div>
         <ul class="menu-list">
@@ -19,18 +20,14 @@
             <li class="menu-item" id="oduller"><a href="#"><span class="icon">🏆</span> Ödüller</a></li>
         </ul>
     </div>
-
-    <div id="content">
+            <h2> <% kullanici.soyad %></h2>
+  <div id="content">
         <div id="topbar">
             <div id="profile-box">
-                <img src="<%= profilePic ? profilePic : 'https://via.placeholder.com/50' %>" 
-                     alt="Profil Fotoğrafı" id="profile-pic">
-
-                <div id="profile-texts">
-                    <p id="id"><%= id %></p>
-                    <p id="ad"><%= ad %></p>
-                    <p id="soyad"><%= soyad %></p>
-                    <p id="program"><%= program %></p>
+                    <div id="profile-texts">
+                    <p id="ad"><%= kullanici.ad %></p>
+                    <p id="soyad"> soyad </p>
+                    <p id="program">program</p>
                 </div>
 
                 <div id="profile-menu" style="display: none;"> 
@@ -38,14 +35,14 @@
                     <button onclick="logout()">Çıkış</button>
                 </div>
             </div>
-        </div>
-
+       </div> 
+      <!---
         <div id="main-area">
-            <h1>Hoşgeldiniz, <%= ad %>!</h1>
+            <h1>Hoşgeldiniz,!</h1>
             <p>Sol taraftaki menüden işlem yapabilirsiniz.</p>
         </div>
     </div>
-
+-->
     <script src="/js/dashboardOgr.js"></script>
 </body>
 </html>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel=stylesheet href="/libs/bootstrap/dist/css/bootstrap.min.css">
   <title>Sistem Girişi</title>
-  <link rel="stylesheet" href="../public/css/login.css">
+  <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
   <div class="login-container">
@@ -14,23 +14,23 @@
       <p>Lütfen kullanıcı adı, şifre ve rolünüzü seçerek giriş yapınız.</p>
     </header>
 
-    <form id="loginForm" action="/login" method="POST">
+    <form id="loginForm" action="/" method="POST">
       <div class="input-group">
-        <label for="username">Kullanıcı Adı:</label>
-        <input type="text" id="username" name="username" placeholder="Öğrenci No / Personel ID" required>
+        <label for="id">Kullanıcı Adı:</label>
+        <input type="text" id="id" name="id" placeholder="Öğrenci No / Personel ID" required>
       </div>
 
       <div class="input-group">
-        <label for="password">Şifre:</label>
+        <label for="sifre">Şifre:</label>
         <div class="password-container">
-          <input type="password" id="password" name="password" placeholder="Şifreniz" required>
+          <input type="password" id="sifre" name="sifre" placeholder="Şifreniz" required>
           <button type="button" id="togglePassword" aria-label="toggle password">👁️</button>
         </div>
       </div>
 
       <div class="input-group">
-        <label for="role">Rol Seçimi:</label>
-        <select id="role" name="role" required>
+        <label for="rol">Rol Seçimi:</label>
+        <select id="rol" name="role" required>
           <option value="" disabled selected>Rolünüzü Seçin</option>
           <option value="student">Öğrenci</option>
           <option value="teacher">Öğretmen</option>

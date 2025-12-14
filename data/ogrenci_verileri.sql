@@ -36,7 +36,7 @@ CREATE TABLE Dersler (
 
 
 CREATE TABLE OgrenciDersleri (
-    id INT,
+    id INT PRIMARY KEY,
     ders_ad VARCHAR(100),
     kredi INT,
     akts INT,

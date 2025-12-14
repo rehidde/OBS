@@ -33,7 +33,7 @@ const ogrenci = {
 };
 
 document.addEventListener("DOMContentLoaded", function(){
-    document.getElementById("adSoyad").innerHTML=ogrenci.ad + " " + ogrenci.soyad;
+    document.getElementById("adSoyad").innerHTML=req.session.kullanici.ad + " " + ogrenci.soyad;
     document.getElementById("numara").innerHTML=ogrenci.numara;
     document.getElementById("bolum").innerHTML=ogrenci.bolum;
 

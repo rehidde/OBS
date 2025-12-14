@@ -6,7 +6,7 @@
     <title>Bağış Yap</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="/stylePuan.css">
+    <link rel="stylesheet" href="./css/stylePuan.css">
 </head>
 
 <body data-theme="light">
@@ -15,8 +15,7 @@
         <h1>Ödül ve Bağış Yönetimi</h1>
         
         <nav>
-            <a href="/rewards">Ödül Pazarı</a>
-            <a href="/donation" class="active">Bağış Yap</a>
+            <a href="/rewards">Ödül Pazarı</a>            
         </nav>
         
         <div id="user-info-area">
@@ -39,10 +38,6 @@
                     <span id="mevcut-puan"><%= mevcutPuan || 'Yükleniyor...' %></span>
                 </p>
             </div>
-            
-            <button id="theme-toggle-btn" title="Temayı Değiştir">
-                <i class="fas fa-moon"></i>
-            </button>
         </div>
     </header>
 
@@ -74,6 +69,9 @@
                 <button id="odeme-btn" disabled>Ödeme Yap</button>
                 <p id="bagis-durum-mesaj"></p>
             </div>
+            <section class="link-alani">
+                <a href="/rewards" class="btn secondary-btn">🛍️ Ödül Pazarına Git</a>
+            </section>
         </section>
     </main>
 
