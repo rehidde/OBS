@@ -4,7 +4,7 @@ const port = 3000;
 const path = require('path');
 
 
-const veriler = require('./public/js/simulasyon_verileri.js'); 
+const veriler = require('../public/js/simulasyon_verileri.js'); 
 
 
 app.set('view engine', 'ejs'); 
