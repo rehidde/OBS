@@ -28,11 +28,11 @@ app.use(express.static(__dirname));
 
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html'); 
+    res.sendFile(__dirname + '/index'); 
 });
 
 
-app.post('/login', (req, res) => {
+app.post('/', (req, res) => {
     const { username, password, role } = req.body;
     
     const sqlQuery = "SELECT * FROM Kullanici WHERE (numara = ? OR email = ?) AND sifre = ? AND rol = ?";
