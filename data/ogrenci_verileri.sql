@@ -23,7 +23,8 @@ CREATE TABLE OgrenciDetay (
     egitim VARCHAR(50),
     durum VARCHAR(50),
     sinif VARCHAR(20),
-    program VARCHAR(150)
+    program VARCHAR(150),
+    puan INT
 );
 
 
@@ -36,7 +37,7 @@ CREATE TABLE Dersler (
 
 
 CREATE TABLE OgrenciDersleri (
-    id INT,
+    id INT PRIMARY KEY,
     ders_ad VARCHAR(100),
     kredi INT,
     akts INT,
@@ -180,3 +181,9 @@ INSERT INTO OgrenciDersleri (id, ders_ad, kredi, akts, notu, ogretmen) VALUES ('
 
 UPDATE Kullanici
 SET rol = 'ogrenci';
+
+ALTER TABLE ogrencidetay
+ADD COLUMN puan INT DEFAULT 0;
+
+UPDATE OgrenciDetay
+SET puan = 1000;

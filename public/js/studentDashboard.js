@@ -1,92 +1,197 @@
-/**
- * studentDashboard.js
- * Class, Kalıtım, Map, Asenkron Programlama (Simülasyon)
- */
-
-// 1. CLASS KULLANIMI: TEMEL KULLANICI SINIFI
+//Kullanıcıyı temsil eden temel bir sınıf yapısı oluşturuyoruz.
 class User {
-    constructor(username, email) {
-        this.username = username;
-        this.email = email;
+    //user sınıfının yapıcı (constructor) metodunu oluşturuyoruz,name ,lastLogin ve profilePic değerlerini alır.
+    constructor(name, lastLogin, profilePic) {
+        this._name = name;//Kullanıcının adını private alanda tutuyoruz.
+        this._lastLogin = lastLogin;
+        this._profilePic = profilePic;//Kullanıcının  son giriş bilgisini ve profilePic URL sini saklıyoruz. 
+    }
+
+    get name() {
+        return this._name;
+    }//kullanıcının adını dışarıya döndürüyor
+
+    get lastLogin() {
+        return this._lastLogin;
+    }
+
+    get profilePic() {
+        return this._profilePic;//pp ve son giriş zamanını dışarıya döndüren getterlar31415
+    }
+
+    set profilePic(newUrl) {
+        this._profilePic = newUrl;//pp güncellemek için setter kullanıyoruz.
     }
 }
 
-// 2. CLASS KALITIM (EXTENDS): ÖĞRENCİ SINIFI
 class Student extends User {
-    constructor(username, email, studentNo) {
-        super(username, email);
-        this.studentNo = studentNo;
+    constructor(name, lastLogin, profilePic, studentId) {
+        super(name, lastLogin, profilePic);
+        this.studentId = studentId;
+        //ödülleri bir map içerisinde saklıyoruz
         this.rewards = new Map();
     }
 
-    async getPointsAndRewards() {
-        const loadingDiv = document.getElementById('loading');
-        loadingDiv.style.display = 'block';
+    get formattedName() {
+        return `${this._name} (${this.studentId})`;
+    }
+}
+class StudentDocument {
+    constructor() {
+        this.rawData = {
+            tc: "242523",
+            ad: "ZEYNEP",
+            soyad: "ARSLAN",
+            anne: "MERYEM",
+            baba: "ADEM",
+            dogum: "03.05.2002 / TÜRKİYE CUMHURİYETİ",
+            kayit: "19.08.2024",
+            egitim: "ÖRGÜN ÖĞRETİM / 4 Yıl",
+            durum: "AKTİF ÖĞRENCİ",
+            sinif: "2. SINIF",
+            program: "KIRŞEHİR AHİ EVRAN ÜNİVERSİTESİ / Bilgisayar Müh."
+        };
+    }
 
-        try {
-            // 2 saniyelik yapay API gecikmesi
-            const response = await new Promise(resolve => {
-                setTimeout(() => {
-                    resolve({
-                        points: 850,
-                        rewards: [
-                            { id: 1, name: 'Başarı Belgesi' },
-                            { id: 2, name: 'Onur Listesi' }
-                        ]
-                    });
-                }, 2000);
+
+    get info() {
+        return { ...this.rawData }; 
+    }
+}
+class OBSSystem {
+    constructor(student) {
+        this.student = student;
+        this.documentData = new StudentDocument();
+
+        this.contentMap = new Map();
+        if (typeof pageContents !== 'undefined') {
+            Object.entries(pageContents).forEach(([key, value]) => {
+                this.contentMap.set(key, value);
             });
+        }
+        
+        this.initElements();
+        this.initListeners();
+    }
 
-            response.rewards.forEach(r => this.rewards.set(r.id, r.name));
+    initElements() {
+        this.mainArea = document.getElementById("main-area");
+        this.menuItems = [...document.querySelectorAll(".menu-item")];
+        
+        const profileNameEl = document.getElementById("profile-name");
+        const lastLoginEl = document.getElementById("last-login");
+        const profilePicEl = document.getElementById("profile-pic");
 
-            return {
-                points: response.points,
-                rewards: this.rewards
-            };
+        if(profileNameEl) profileNameEl.textContent = this.student.name;
+        if(lastLoginEl) lastLoginEl.textContent = "Son Giriş: " + this.student.lastLogin;
+        if(profilePicEl) profilePicEl.src = this.student.profilePic;
+    }
 
-        } catch (error) {
-            console.error("Hata oluştu:", error);
-            return { points: 0, rewards: new Map() };
+    initListeners() {
+        this.menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                this.activePage = item.id;
+            });
+        });
+    }
+    set activePage(menuId) {
+        this.menuItems.forEach(item => item.classList.remove('active'));
+        const activeItem = document.getElementById(menuId);
+        if(activeItem) activeItem.classList.add('active');
+        const content = this.contentMap.get(menuId) || `<div class="content-box"><h2>Merhaba,Hoşgeldiniz!</h2><p>Menüden devam ediniz..</p></div>`;
+        this.mainArea.innerHTML = content;
+        
+        this.triggerRenderFunctions(menuId);
+    }
 
-        } finally {
-            loadingDiv.style.display = 'none';
+    triggerRenderFunctions(menuId) {
+        switch (menuId) {
+            case 'transkript': 
+                if(typeof renderTranskript === 'function') renderTranskript(); 
+                break;
+            case 'ogrenci-belgesi': 
+                this.renderOgrenciBelgesi(); 
+                break;
+            case 'not-paylasim': 
+                if(typeof renderNotPaylasim === 'function') renderNotPaylasim(); 
+                break;
+            case 'mesajlasma': 
+                if(typeof renderMesajlasma === 'function') renderMesajlasma(); 
+                break;
+            case 'puanlarim': 
+                if(typeof renderPuanlarim === 'function') renderPuanlarim(); 
+                break;
+            case 'oduller': 
+                if(typeof renderOduller === 'function') renderOduller(); 
+                break;
         }
     }
 
-    // Map görüntüleme
-    displayRewards() {
-        let rewardList = '<ul>';
-        for (const [id, name] of this.rewards.entries()) {
-            rewardList += <li>Ödül ID: ${id} - ${name}</li>;
+    renderOgrenciBelgesi() {
+        const data = this.documentData.info;
+
+        const setText = (id, text) => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = text;
+        };
+
+        setText("tcno", data.tc);
+        setText("adsoyad", `${data.ad} ${data.soyad}`);
+        setText("anne", data.anne);
+        setText("baba", data.baba);
+        setText("dogum", data.dogum);
+        setText("kayit", data.kayit);
+        setText("egitim", data.egitim);
+        setText("sinif", data.sinif);
+        setText("program", data.program);
+        setText("adsoyad-2", `${data.ad} ${data.soyad}`);
+    }
+
+    static zamanFormatiniAl() {
+        const now = new Date();
+        const datePart = now.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+        const timePart = now.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+        return `${datePart} ${timePart}`;
+    }
+
+    static updateCartItemCount() {
+        const cartCountElement = document.getElementById('cart-item-count-header');
+        if (cartCountElement && typeof sepet !== 'undefined') {
+            const totalItemsInCart = sepet.reduce((total, item) => total + item.miktar, 0);
+            cartCountElement.textContent = totalItemsInCart;
         }
-        rewardList += '</ul>';
-        return rewardList;
     }
 }
 
-// 3. SAYFA YÜKLENİNCE ÇALIŞACAK KOD
+
+
 document.addEventListener('DOMContentLoaded', async () => {
+    const student = new Student("İrem Yılmaz", "25.11.2025", "https://via.placeholder.com/45", "180105");
+    
+    const obsSystem = new OBSSystem(student);
+    
+    obsSystem.activePage = 'transkript';
 
-    const currentStudent = new Student('İrem Yılmaz', 'irem@example.com', '180105');
+    const profileBox = document.getElementById("profile-box");
+    const profileMenu = document.getElementById("profile-menu");
 
-    // 🔵 PROFİL KUTUSUNA VERİ YAZDIR
-    document.querySelector('.student-info-box').innerHTML = `
-        <h3>👤 Öğrenci Bilgileri</h3>
-        <p><strong>Ad Soyad:</strong> ${currentStudent.username}</p>
-        <p><strong>Email:</strong> ${currentStudent.email}</p>
-        <p><strong>Öğrenci No:</strong> ${currentStudent.studentNo}</p>
-    `;
+    if (profileBox && profileMenu) {
+        profileBox.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const currentDisplay = profileMenu.style.display;
+            profileMenu.style.display = currentDisplay === "flex" ? "none" : "flex";
+        });
 
-    // ⭐ PUANLAR VE ÖDÜLLER
-    const data = await currentStudent.getPointsAndRewards();
-
-    const pointsDiv = document.getElementById('points-display');
-    const rewardsDiv = document.getElementById('rewards-display');
-
-    if (data.points > 0) {
-        pointsDiv.innerHTML = Mevcut Puaniniz: <b>${data.points}</b>;
-        rewardsDiv.innerHTML = <h3>🏆 Kazanılan Ödüller</h3>${currentStudent.displayRewards()};
-    } else {
-        pointsDiv.textContent = "Veri çekilemedi.";
+        document.addEventListener("click", () => {
+            profileMenu.style.display = "none";
+        });
     }
 });
+
+window.openProfileSettings = () => {
+    alert("Profil Ayarları Açılacak! (istersen sayfa tasarlayabilirim)");
+};
+
+window.logout = () => {
+    alert("Çıkış yapıldı!");
+};

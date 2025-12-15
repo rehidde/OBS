@@ -8,7 +8,7 @@ const oduller = [
     { id: 4, urun: "Okul Logolu Kupa", puan_maliyeti: 250 },
     { id: 5, urun: "Öğretmenle 1-1 Mentörlük Seansı", puan_maliyeti: 300 }
 ];
-
+//kullanıcıya mesaj göstermek için  kullanılır
 function gosterMesaj(mesaj, renk) {
     var mesajAlani = document.getElementById("mesaj-alani");
     if (mesajAlani) {
@@ -20,16 +20,16 @@ function gosterMesaj(mesaj, renk) {
         }, 3000);
     }
 }
-
+//puan bilgisiyle sepeti günceller
 function arayuzuGuncelle() {
     var puanAlani = document.getElementById("mevcut-puan");
     if (puanAlani) {
         puanAlani.textContent = ogrenciPuan;
     }
-
+    //sepeti güncelleyip listeler
     sepetiListele(); 
 }
-
+//ödülleri ekrana yükler
 function odulleriYukle() {
     var liste = document.getElementById("odul-listesi");
     if (!liste) return;
@@ -49,10 +49,10 @@ function odulleriYukle() {
         liste.appendChild(kart);
     }
 }
-
+//kullanıcının seçtiği ödülü sepete ekler
 function sepeteEkle(id) {
     var urun = null;
-
+    //tıklanan id ye göre ödülü alır
     for (var i = 0; i < oduller.length; i++) {
         if (oduller[i].id == id) {
             urun = oduller[i];
@@ -60,23 +60,23 @@ function sepeteEkle(id) {
     }
 
     if (urun == null) return;
-
+    //puan yeterli mi kontrolü
     if (ogrenciPuan < urun.puan_maliyeti) {
         gosterMesaj("Yetersiz puan!", "red");
         return;
     }
-
+    //burda puan düşürülür
     ogrenciPuan -= urun.puan_maliyeti;
 
     var bulundu = false;
-
+    //o üründen sepette var mı kontrolü yapar
     for (var i = 0; i < sepet.length; i++) {
         if (sepet[i].id == id) {
             sepet[i].miktar++;
             bulundu = true;
         }
     }
-
+    //yoksa sepete eklenir
     if (!bulundu) {
         sepet.push({
             id: urun.id,
@@ -89,10 +89,11 @@ function sepeteEkle(id) {
     gosterMesaj(urun.urun + " sepete eklendi.", "green");
     arayuzuGuncelle();
 }
-
+//sepetten ürün çıkarır
 function sepettenCikar(id) {
     for (var i = 0; i < sepet.length; i++) {
         if (sepet[i].id == id) {
+            //çıkarılan ürünün puanı geri eklenir
             ogrenciPuan += sepet[i].puan_maliyeti;
 
             if (sepet[i].miktar > 1) {
@@ -107,7 +108,7 @@ function sepettenCikar(id) {
     gosterMesaj("Ürün sepetten çıkarıldı.", "blue");
     arayuzuGuncelle();
 }
-
+//sepetteki ürünleri listeleyip gösterir
 function sepetiListele() {
     var liste = document.getElementById("sepet-listesi");
     var toplamAlani = document.getElementById("sepet-toplam-puan");
@@ -134,7 +135,7 @@ function sepetiListele() {
         toplamAlani.textContent = toplam;
     }
 }
-
+//bağış alanı kısmı
 var miktarButonlari = document.querySelectorAll(".miktar-btn");
 var digerMiktarAlani = document.getElementById("diger-miktar-alani");
 var ozelInput = document.getElementById("ozel-miktar");
@@ -143,9 +144,10 @@ var odemeBtn = document.getElementById("odeme-btn");
 var bagisMesaj = document.getElementById("bagis-durum-mesaj");
 
 var secilenMiktar = 0;
-
+//bağış butonlaru
 for (var i = 0; i < miktarButonlari.length; i++) {
     miktarButonlari[i].addEventListener("click", function () {
+            //öncelikle tüm seçimleri kaldırır
             for (var j = 0; j < miktarButonlari.length; j++) {
             miktarButonlari[j].classList.remove("selected");
         }
@@ -166,7 +168,7 @@ for (var i = 0; i < miktarButonlari.length; i++) {
         }
     });
 }
-
+//özel olarak seçilen bağış miktarı için bu kısım
 if (ozelInput) {
     ozelInput.addEventListener("input", function () {
         var girilen = Number(ozelInput.value);
@@ -181,7 +183,7 @@ if (ozelInput) {
         }
     });
 }
-
+//ödeme butonu
 if (odemeBtn) {
     odemeBtn.addEventListener("click", function () {
 
@@ -193,7 +195,7 @@ if (odemeBtn) {
 
         bagisMesaj.style.color = "green";
         bagisMesaj.textContent = secilenMiktar + " ₺ bağışınız alınmıştır.";
-
+        //alanları sıfırlıyor
         secilenText.textContent = "0 ₺";
         secilenMiktar = 0;
         odemeBtn.disabled = true;
@@ -208,8 +210,9 @@ if (odemeBtn) {
         }
     });
 }
-
+//sayfa yüklendiğinde bu kısım çalışıyor
 document.addEventListener("DOMContentLoaded", function () {
     arayuzuGuncelle();
     odulleriYukle();
 });
+

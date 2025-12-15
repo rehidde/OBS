@@ -1,27 +1,67 @@
 const express = require("express");
-const path = require("path");
-require("dotenv").config();
-
+const path = require('path');
 const app = express();
 
-// View Engine
+const session =require('express-session');
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// Public Klasörü
 app.use(express.static(path.join(__dirname, "public")));
 
-// Form verilerini işlemek
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
-// Routes
+
+app.use(session({
+    secret: '3141592',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {maxAge: 1000*60*60}
+}))
+
+
+//ömer-12.12 buraya bakıcam silmeyin
+app.use((req, res, next) => {
+   res.locals.currentUser = req.session?.kullanici || null;
+    next();
+})
+
+
 const indexRouter = require("./routes/index");
 app.use("/", indexRouter);
 
-// Port
-const PORT = process.env.PORT || 3000;
+const dashRouter = require("./routes/dashboard");
+app.use("/dashboardOgr", dashRouter);
 
-app.listen(PORT, () => {
-    console.log("Server running on port " + PORT);
+const donationRouter = require("./routes/donation");
+app.use("/donation", donationRouter);
+
+const pointRouter = require("./routes/points");
+app.use("/points", pointRouter);
+
+const noteRouter = require("./routes/notes");
+app.use("/notes", noteRouter);
+
+const messageRouter = require("./routes/messaging");
+app.use("/messaging", messageRouter);
+
+const rewardRouter = require("./routes/rewards");
+app.use("/rewards", rewardRouter);
+
+const studentDocRouter = require("./routes/studentDoc");
+app.use("/studentDoc", studentDocRouter);
+
+const transcriptRouter = require("./routes/transcript");
+app.use("/transcript", transcriptRouter);
+
+
+app.use((req, res) => {
+  res.status(404).render('404', { title: 'Sayfa Bulunamadı, doğru değerleri girdiğinizden emin olun!' });
 });
+
+
+
+module.exports = app;
+

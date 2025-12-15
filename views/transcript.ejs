@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transkript</title>
-<link rel="stylesheet" href="../public/css/transcript.css">
+<link rel="stylesheet" href="/css/transcript.css">
 <script src="js/transcript.js"></script>
 </head>
 <body>
@@ -16,16 +16,15 @@
     <section class="student-info">
         <h2>Öğrenci Bilgileri</h2>
         <div class="info-grid">
-            <div><strong>Ad Soyad:</strong> <span id="adSoyad">---</span></div>
-            <div><strong>Numara:</strong> <span id="numara">---</span></div>
-            <div><strong>Bölüm:</strong> <span id="bolum">---</span></div>
+            <div><strong>Ad Soyad:</strong> <span id="adSoyad"> <%= ogrenci.ad %> <%= ogrenci.soyad %></span></div>
+            <div><strong>Numara: </strong> <span id="numara"><%= ogrenci.numara %></span></div>
+            <div><strong>Bölüm: </strong> <span id="bolum"><%= detay.program %></span></div>
         </div>
     </section>
 
     <section class="transcript-table">
         <h2>Dersler</h2>
         <table>
-            <thead>
                 <tr>
                     <th>Ders Adı</th>
                     <th>Kredi</th>
@@ -33,15 +32,28 @@
                     <th>Not</th>
                     <th>Öğretmen</th>
                 </tr>
-            </thead>
-            <tbody id="dersler-body">
-                <!-- JS ile doldurulacak -->
-            </tbody>
+<tbody>
+    <% if (dersler.length > 0) { %>
+        <% dersler.forEach(ders => { %>
+            <tr>
+                <td><%= ders.ders_ad %></td>
+                <td><%= ders.kredi %></td>
+                <td><%= ders.akts %></td>
+                <td><%= ders.notu %></td>
+                <td><%= ders.ogretmen %></td>
+            </tr>
+        <% }) %>
+    <% } else { %>
+        <tr>
+            <td>ders bulunamadı</td>
+        </tr>
+    <% } %>
+</tbody>
         </table>
     </section>
 
     <section class="average">
-        <h3>Genel Ortalama: <span id="ortalama">---</span></h3>
+        <h3>Genel Ortalama: <%= ortalama %></h3>
     </section>
 </body>
 </html>

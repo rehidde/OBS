@@ -73,6 +73,5 @@ app.get('/teacher/dashboard', (req, res) => {
 
 
 app.listen(port, () => {
-    console.log(`Sunucu http://localhost:${port} adresinde çalışıyor...`);
+    console.log('Sunucu http://localhost:${port} adresinde çalışıyor...');
 });
-
