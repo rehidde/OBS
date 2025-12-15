@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const dosya = document.getElementById('dosya');
                 const notMetni = document.getElementById('not')?.value.trim();
                 
-                if (dosya.files.length === 0) {
+                if (dosya.files.length == 0) {
                      alert("Lütfen bir dosya seçin.");
                      return;
                 }
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const aktifKanal = mesajlarKutusu?.getAttribute('data-aktif-kanal');
             
-            if (aktifKullanici.rol === 'ogrenci' && aktifKanal === 'fakulte') {
+            if (aktifKullanici.rol == 'ogrenci' && aktifKanal == 'fakulte') {
                  alert("Öğrenciler Fakülte kanalına mesaj gönderemez.");
                  input.value = '';
                  return;
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             mesajlarKutusu?.setAttribute('data-aktif-kanal', kanalAdi);
 
-            const ogrenciEngeli = aktifKullanici.rol === 'ogrenci' && kanalAdi === 'fakulte';
+            const ogrenciEngeli = aktifKullanici.rol == 'ogrenci' && kanalAdi == 'fakulte';
             
             input?.toggleAttribute('disabled', ogrenciEngeli);
             gonderBtn?.toggleAttribute('disabled', ogrenciEngeli);
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
                  input?.setAttribute('placeholder', 'Bir mesaj yazın...');
             }
             
-            alert(`Kanal ${kanalAdi} olarak değiştirildi. Mesajlar yenilenmedi (Veritabanı entegrasyonu gerekli).`);
+            alert(`Kanal ${kanalAdi} olarak değiştirildi. Mesajlar yenilenmedi.`);
 
         };
         
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (gonderBtn) gonderBtn.addEventListener('click', mesajiEkleVeGonder);
-        if (input) input.addEventListener('keypress', (e) => { if (e.key === "Enter") mesajiEkleVeGonder(); });
+        if (input) input.addEventListener('keypress', (e) => { if (e.key == "Enter") mesajiEkleVeGonder(); });
 
     }
 });
