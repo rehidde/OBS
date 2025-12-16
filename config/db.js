@@ -1,23 +1,15 @@
-
-
 const mysql = require('mysql2/promise');
+require('dotenv').config(); // EN ÜSTE YAKIN OLSUN
 
-
-// daha sonra buraya dotenv diye bir
-// bilgileri güvende tutma sistemini kuracağız
 const pool = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'brfn2005',
-  database: 'OBS',
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
 
+  waitForConnections: true,
+  connectionLimit: Number(process.env.DB_CONN_LIMIT) || 10,
+  queueLimit: 0,
 });
 
-
-
 module.exports = pool;
-
-
