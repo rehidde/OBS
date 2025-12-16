@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğrenci Belgesi</title>
+    <link rel="stylesheet" href="/css/studentDoc.css">
+    <script src="js/studentDoc.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <header class="header">
+        <div class="logo">
+            <img src="img/hrv.png" alt="Logo">
+        </div>
+
+        <div class="title">
+            <h2>T.C.</h2>
+            <h3>YÜKSEKÖĞRETİM KURULU BAŞKANLIĞI</h3>
+            <h4>ANKARA</h4>
+        </div>
+
+        <div class="meta">
+            <div class="date">19.11.2025</div>
+        </div>
+    </header>
+
+    <h2 class="belge-baslik">ÖĞRENCİ BELGESİ</h2>
+
+    <section class="info">
+        <div class="row"><span>T.C. Kimlik No</span> : <strong id="tc"><%= ogrenci.tc %></strong></div>
+        <div class="row"><span>Adı / Soyadı</span> : <strong id="adsoyad"><%= ogrenci.ad %> <%= ogrenci.soyad %></strong></div>
+        <div class="row"><span>Anne Adı</span> : <strong id="anne"><%= detay.anne %></strong></div>
+        <div class="row"><span>Baba Adı</span> : <strong id="baba"><%= detay.baba %></strong></div>
+        <div class="row"><span>Doğum Tarihi / Uyruğu</span> : <strong id="dogum"><%= detay.dogum %></strong></div>
+        <div class="row"><span>Kayıt Tarihi</span> : <strong id="kayit"><%= detay.kayit %></strong></div>
+        <div class="row"><span>Eğitim Türü / Öğrenim Süresi</span> : <strong id="egitim"><%= detay.egitim %></strong></div>
+        <div class="row"><span>Öğrencilik Durumu</span> : <strong id="durum"><%= detay.durum %></strong></div>
+        <div class="row"><span>Sınıf</span> : <strong id="sinif"><%= detay.sinif %></strong></div>
+        <div class="row"><span>Program</span> : 
+            <strong id="program"><%= detay.program %></strong>
+        </div>
+    </section>
+
+    <section class="makam">
+        <h3>İLGİLİ MAKAMA</h3>
+        <p>
+            Yukarıda kimlik bilgileri yer alan <strong id="adsoyad"><%= ogrenci.ad %> <%= ogrenci.soyad %></strong> isimli kişinin 
+            Kırşehir Ahi Evran Üniversitesi tarafından yukarıda belirtilen programa kayıtlı öğrencisi olduğu bildirilmiştir.
+        </p>
+    </section>
+   
+   
+   
+
+</div>
+
+</body

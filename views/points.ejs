@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puan Sistemi - OBS</title>
+
+    <link rel="stylesheet" href="/stylePuan.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-star"></i> Puan Sistemi</h1>
+
+        <p class="centered-score-display">
+            Mevcut Puanınız: 
+            <span id="mevcut-puan" class="highlight-puan">
+                <%= mevcutPuan || "Yükleniyor..." %>
+            </span>
+        </p>
+
+        <div id="user-info-area">
+
+            <div id="profile-box" class="profile-box">
+                <img 
+                    src="<%= foto_url ? foto_url : '/images/default.png' %>" 
+                    alt="Profil Fotoğrafı" 
+                    class="profile-pic" 
+                    id="foto_url"
+                >
+
+                <div id="profile-details">
+                    <p id="ad"><%= ad || "Yükleniyor..." %></p>
+                    <p id="soyad"><%= soyad || "Yükleniyor..." %></p>
+                    <p id="id">No: <%= okulNo || "Yükleniyor..." %></p>
+                    <p id="program">Program: <%= program || "Yükleniyor..." %></p>
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+
+    <main class="container">
+
+        <section class="puan-kazanim">
+            <h2>🎯 Puan Kazanma Yolları</h2>
+            <div class="card-list">
+
+                <div class="card">
+                    <h3>Derslere Düzenli Katılım</h3>
+                    <p>Belirlenen katılım eşiğini aşan her ders için:</p>
+                    <span class="puan-miktar">+5 Puan</span>
+                </div>
+
+                <div class="card">
+                    <h3>Ödev/Proje Teslimi</h3>
+                    <p>Zamanında ve eksiksiz teslim edilen her ödev veya proje için:</p>
+                    <span class="puan-miktar">+10 Puan</span>
+                </div>
+
+                <div class="card">
+                    <h3>Sınıf İçi Başarı/Katkı</h3>
+                    <p>Öğretmen tarafından belirlenen önemli katkılar için:</p>
+                    <span class="puan-miktar">+20 Puan</span>
+                </div>
+
+                <div class="card">
+                    <h3>Sosyal Sorumluluk Projesi</h3>
+                    <p>Her sosyal sorumluluk ve gönüllülük projesi için:</p>
+                    <span class="puan-miktar">+50 Puan</span>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="bagis-alani">
+            <h2>💖 Ödül Fonu Bağışı</h2>
+            <p>Ödül pazarındaki ürünlerin sürdürülebilirliği için katkıda bulunabilirsiniz.</p>
+            <button id="bagis-btn" class="btn primary-btn">Bağış Yapmak İstiyorum</button>
+        </section>
+
+        <section class="link-alani">
+            <a href="/rewards" class="btn secondary-btn">🛍️ Ödül Pazarına Git</a>
+        </section>
+
+    </main>
+
+    <script src="/scriptPuan.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            arayuzuGuncelle();
+        });
+
+        document.getElementById('bagis-btn').addEventListener('click', () => {
+            window.location.href = '/donation';
+        });
+    </script>
+
+</body>
+</html>

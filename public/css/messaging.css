@@ -1,0 +1,288 @@
+:root {
+    --bg-light: #800000;      
+    --bg-main: #ffffff; 
+    --color-primary: #fff;       
+    --color-secondary: #ccc;     
+    --color-card-bg: #fff;
+    --shadow-card: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--color-primary);
+}
+
+.sayfa-konteyner {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sol-menu {
+    width: 200px;
+    background-color: var(--bg-light); 
+    border-right: 1px solid var(--color-secondary);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+.menu-baslik {
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-secondary);
+    color: var(--color-primary); 
+}
+
+
+.menu-baslik i {
+    color: var(--color-primary); 
+    margin-right: 5px;
+}
+
+.sol-menu nav a {
+    color: #fff; 
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+    
+    display: flex; 
+    align-items: center; 
+}
+
+
+.sol-menu nav a.aktif-menu {
+    background-color: #a00000; 
+    color: #fff;
+    border-left: 5px solid #fff;
+}
+
+.sohbet-filtre-linki {
+    color: #000000; 
+    text-decoration: none;
+    padding: 15px 10px;
+    text-align: center;
+    font-weight: 500;
+    border-bottom: 1px solid #800000;
+}
+
+
+.sohbet-filtre-linki:hover {
+    background-color: #a00000; 
+}
+
+.icerik {
+    flex-grow: 1;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.ana-modul {
+    width: 100%;
+    max-width: 900px;
+}
+
+h2 {
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: var(--color-primary);
+    text-align: center;
+}
+
+
+
+.mesaj-arayuzu {
+    display: flex;
+    min-height: 600px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+.sohbet-filtresi {
+    width: 120px;
+    background-color: var(--bg-light);
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    border-right: 1px solid #800000;
+}
+
+
+.sohbet-filtre-linki {
+    color: #cccccc;
+    text-decoration: none;
+    padding: 15px 10px;
+    text-align: center;
+    font-weight: 500;
+    border-bottom: 1px solid #800000;
+}
+
+.sohbet-filtre-linki.aktif-filtre {
+    color: #800000; 
+    background-color: var(--color-card-bg); 
+    font-weight: bold;
+}
+
+.sohbet-filtre-linki:hover {
+    background-color: #800000;
+}
+
+.sohbet-filtresi a {
+    display: block;
+    padding: 15px 10px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--color-secondary);
+    font-weight: 500;
+    border-bottom: 1px solid #800000;
+}
+
+.sohbet-filtresi .aktif-filtre {
+    background-color: var(--color-card-bg);
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.aktif-sohbet-penceresi {
+    flex-grow: 1;
+    background-color: var(--color-card-bg);
+    display: flex;
+    flex-direction: column;
+}
+
+
+.mesajlar {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+}
+
+
+.mesaj-kart {
+    padding: 15px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 15px;
+}
+
+.mesaj-profil-bar {
+    font-size: 0.85em;
+    color: #777;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mesaj-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+
+.user-icon-small {
+    font-size: 1.5em;
+    margin-right: 8px;
+    color: var(--color-secondary);
+}
+
+.mesaj-zaman {
+    margin-left: auto;
+    font-size: 0.8em;
+    color: #888;
+}
+
+.mesaj-icerik {
+    margin-top: 5px;
+    line-height: 1.4;
+    font-size: 0.95em;
+    color: #888;
+}
+
+
+.mesaj-yazma-alani {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.mesaj-yazma-alani input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.buton-gonder {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+
+.user-info {
+    
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 10; 
+
+    
+    background-color: #ecf0f1; 
+    color: #34495e; 
+    
+    
+    padding: 12px 15px; 
+    min-width: 170px; 
+    font-size: 0.9em; 
+    line-height: 1.4; 
+
+    border-radius: 8px;
+    border: 1px solid #bdc3c7;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15); 
+    
+    
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: flex-end; 
+    gap: 10px; 
+}
+
+.user-info strong {
+    font-weight: bold;
+    color: #34495e;
+}
+
+
+.profile-pic {
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    border: 3px solid #800000;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    display: block;
+}

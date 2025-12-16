@@ -1,0 +1,607 @@
+{
+    "ogrenciler": [
+        {
+            "id": "242554",
+            "ad": "Fatma",
+            "soyad": "Kaya",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242554",
+            "sifre": "1908",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242523",
+            "ad": "Zeynep",
+            "soyad": "Arslan",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242523",
+            "sifre": "7032",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242591",
+            "ad": "Ali",
+            "soyad": "Aydın",
+            "bolum": "Elektrik Elektronik Mühendisliği",
+            "numara": "242591",
+            "sifre": "7024",
+            "dersler": [
+                "Kompleks Değişkenler Teorisi",
+                "Elektromanyetik Alan Teorisi",
+                "Elektronik",
+                "Elektromanyetik Dalga Teorisi",
+                "Güç Elektroniği",
+                "Mikroişlemciler"
+            ]
+        },
+        {
+            "id": "242510",
+            "ad": "Zeynep",
+            "soyad": "Yılmaz",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242510",
+            "sifre": "2065",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242554",
+            "ad": "Zeynep",
+            "soyad": "Aydın",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242554",
+            "sifre": "4733",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242515",
+            "ad": "Hüseyin",
+            "soyad": "Koç",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242515",
+            "sifre": "7109",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242537",
+            "ad": "Ayşe",
+            "soyad": "Kaya",
+            "bolum": "Elektrik Elektronik Mühendisliği",
+            "numara": "242537",
+            "sifre": "8091",
+            "dersler": [
+                "Kompleks Değişkenler Teorisi",
+                "Elektromanyetik Alan Teorisi",
+                "Elektronik",
+                "Elektromanyetik Dalga Teorisi",
+                "Güç Elektroniği",
+                "Mikroişlemciler"
+            ]
+        },
+        {
+            "id": "242579",
+            "ad": "Mehmet",
+            "soyad": "Yılmaz",
+            "bolum": "Elektrik Elektronik Mühendisliği",
+            "numara": "242579",
+            "sifre": "4918",
+            "dersler": [
+                "Kompleks Değişkenler Teorisi",
+                "Elektromanyetik Alan Teorisi",
+                "Elektronik",
+                "Elektromanyetik Dalga Teorisi",
+                "Güç Elektroniği",
+                "Mikroişlemciler"
+            ]
+        },
+        {
+            "id": "242551",
+            "ad": "Can",
+            "soyad": "Arslan",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242551",
+            "sifre": "9061",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242592",
+            "ad": "Hüseyin",
+            "soyad": "Koç",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242592",
+            "sifre": "6782",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242540",
+            "ad": "Ahmet",
+            "soyad": "Kaya",
+            "bolum": "Elektrik Elektronik Mühendisliği",
+            "numara": "242540",
+            "sifre": "5288",
+            "dersler": [
+                "Kompleks Değişkenler Teorisi",
+                "Elektromanyetik Alan Teorisi",
+                "Elektronik",
+                "Elektromanyetik Dalga Teorisi",
+                "Güç Elektroniği",
+                "Mikroişlemciler"
+            ]
+        },
+        {
+            "id": "242526",
+            "ad": "Can",
+            "soyad": "Arslan",
+            "bolum": "Elektrik Elektronik Mühendisliği",
+            "numara": "242526",
+            "sifre": "5280",
+            "dersler": [
+                "Kompleks Değişkenler Teorisi",
+                "Elektromanyetik Alan Teorisi",
+                "Elektronik",
+                "Elektromanyetik Dalga Teorisi",
+                "Güç Elektroniği",
+                "Mikroişlemciler"
+            ]
+        },
+        {
+            "id": "242565",
+            "ad": "Mehmet",
+            "soyad": "Aydın",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242565",
+            "sifre": "8451",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242560",
+            "ad": "Elif",
+            "soyad": "Yılmaz",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242560",
+            "sifre": "5947",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242588",
+            "ad": "Emre",
+            "soyad": "Çelik",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242588",
+            "sifre": "4250",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242540",
+            "ad": "Selin",
+            "soyad": "Şahin",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242540",
+            "sifre": "8409",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242598",
+            "ad": "Gizem",
+            "soyad": "Kaya",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242598",
+            "sifre": "7976",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242526",
+            "ad": "Deniz",
+            "soyad": "Aydın",
+            "bolum": "Elektrik Elektronik Mühendisliği",
+            "numara": "242526",
+            "sifre": "6218",
+            "dersler": [
+                "Kompleks Değişkenler Teorisi",
+                "Elektromanyetik Alan Teorisi",
+                "Elektronik",
+                "Elektromanyetik Dalga Teorisi",
+                "Güç Elektroniği",
+                "Mikroişlemciler"
+            ]
+        },
+        {
+            "id": "242583",
+            "ad": "Can",
+            "soyad": "Öztürk",
+            "bolum": "Elektrik Elektronik Mühendisliği",
+            "numara": "242583",
+            "sifre": "1588",
+            "dersler": [
+                "Kompleks Değişkenler Teorisi",
+                "Elektromanyetik Alan Teorisi",
+                "Elektronik",
+                "Elektromanyetik Dalga Teorisi",
+                "Güç Elektroniği",
+                "Mikroişlemciler"
+            ]
+        },
+        {
+            "id": "242525",
+            "ad": "Hüseyin",
+            "soyad": "Demir",
+            "bolum": "Elektrik Elektronik Mühendisliği",
+            "numara": "242525",
+            "sifre": "9645",
+            "dersler": [
+                "Kompleks Değişkenler Teorisi",
+                "Elektromanyetik Alan Teorisi",
+                "Elektronik",
+                "Elektromanyetik Dalga Teorisi",
+                "Güç Elektroniği",
+                "Mikroişlemciler"
+            ]
+        },
+        {
+            "id": "242536",
+            "ad": "Emre",
+            "soyad": "Arslan",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242536",
+            "sifre": "5060",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242575",
+            "ad": "Ahmet",
+            "soyad": "Doğan",
+            "bolum": "Elektrik Elektronik Mühendisliği",
+            "numara": "242575",
+            "sifre": "3275",
+            "dersler": [
+                "Kompleks Değişkenler Teorisi",
+                "Elektromanyetik Alan Teorisi",
+                "Elektronik",
+                "Elektromanyetik Dalga Teorisi",
+                "Güç Elektroniği",
+                "Mikroişlemciler"
+            ]
+        },
+        {
+            "id": "242529",
+            "ad": "Deniz",
+            "soyad": "Demir",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242529",
+            "sifre": "6762",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242582",
+            "ad": "Deniz",
+            "soyad": "Şahin",
+            "bolum": "Elektrik Elektronik Mühendisliği",
+            "numara": "242582",
+            "sifre": "4953",
+            "dersler": [
+                "Kompleks Değişkenler Teorisi",
+                "Elektromanyetik Alan Teorisi",
+                "Elektronik",
+                "Elektromanyetik Dalga Teorisi",
+                "Güç Elektroniği",
+                "Mikroişlemciler"
+            ]
+        },
+        {
+            "id": "242527",
+            "ad": "Fatma",
+            "soyad": "Koç",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242527",
+            "sifre": "4519",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242552",
+            "ad": "Zeynep",
+            "soyad": "Aydın",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242552",
+            "sifre": "1515",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242545",
+            "ad": "Ali",
+            "soyad": "Kaya",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242545",
+            "sifre": "3454",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242587",
+            "ad": "Mehmet",
+            "soyad": "Öztürk",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242587",
+            "sifre": "9999",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242517",
+            "ad": "Burak",
+            "soyad": "Çelik",
+            "bolum": "Bilgisayar Mühendisliği",
+            "numara": "242517",
+            "sifre": "7811",
+            "dersler": [
+                "Programlamaya Giriş",
+                "Veri İletişimi",
+                "Devre Analizi",
+                "Yapay Zeka",
+                "Bilgisayar Görmesi",
+                "Web Programlama",
+                "Veri Yapıları"
+            ]
+        },
+        {
+            "id": "242534",
+            "ad": "Ayşe",
+            "soyad": "Demir",
+            "bolum": "Elektrik Elektronik Mühendisliği",
+            "numara": "242534",
+            "sifre": "8491",
+            "dersler": [
+                "Kompleks Değişkenler Teorisi",
+                "Elektromanyetik Alan Teorisi",
+                "Elektronik",
+                "Elektromanyetik Dalga Teorisi",
+                "Güç Elektroniği",
+                "Mikroişlemciler"
+            ]
+        }
+    ],
+    "ogretmenler": [
+        {
+            "id": "110037",
+            "ad": "Erkan",
+            "soyad": "Turp",
+            "numara": "110037",
+            "sifre": "2449",
+            "verilen_dersler": [
+                "Devre Analizi"
+            ]
+        },
+        {
+            "id": "110055",
+            "ad": "Mehmet Ali",
+            "soyad": "Yalçıntaş",
+            "numara": "110055",
+            "sifre": "8261",
+            "verilen_dersler": [
+                "Bilgisayar Görmesi",
+                "Yapay Zeka"
+            ]
+        },
+        {
+            "id": "110035",
+            "ad": "Murat",
+            "soyad": "Işıl",
+            "numara": "110035",
+            "sifre": "8094",
+            "verilen_dersler": [
+                "Web Programlama"
+            ]
+        },
+        {
+            "id": "110021",
+            "ad": "Volkan",
+            "soyad": "Ay",
+            "numara": "110021",
+            "sifre": "7121",
+            "verilen_dersler": [
+                "Programlamaya Giriş"
+            ]
+        },
+        {
+            "id": "110038",
+            "ad": "Büşra",
+            "soyad": "Yüzügülmedi",
+            "numara": "110038",
+            "sifre": "9226",
+            "verilen_dersler": [
+                "Veri İletişimi"
+            ]
+        },
+        {
+            "id": "110074",
+            "ad": "Merve",
+            "soyad": "Doğan",
+            "numara": "110074",
+            "sifre": "4212",
+            "verilen_dersler": [
+                "Elektromanyetik Alan Teorisi",
+                "Kompleks Değişkenler Teorisi"
+            ]
+        },
+        {
+            "id": "110046",
+            "ad": "Zeynep",
+            "soyad": "Kaya",
+            "numara": "110046",
+            "sifre": "5228",
+            "verilen_dersler": [
+                "Güç Elektroniği"
+            ]
+        },
+        {
+            "id": "110061",
+            "ad": "Ayşe",
+            "soyad": "Kaya",
+            "numara": "110061",
+            "sifre": "8904",
+            "verilen_dersler": [
+                "Elektromanyetik Dalga Teorisi"
+            ]
+        },
+        {
+            "id": "110034",
+            "ad": "Fatma",
+            "soyad": "Demir",
+            "numara": "110034",
+            "sifre": "7933",
+            "verilen_dersler": [
+                "Elektronik"
+            ]
+        },
+        {
+            "id": "110013",
+            "ad": "Emre",
+            "soyad": "Öztürk",
+            "numara": "110013",
+            "sifre": "2926",
+            "verilen_dersler": [
+                "Mikroişlemciler"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,528 @@
+/* stylePuan.css */
+
+/* Font Awesome ikonları için ekleme */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+
+/* Genel Ayarlar */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eef2f6; /* Açık gri arka plan */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* HEADER ve SAĞ ÜST KÖŞE ÖĞRENCİ KUTUSU STİLLERİ                              */
+/* -------------------------------------------------------------------------- */
+
+header {
+    background-color: #800000; /* Koyu Mavi Header */
+    color: white;
+    padding: 25px 0;
+    text-align: center; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    
+    position: relative; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+
+header h1 {
+    margin: 0 0 8px 0;
+    font-size: 2.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Ortalanmış Puan Yazısı Stili */
+.centered-score-display {
+    margin: 10px 0 5px 0;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+/* #user-info-area: Sağ üst köşeye sabitlenmiş kutu (Puan sisteminde kullanılır) */
+#user-info-area {
+    /* SAĞ ÜST KÖŞEYE SABİTLEME */
+    position: absolute;
+    top: 15px; 
+    right: 20px;
+    z-index: 100;
+    
+    /* Kutu Stilleri - Minyatür ve Kompakt */
+    background-color: #ecf0f1; 
+    color: #2c3e50; 
+    padding: 8px 12px;
+    border-radius: 8px; 
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-end; 
+    gap: 3px;
+    line-height: 1.1;
+}
+
+/* Profil Kutusu Stili (Fotoğraf + Yazı) */
+#profile-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #bdc3c7;
+    padding-bottom: 5px;
+    margin-bottom: 3px;
+}
+
+/* Profil Resmi Stili */
+#profile-pic {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #3498db; 
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Profil Detay Yazıları */
+#profile-details p {
+    margin: 0;
+    font-size: 0.8em; 
+    line-height: 1.2;
+    text-align: right;
+    color: #34495e;
+}
+
+/* SEPET İKONU KONTEYNERİ */
+.cart-icon-container {
+    position: absolute;
+    top: 25px; 
+    right: 30px; /* EN SAĞ KÖŞEYE YASLANDI */
+    z-index: 101;
+}
+
+.cart-icon-container a {
+    color: white; 
+    text-decoration: none;
+    display: block;
+    position: relative;
+    padding: 10px;
+    transition: transform 0.2s ease;
+}
+
+.cart-icon-container a:hover {
+    transform: scale(1.1);
+}
+
+.cart-icon {
+    font-size: 1.8em;
+}
+
+/* Sepet Ürün Sayısı Badge */
+#sepet-urun-sayisi {
+    position: absolute;
+    top: 5px;
+    right: 2px;
+    background-color: #e74c3c; /* Kırmızı Badge */
+    color: white;
+    font-size: 0.8em;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 3px 6px;
+    min-width: 15px;
+    text-align: center;
+    line-height: 1;
+}
+
+
+/* Genel Puan Vurgusu (Ortalanmış puan için kullanılır) */
+.highlight-puan {
+    font-size: 1.6em; 
+    font-weight: bold;
+    color: #ffc107; 
+    margin-left: 5px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* DİĞER ORTAK STİLLER                                                        */
+/* -------------------------------------------------------------------------- */
+
+/* Genel Buton Stilleri */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.primary-btn {
+    background-color: #3498db; /* Mavi */
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: #2980b9;
+}
+
+.secondary-btn {
+    background-color: #95a5a6; /* Gri */
+    color: white;
+}
+
+.secondary-btn:hover {
+    background-color: #7f8c8d;
+}
+
+/* Bölüm Başlıkları */
+section h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #dd4f85;
+    padding-bottom: 10px;
+    margin-top: 40px;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+/* Kart Listeleri (Puan Kazanım ve Ödüller) */
+.card-list, .odul-listesi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.card, .odul-kart {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    border-top: 5px solid #e98289; 
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.odul-kart {
+    border-top: 5px solid #ffc107; 
+}
+
+.card:hover, .odul-kart:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card h3, .odul-kart h4 {
+    color: #2c3e50;
+    margin-top: 0;
+    font-size: 1.3em;
+}
+
+.puan-miktar, .odul-puan {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #28a745; 
+    display: block;
+    margin: 15px 0;
+}
+
+/* Mesajlar */
+.message {
+    padding: 12px;
+    border-radius: 5px;
+    margin: 20px 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+.message[style*="green"] {
+    background-color: #d4edda; 
+    color: #155724; 
+    border: 1px solid #c3e6cb;
+}
+
+.message[style*="red"] {
+    background-color: #f8d7da; 
+    color: #721c24; 
+    border: 1px solid #f5c6cb;
+}
+
+/* Ödül Pazarı Sayfası (Sepet Alanı) */
+.sepet-container {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+.sepet-container h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #ffc107; 
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#sepet-listesi {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid #eee;
+}
+
+#sepet-listesi li {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.05em;
+}
+
+#sepet-listesi li:last-child {
+    border-bottom: none;
+}
+
+#sepet-listesi li button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+
+#sepet-listesi li button:hover {
+    background-color: #c0392b;
+}
+
+.sepet-toplam {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.sepet-toplam span {
+    color: #ffc107;
+    margin-left: 10px;
+}
+
+/* Ödül kartlarındaki "Sepete Ekle" butonu */
+.odul-kart button {
+    background-color: #28a745; 
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.odul-kart button:hover:not(:disabled) {
+    background-color: #218838;
+    transform: translateY(-1px);
+}
+
+.odul-kart button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* RESPONSIVE DÜZENLEME                                                        */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .card-list, .odul-listesi {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    /* Küçük ekranlarda sağ üst kutuyu merkeze alırız */
+    #user-info-area {
+        position: static;
+        padding: 10px;
+        align-self: center; 
+    }
+    
+    /* Sepet ikonu küçük ekranlarda sola yaslanır */
+    .cart-icon-container {
+        position: static;
+        margin-top: 15px;
+        align-self: flex-start; 
+        right: auto;
+        top: auto;
+        padding-left: 20px; 
+    }
+    
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Küçük ekranlarda ortalama boşluğunu kaldırır */
+    .centered-score-display {
+        padding: 0;
+        text-align: center;
+        margin-top: 15px;
+    }
+    
+    header h1 {
+        font-size: 1.8em;
+    }
+    
+}
+/* ---------------------------------------------------- */
+/* BAĞIŞ SAYFASI DÜZENLEMELERİ (DİĞER SAYFALARLA UYUMLU) */
+/* ---------------------------------------------------- */
+
+/* HEADER menü sağa alınır */
+header nav {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+}
+
+header nav a {
+    color: white;
+    font-weight: 600;
+    margin-right: 20px;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* ---------------------------------------------------- */
+/* HEADER – SAĞ ÜST KÖŞE: Öğrenci kutusu + butonlar    */
+/* ---------------------------------------------------- */
+
+#user-info-area {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    background-color: #ecf0f1;
+    padding: 10px 12px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 210px;
+}
+
+/* Profil + detaylar */
+#profile-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 6px;
+}
+
+#profile-pic {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Puan bilgisi en altta */
+.puan-bilgisi {
+    font-size: 0.9em;
+    color: #2c3e50;
+    text-align: right;
+}
+
+/* ---------------------------------------------------- */
+/* HEADER İçindeki butonların düzenlenmesi              */
+/* ---------------------------------------------------- */
+
+.header-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+    justify-content: flex-end;
+}
+
+/* Tüm header butonları aynı stilde */
+.header-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: 0.2s ease;
+}
+
+.header-btn:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+/* ---------------------------------------------------- */
+/* BAĞIŞ FORMUNUN GÖRÜNÜMÜ                              */
+/* ---------------------------------------------------- */
+
+.bagis-formu-main {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.bagis-formu {
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-top: 5px solid #e98289;
+}
+
+/* Ödeme butonu artık HEADER’da görünmeyecek — sadece formda */
+#odeme-btn {
+    margin-top: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 12px 25px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+}
