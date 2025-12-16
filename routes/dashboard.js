@@ -18,7 +18,9 @@ router.get("/", girisKontrol, async (req, res, next) => {
         const ogrenci = await studentModel.ogrenciBilgiGetir(id);
     
 
-         res.render("dashboardOgr", {kullanici: req.session.kullanici});
+         res.render("dashboardOgr", {kullanici: req.session.kullanici,
+            ogrenci
+         });
 
         } catch (err) {
         next(err);
