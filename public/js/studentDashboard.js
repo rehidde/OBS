@@ -1,24 +1,26 @@
+//Kullanıcıyı temsil eden temel bir sınıf yapısı oluşturuyoruz.
 class User {
+    //user sınıfının yapıcı (constructor) metodunu oluşturuyoruz,name ,lastLogin ve profilePic değerlerini alır.
     constructor(name, lastLogin, profilePic) {
-        this._name = name;
+        this._name = name;//Kullanıcının adını private alanda tutuyoruz.
         this._lastLogin = lastLogin;
-        this._profilePic = profilePic;
+        this._profilePic = profilePic;//Kullanıcının  son giriş bilgisini ve profilePic URL sini saklıyoruz. 
     }
 
     get name() {
         return this._name;
-    }
+    }//kullanıcının adını dışarıya döndürüyor
 
     get lastLogin() {
         return this._lastLogin;
     }
 
     get profilePic() {
-        return this._profilePic;
+        return this._profilePic;//pp ve son giriş zamanını dışarıya döndüren getterlar31415
     }
 
     set profilePic(newUrl) {
-        this._profilePic = newUrl;
+        this._profilePic = newUrl;//pp güncellemek için setter kullanıyoruz.
     }
 }
 
@@ -26,11 +28,10 @@ class Student extends User {
     constructor(name, lastLogin, profilePic, studentId) {
         super(name, lastLogin, profilePic);
         this.studentId = studentId;
-        // MAP Kullanımı: Ödülleri bir Map içinde saklıyoruz
+        //ödülleri bir map içerisinde saklıyoruz
         this.rewards = new Map();
     }
 
-    // GET Metodu: Öğrenciye özel formatlı isim
     get formattedName() {
         return `${this._name} (${this.studentId})`;
     }
@@ -171,7 +172,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     obsSystem.activePage = 'transkript';
 
-    // Profil Menüsü Olayları
     const profileBox = document.getElementById("profile-box");
     const profileMenu = document.getElementById("profile-menu");
 
