@@ -21,21 +21,21 @@
         <div id="user-info-area">
             <div id="profile-box" class="profile-box">
                 
-                <img src="<%= detay.foto_url%>" 
+                <img src="<%= ogrenci.foto_url%>" 
                      alt="Profil Fotoğrafı" 
                      class="profile-pic" 
                      id="profile-pic">
 
                 <div id="profile-details">
-                    <p id="ad-soyad"><%= ogrenci.ad || 'Yükleniyor...' %></p>
-                    <p id="okul-no">No: <%= ogrenci.numara || 'Yükleniyor...' %></p>
-                    <p id="program-adi">Program: <%= programAdi || 'Yükleniyor...' %></p>
+                    <p id="ad-soyad"><%= ogrenci.ad %></p>
+                    <p id="okul-no">No: <%= ogrenci.numara %></p>
+                    <p id="program-adi">Program: <%= detay.program %></p>
                 </div>
             </div>
             
             <div class="puan-bilgisi">
                 <p>Mevcut Puan: 
-                    <span id="mevcut-puan"><%= puan || 'Yükleniyor...' %></span>
+                    <span id="mevcut-puan"><%= detay.puan %></span>
                 </p>
             </div>
         </div>

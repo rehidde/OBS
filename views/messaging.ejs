@@ -2,70 +2,71 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OBS | Mesajlaşma Sistemi</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="/css/messaging.css"> 
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-    <div class="sayfa-konteyner">
-        <div id="user-info" class="user-info card-kutu"></div>
-        
-        <aside class="sol-menu">
-            <div class="menu-baslik">
-                <i class="fas fa-university"></i> OBS
-            </div>
-            <nav>
-                <a href="/notes.html"><i class="fas fa-file-alt"></i> Not Yönetim Sistemi</a>
-                <a href="/messaging.html" class="aktif-menu"><i class="fas fa-comments"></i> Mesajlaşma Sistemi</a>
-            </nav>
-        </aside>
+<h2>Mesajlaşma Sistemi</h2>
 
-        <main class="icerik">
-            <section id="mesajlasma" class="ana-modul">
-                <h2>MESAJLAŞMA SİSTEMİ</h2>
 
-                <div class="mesaj-arayuzu">
+<div class="kullanici-bilgi">
+    <b><%= ogrenci.ad_soyad %></b> |
+    <%= ogrenci.numara %> |
+    <%= ogrenci.email %>
+</div>
 
-                    <div class="sohbet-filtresi">
-                        <a href="#" class="sohbet-filtre-linki aktif-filtre" data-kanal="fakulte">Fakülte</a>
-                        <a href="#"class="sohbet-filtre-linki" data-kanal="bolumum">Bölümüm</a>
-                        <a href="#" class="sohbet-filtre-linki" data-kanal="tumokul">Okul</a>
+<hr>
+
+
+<div class="kanallar">
+    <a href="#" class="sohbet-filtre-linki aktif-filtre" data-kanal="bolumum">Bölüm</a>
+    <a href="#" class="sohbet-filtre-linki" data-kanal="tumokul">Tüm Okul</a>
+
+    <% if (kullanici.rol !== 'ogrenci') { %>
+        <a href="#" class="sohbet-filtre-linki" data-kanal="fakulte">Fakülte</a>
+    <% } %>
+</div>
+
+<hr>
+
+
+<div class="aktif-sohbet-penceresi">
+    <div class="mesajlar" data-aktif-kanal="bolumum">
+
+        <% if (sohbetVerileri && sohbetVerileri.bolumum) { %>
+            <% sohbetVerileri.bolumum.forEach(function(mesaj) { %>
+                <div class="mesaj-kart">
+                    <div class="mesaj-profil-bar">
+                        <span><b><%= mesaj.gonderen.ad_soyad %></b> (<%= mesaj.gonderen.numara %>)</span><br>
+                        <small><%= mesaj.gonderen.email %></small>
                     </div>
 
-                    <div class="aktif-sohbet-penceresi">
-
-                        <div class="mesajlar" data-aktif-kanal="fakulte">
-                           
-                           <% sohbetVerileri.fakulte.forEach(function(mesaj) { %>
-                               <div class="mesaj-kart kart">
-                                    <div class="mesaj-profil-bar">
-                                        <span><%= mesaj.gonderen.ad_soyad %> (<%= mesaj.gonderen.numara %>)</span>
-                                        <span><%= mesaj.gonderen.email %></span>
-                                    </div>
-                                    <p class="mesaj-icerik"><%= mesaj.icerik %></p>
-                                    <span class="mesaj-zaman"><%= mesaj.tarih %></span>
-                               </div>
-                           <% }); %>
-                        </div>
-                        <div class="mesaj-yazma-alani">
-                            <% // 'aktifKullanici' objesi Kullanici tablosundan çekilecek varsayıldı %>
-                            <% if (aktifKullanici.rol === 'ogrenci') { %>
-                                <input type="text" id="mesaj-input" placeholder="Yalnızca Bölüm ve Okul kanallarına yazabilirsiniz..." disabled>
-                                <button class="buton-gonder" disabled>Gönder</button>
-                            <% } else { %>
-                                <input type="text" id="mesaj-input" placeholder="Bir mesaj yazın...">
-                                <button class="buton-gonder">Gönder</button>
-                            <% } %>
-                        </div>
-
-                    </div>
+                    <p class="mesaj-icerik"><%= mesaj.icerik %></p>
+                    <small class="mesaj-zaman"><%= mesaj.tarih %></small>
                 </div>
-            </section>
-        </main>
-    </div>
+            <% }) %>
+        <% } else { %>
+            <p>Bu kanalda mesaj yok.</p>
+        <% } %>
 
-    <script src="/js/js_msgnotes.js"></script>
+    </div>
+</div>
+
+<hr>
+
+
+<div class="mesaj-yazma-alani">
+    <input 
+        type="text" 
+        id="mesaj-input" 
+        placeholder="Bir mesaj yazın..."
+    >
+    <button class="buton-gonder">Gönder</button>
+</div>
+
+
+<script src="/js/js_msgnotes.js"></script>
+
 </body>
 </html>
