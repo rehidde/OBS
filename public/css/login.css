@@ -95,3 +95,7 @@ header p {
     color: #d9534f;
     font-weight: bold;
 }
+
+.password-container button.hide {
+  text-decoration: line-through;
+}
