@@ -45,9 +45,20 @@ async function ogrenciDetay(kullanici_id) {
     
 }
 
+async function ogrenciDetayM(id) {
+    const [rows] = await db.query(
+        `SELECT anne, baba, dogum, kayit, egitim, durum, sinif, puan, program FROM OgrenciDetay
+        WHERE kullanici_id = ?`,
+        [id]
+    );
+    return rows[0];
+    
+}
+
 module.exports = {
     isimdenBul,
     ogrenciBilgiGetir,
     ogrenciDersleriGetir,
-    ogrenciDetay
+    ogrenciDetay,
+    ogrenciDetayM
 };
