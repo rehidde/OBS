@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const studentModel = require("../models/student.model");
 
+
+
+//giriş kontrol tüm sayfalarımızda var 
+//kullanıcıların sonradan url değiştirerek giriş yapmadan siteye bağlanmasının önüne geçmeye çalışıyoruz 
 function girisKontrol(req, res, next) {
     if (!req.session.kullanici) {
         return res.redirect("/");
@@ -9,6 +13,10 @@ function girisKontrol(req, res, next) {
     next();
 }
 
+
+
+//getle siteye ilk girişte model dosyamızda ki sorgu fonksiyonlarından işimize yarayanları çekiyoruz
+//async ve await kullanımıyla da bu bilgiler gelmeden işleme devam edilmiyor ki her zaman güncel bilgilerimiz olsun 
 router.get("/", girisKontrol, async (req, res, next) => {
     console.log("not paylaşım sistemi router deneme");
 

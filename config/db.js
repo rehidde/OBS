@@ -1,5 +1,7 @@
+//bu sayfada değişiklik yapmadan önce haber edin
 const mysql = require('mysql2/promise');
-require('dotenv').config(); // EN ÜSTE YAKIN OLSUN
+//dotenv herkesin kendi localinde ki bilgilerle giriş yapmasını sağlıyor doğrudan mysql bilgilerini göstermiyoruz
+require('dotenv').config();
 
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
