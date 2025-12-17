@@ -1,5 +1,4 @@
-let ogrenciPuan = 450; 
-let sepet = [];
+ let sepet = [];
 
 const oduller = [
     { id: 1, urun: "Ücretsiz Kahve Kuponu", puan_maliyeti: 100 },

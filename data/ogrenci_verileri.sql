@@ -1,5 +1,5 @@
-CREATE DATABASE OBS;
-USE OBS;
+CREATE DATABASE obs;
+USE obs;
 
 
 CREATE TABLE Kullanici (
@@ -185,5 +185,5 @@ SET rol = 'ogrenci';
 ALTER TABLE ogrencidetay
 ADD COLUMN puan INT DEFAULT 0;
 
-UPDATE OgrenciDetay
+UPDATE ogrencidetay
 SET puan = 1000;

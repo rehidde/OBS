@@ -1,4 +1,3 @@
-
 const express = require('express');
 const router = express.Router();
 const kullanici = require('../models/student.model');
@@ -67,5 +66,5 @@ router.post('/', async (req, res, next) => {
             });
 
 
-module.exports = router;
 
+  module.exports = router;
