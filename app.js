@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+//burada public'i kök dizin yapıyoruz ve tüm dosya yollarımızı da ona göre veriyoruz
 app.use(express.static(path.join(__dirname, "public")));
 
 

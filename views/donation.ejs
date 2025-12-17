@@ -21,7 +21,8 @@
         <div id="user-info-area">
             <div id="profile-box" class="profile-box">
                 
-                <img src="<%= ogrenci.foto_url%>" 
+                <img 
+                    src="<%= ogrenci?.foto_url || '/img/default.jpg' %>"
                      alt="Profil Fotoğrafı" 
                      class="profile-pic" 
                      id="profile-pic">
@@ -75,6 +76,6 @@
         </section>
     </main>
 
-    <script src="/scriptPuan.js"></script>
+    <script src="/js/scriptPuan.js"></script>
 </body>
 </html>
