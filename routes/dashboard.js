@@ -24,12 +24,10 @@ router.get("/", girisKontrol, async (req, res, next) => {
 
         const ogrenci = await studentModel.ogrenciBilgiGetir(id);
         const detay = await studentModel.ogrenciDetay(id);
-        const detayM = await studentModel.ogrenciDetayM(id);
 
          res.render("dashboardOgr", {kullanici: req.session.kullanici,
             ogrenci,
-            detay,
-            detayM
+            detay
 
          });
 
