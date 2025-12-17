@@ -1,4 +1,5 @@
-CREATE DATABASE obs;
+CREATE DATABASE IF NOT EXISTS obs;
+
 USE obs;
 
 
@@ -45,8 +46,18 @@ CREATE TABLE OgrenciDersleri (
     ogretmen VARCHAR(100)
 );
 
+ALTER TABLE ogrencidetay
+ADD COLUMN puan INT DEFAULT 0;
+
+UPDATE ogrencidetay
+SET puan = 1000
+WHERE kullanici_id = '242596';
+
+UPDATE ogrencidetay
+SET puan = 1000;
+
 INSERT INTO Kullanici (id, rol, numara, sifre, ad, soyad, foto_url, tc) VALUES ('242596', 'ogrenci', '242596', '2360', 'Uğur', 'Sezer', '/img/default.jpg', '50452822010');
-INSERT INTO OgrenciDetay (id, anne, baba, dogum, kayit, egitim, durum, sinif, program) VALUES ('242596', 'Gülfari', 'Bayzettin', '25.07.2004 / TÜRKİYE CUMHURİYETİ', '24.03.2025', 'ÖRGÜN ÖĞRETİM / 4', 'AKTİF ÖĞRENCİ', '2. SINIF', 'KIRŞEHİR AHİ EVRAN ÜNİVERSİTESİ / Bilgisayar Mühendisliği');
+INSERT INTO OgrenciDetay (id, anne, baba, dogum, kayit, egitim, durum, sinif, program, puan) VALUES ('242596', 'Gülfari', 'Bayzettin', '25.07.2004 / TÜRKİYE CUMHURİYETİ', '24.03.2025', 'ÖRGÜN ÖĞRETİM / 4', 'AKTİF ÖĞRENCİ', '2. SINIF', 'KIRŞEHİR AHİ EVRAN ÜNİVERSİTESİ / Bilgisayar Mühendisliği', 1000);
 INSERT INTO Dersler (ad, kredi, akts) VALUES ('Programlamaya Giriş', 3, 5);
 INSERT INTO OgrenciDersleri (id, ders_ad, kredi, akts, notu, ogretmen) VALUES ('242596', 'Programlamaya Giriş', 3, 5, 90, 'Tatu Akgündüz');
 INSERT INTO Dersler (ad, kredi, akts) VALUES ('Devre Analizi', 3, 5);
@@ -182,8 +193,5 @@ INSERT INTO OgrenciDersleri (id, ders_ad, kredi, akts, notu, ogretmen) VALUES ('
 UPDATE Kullanici
 SET rol = 'ogrenci';
 
-ALTER TABLE ogrencidetay
-ADD COLUMN puan INT DEFAULT 0;
 
-UPDATE ogrencidetay
-SET puan = 1000;
+
