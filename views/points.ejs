@@ -15,7 +15,7 @@
         <p class="centered-score-display">
             Mevcut Puanınız: 
             <span id="mevcut-puan" class="highlight-puan">
-                <%= puan || "Yükleniyor..." %>
+                <%= detay.puan %>
             </span>
         </p>
 
@@ -23,17 +23,17 @@
 
             <div id="profile-box" class="profile-box">
                 <img 
-                    src="<%= foto_url ? foto_url : '/images/default.png' %>" 
+                    src="<%= ogrenci.foto_url %>" 
                     alt="Profil Fotoğrafı" 
                     class="profile-pic" 
                     id="foto_url"
                 >
 
                 <div id="profile-details">
-                    <p id="ad"><%= ad || "Yükleniyor..." %></p>
-                    <p id="soyad"><%= soyad || "Yükleniyor..." %></p>
-                    <p id="id">No: <%= okulNo || "Yükleniyor..." %></p>
-                    <p id="program">Program: <%= program || "Yükleniyor..." %></p>
+                    <p id="ad"><%= ogrenci.ad %></p>
+                    <p id="soyad"><%= ogrenci.soyad %></p>
+                    <p id="id">No: <%= ogrenci.numara %></p>
+                    <p id="program">Program: <%= detay.program %></p>
                 </div>
             </div>
 
@@ -86,7 +86,7 @@
 
     </main>
 
-    <script src="/scriptPuan.js"></script>
+    <script src="/js/scriptPuan.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {

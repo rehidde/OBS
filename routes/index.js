@@ -27,8 +27,13 @@ router.get('/', (req, res) => {
 
 
 
-//diğer dosyalarda currentUser kullandığım yerler olmuştu o yüzden burada eşitlik yazdım ikisini de kullanabilirsinizz
+//burası post kısmı yani enter'a bastığımızda sunucuya gönderilen kısım
 
+//id şifrenin boş olması ya da isimdenBulla çağırdığı bilgilerle eşleşmeme kısımlarını kontrol ediyor
+//eğer bir sorun yoksa dashboarda yönlendirip o anki kullanıcı bilgilerini de hafızada tutuyor ve en son sayfayı export ediyoruz 
+
+//kullanıcının girdi girebildiği tek yer burası o yüzden giren kişiye bilgi yüklemesi burada yapılıyor
+//ve export ettiğimiz için dışarıdan burada belirlenen id üzerinden diğer sorgularımızı gerçekleştirebiliyoruz
 router.post('/', async (req, res, next) => {
   try{
       const {id, sifre} = req.body;

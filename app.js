@@ -10,10 +10,11 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+//burada public'i kök dizin yapıyoruz ve tüm dosya yollarımızı da ona göre veriyoruz
 app.use(express.static(path.join(__dirname, "public")));
 
 
-
+//normalde session içinde ki secreta şifreleme metodları eklenir ama şu anda böyle tutuyorum ileride güncellerim
 app.use(session({
     secret: '3141592',
     resave: false,
@@ -29,6 +30,12 @@ app.use((req, res, next) => {
 })
 
 
+
+/***
+    burada ki yapının amacı kişi tırnak içinde belirtilen sayfaya gittiyse
+    yanında tanımlanmış routerı çağırarak o bilgilere erişiyor
+    yeni sayfa eklemeden önce haber edin
+ */
 const indexRouter = require("./routes/index");
 app.use("/", indexRouter);
 

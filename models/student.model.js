@@ -1,6 +1,8 @@
+//model dosyamızın amacı veritabanı sorgularını yaptığımız fonksiyonları tutmak ve sonuçlarını dışarıya export etmek
+//bu sayfa dışında veritabanı sorguları yapmayalım
 const db = require('../config/db');
 
-// LOGIN (BUNA DOKUNMUYORUZ)
+// isimdenBul fonksiyonunu sadece login için yazdım onun dışında kullanmayalım
 async function isimdenBul(id, sifre) {
     const [rows] = await db.query(
         `SELECT id, ad, soyad, rol
