@@ -3,6 +3,10 @@ const path = require('path');
 const app = express();
 
 const session =require('express-session');
+
+//burada public'i kök dizin yapıyoruz ve tüm dosya yollarımızı da ona göre veriyoruz
+app.use(express.static(path.join(__dirname, "public")));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -10,8 +14,6 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-//burada public'i kök dizin yapıyoruz ve tüm dosya yollarımızı da ona göre veriyoruz
-app.use(express.static(path.join(__dirname, "public")));
 
 
 //normalde session içinde ki secreta şifreleme metodları eklenir ama şu anda böyle tutuyorum ileride güncellerim

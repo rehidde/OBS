@@ -23,10 +23,11 @@ router.get("/", girisKontrol, async (req, res, next) => {
         const id = req.session.kullanici.id;
 
         const ogrenci = await studentModel.ogrenciBilgiGetir(id);
-    
+        const detay = await studentModel.ogrenciDetay(id);
 
          res.render("dashboardOgr", {kullanici: req.session.kullanici,
-            ogrenci
+            ogrenci,
+            detay
          });
 
         } catch (err) {
