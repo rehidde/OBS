@@ -4,100 +4,48 @@
     <meta charset="UTF-8">
     <title><%= title %></title>
 
-    
     <link rel="stylesheet" href="/css/style.css">
-
 </head>
 <body>
 
 <h2>Not Paylaşım Sistemi</h2>
 
-
 <div class="kullanici-bilgi">
-    <b><%= ogrenci.ad_soyad %></b> |
-    <%= ogrenci.numara %> |
-    <%= ogrenci.email %>
+    <% if (ogrenci) { %>
+        <b><%= ogrenci.ad_soyad %></b> |
+        <%= ogrenci.numara %> |
+        <%= ogrenci.email %>
+    <% } else { %>
+        <i>Kullanıcı bilgisi bulunamadı</i>
+    <% } %>
 </div>
 
 <hr>
 
-
 <form id="not-yukleme-formu">
-    <input 
-        type="text" 
-        id="ders_kodu" 
-        placeholder="Ders Kodu (örn: WEB301)" 
+    <input
+        type="text"
+        id="ders_kodu"
+        placeholder="Ders Kodu (örn: WEB301)"
         required
     >
 
-    <textarea 
-        id="not" 
-        placeholder="Not açıklaması..." 
+    <textarea
+        id="not"
+        placeholder="Not açıklaması..."
         required
     ></textarea>
 
-    <input type="file" id="dosya" required>
+    <input type="file" id="dosya">
 
     <button type="submit">Notu Paylaş</button>
 </form>
 
 <hr>
 
-
 <div id="not-listesi">
-
-    <% if (notlarListesi && notlarListesi.length > 0) { %>
-
-        <% notlarListesi.forEach(function(not) { %>
-
-            <div class="paylasim-kutu" data-id="<%= not.id %>">
-
-                <b><%= not.kullanici.ad_soyad %></b>
-                <small> | <%= not.tarih %></small>
-
-                <p><%= not.aciklama %></p>
-
-                <p>
-                    <b>Ders:</b> <%= not.ders_kodu %><br>
-                    <b>Dosya:</b> <%= not.dosya_adi %>
-                </p>
-
-                
-                <div class="yorumlar-listesi">
-
-                    <% if (not.yorumlar && not.yorumlar.length > 0) { %>
-
-                        <% not.yorumlar.forEach(function(yorum) { %>
-                            <p>
-                                <b><%= yorum.kullanici.ad_soyad %>:</b>
-                                <%= yorum.icerik %>
-                            </p>
-                        <% }) %>
-
-                    <% } else { %>
-                        <p><i>Henüz yorum yok.</i></p>
-                    <% } %>
-
-                </div>
-
-                
-                <textarea 
-                    class="yorum-input" 
-                    placeholder="Yorum yaz..."
-                ></textarea>
-
-                <button class="btn-gonder">Gönder</button>
-
-            </div>
-
-        <% }) %>
-
-    <% } else { %>
-        <p>Henüz paylaşılmış not yok.</p>
-    <% } %>
-
+    <p><i>Not listesi henüz bağlanmadı.</i></p>
 </div>
-
 
 <script src="/js/js_msgnotes.js"></script>
 

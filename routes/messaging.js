@@ -25,11 +25,14 @@ router.get("/", girisKontrol, async (req, res, next) => {
         const detay = await studentModel.ogrenciDetay(id);
 
         res.render("messaging", {
-            title: "mesajlaşma sayfası",
-            kullanici: req.session.kullanici,
-            ogrenci,
-            detay
-        });
+    title: "mesajlaşma sayfası",
+    kullanici: req.session.kullanici,
+    ogrenci,
+    detay,
+    sohbetVerileri: {
+        bolumum: []
+    }
+});
 
     } catch (err) {
         next(err);

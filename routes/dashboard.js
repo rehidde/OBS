@@ -28,6 +28,7 @@ router.get("/", girisKontrol, async (req, res, next) => {
          res.render("dashboardOgr", {kullanici: req.session.kullanici,
             ogrenci,
             detay
+            
          });
 
         } catch (err) {
