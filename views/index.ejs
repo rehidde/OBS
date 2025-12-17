@@ -7,6 +7,23 @@
   <title>Sistem Girişi</title>
   <link rel="stylesheet" href="/css/login.css">
 </head>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.getElementById("togglePassword");
+    const input = document.getElementById("sifre");
+
+    toggle.addEventListener("click", function () {
+      const isHidden = input.type === "password";
+
+      input.type = isHidden ? "text" : "password";
+
+      // şifre açıksa gözün üstü çizilsin
+      toggle.classList.toggle("hide", input.type === "text");
+    });
+  });
+</script>
+
 <body>
   <div class="login-container">
     <header class="header">
