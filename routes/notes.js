@@ -27,11 +27,12 @@ router.get("/", girisKontrol, async (req, res, next) => {
         const detay = await studentModel.ogrenciDetay(id);
 
         res.render("notes", {
-            title: "not paylaşım sistemi",
-            kullanici: req.session.kullanici,
-            ogrenci,
-            detay
-        });
+    title: "not paylaşım sistemi",
+    kullanici: req.session.kullanici,
+    ogrenci,
+    detay,
+    notlarListesi: []   
+});
 
     } catch (err) {
         next(err);
