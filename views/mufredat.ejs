@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Müfredat</title>
+    <link rel="stylesheet" href="/css/mufredat.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header-text">
+        MÜHENDİSLİK-MİMARLIK FAKÜLTESİ / Bilgisayar Mühendisliği - Dersler - 2022
+        <br>
+        <span>(2022 Bilgisayar Mühendisliği Bölümü)</span>
+    </div>
+
+    <% let aktifYariyil = null; %>
+
+    <% dersler.forEach(d => { %>
+
+        <% if (aktifYariyil !== d.yariyil) { %>
+            <% if (aktifYariyil !== null) { %>
+                </tbody>
+                </table>
+            <% } %>
+
+            <% aktifYariyil = d.yariyil; %>
+
+            <div class="yariyil-baslik">
+                <%= aktifYariyil %>. Yarıyıl
+            </div>
+
+            <table class="ders-tablosu">
+                <thead>
+                    <tr>
+                        <th>Ders Kodu</th>
+                        <th>Ders Adı</th>
+                        <th>T+U+L</th>
+                        <th>Z/S</th>
+                        <th>AKTS</th>
+                        <th>Öğretim Şekli</th>
+                    </tr>
+                </thead>
+                <tbody>
+        <% } %>
+
+        <tr>
+            <td><%= d.ders_kodu %></td>
+            <td><%= d.ad %></td>
+            <td><%= d.tul %></td>
+            <td><%= d.zorunlu_sec %></td>
+            <td><%= d.akts %></td>
+            <td><%= d.ogretim_sekli %></td>
+        </tr>
+
+    <% }) %>
+
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

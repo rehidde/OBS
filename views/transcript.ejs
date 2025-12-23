@@ -2,58 +2,83 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transkript</title>
-<link rel="stylesheet" href="/css/transcript.css">
-<script src="js/transcript.js"></script>
+    <title>transkript</title>
+    <link rel="stylesheet" href="/css/transcript.css">
 </head>
 <body>
-    <header class="header">
-        <h1>Transkript Belgesi</h1>
-        <button class="btn-primary" onclick="window.print()">PDF İndir</button>
-    </header>
 
-    <section class="student-info">
-        <h2>Öğrenci Bilgileri</h2>
-        <div class="info-grid">
-            <div><strong>Ad Soyad:</strong> <span id="adSoyad"> <%= ogrenci.ad %> <%= ogrenci.soyad %></span></div>
-            <div><strong>Numara: </strong> <span id="numara"><%= ogrenci.numara %></span></div>
-            <div><strong>Bölüm: </strong> <span id="bolum"><%= detay.program %></span></div>
-        </div>
-    </section>
+<header>
+  <img src="/img/hrv.png" alt="Logo">
+  <h1>Kırşehir Ahi Evran Üniversitesi<br>MÜHENDİSLİK-MİMARLIK FAKÜLTESİ</h1>
+  <img src="/img/default.jpg" alt="Profil" style="height:60px;">
+</header>
 
-    <section class="transcript-table">
-        <h2>Dersler</h2>
-        <table>
-                <tr>
-                    <th>Ders Adı</th>
-                    <th>Kredi</th>
-                    <th>AKTS</th>
-                    <th>Not</th>
-                    <th>Öğretmen</th>
-                </tr>
-<tbody>
-    <% if (dersler.length > 0) { %>
-        <% dersler.forEach(ders => { %>
-            <tr>
-                <td><%= ders.ders_ad %></td>
-                <td><%= ders.kredi %></td>
-                <td><%= ders.akts %></td>
-                <td><%= ders.notu %></td>
-                <td><%= ders.ogretmen %></td>
-            </tr>
-        <% }) %>
-    <% } else { %>
+<div class="student-info">
+  <div>
+    <p>Adı Soyadı: <%= ogrenci.ad %> <%= ogrenci.soyad %></p>
+    <p>Öğrenci No: <%= ogrenci.numara %></p>
+    <p>Fakülte / Program: Kırşehir Ahi Evran Üniversitesi / <%= detay.program %></p>
+  </div>
+  <div>
+    <p>Kayıt Tarihi: <%= detay.kayit %></p>
+    <p>Öğrenim Durumu: <%= detay.durum %></p>
+    <p>Belge Tarihi: <%= new Date().toLocaleDateString('tr-TR') %></p>
+  </div>
+</div>
+<% 
+let currentYariyil = null;
+let toplamKredi = 0;
+let toplamAkts = 0;
+dersler.forEach((d, index) => {
+  if(currentYariyil !== d.yariyil) {
+    // Önceki yarıyılın toplamlarını yaz
+    if(currentYariyil !== null) { %>
+      </tbody>
+      </table>
+      <div class="totals">
+        <span>Toplam Kredi: <%= toplamKredi %></span>
+        <span>Toplam AKTS: <%= toplamAkts %></span>
+      </div>
+    <% toplamKredi = 0; toplamAkts = 0; } %>
+
+    <div class="semester">
+      <div class="semester-title"><%= d.yariyil %>. Yarıyıl</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Ders Kodu</th>
+            <th>Ders Adı</th>
+            <th>Kredi</th>
+            <th>AKTS</th>
+            <th>Harf Notu</th>
+          </tr>
+        </thead>
+        <tbody>
+<% currentYariyil = d.yariyil; } %>
+
         <tr>
-            <td>ders bulunamadı</td>
+          <td><%= d.ders_kodu %></td>
+          <td><%= d.ders_ad %></td>
+          <td><%= d.kredi %></td>
+          <td><%= d.akts %></td>
+          <td><%= d.harf_notu || "-" %></td>
         </tr>
-    <% } %>
-</tbody>
-        </table>
-    </section>
 
-    <section class="average">
-        <h3>Genel Ortalama: <%= ortalama %></h3>
-    </section>
+<% toplamKredi += d.kredi;
+   toplamAkts += d.akts;
+
+   // Son ders için toplamları yaz
+   if(index === dersler.length - 1) { %>
+      </tbody>
+      </table>
+      <div class="totals">
+        <span>Toplam Kredi: <%= toplamKredi %></span>
+        <span>Toplam AKTS: <%= toplamAkts %></span>
+      </div>
+<% } 
+}); %>
+
+</div>
+
 </body>
 </html>

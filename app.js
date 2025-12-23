@@ -65,6 +65,8 @@ app.use("/studentDoc", studentDocRouter);
 const transcriptRouter = require("./routes/transcript");
 app.use("/transcript", transcriptRouter);
 
+const mufredatRouter = require("./routes/mufredat");
+app.use("/mufredat", mufredatRouter);
 
 app.use((req, res) => {
   res.status(404).render('404', { title: 'Sayfa Bulunamadı, doğru değerleri girdiğinizden emin olun!' });

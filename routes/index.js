@@ -59,10 +59,20 @@ router.post('/', async (req, res, next) => {
 
 
 
+          switch (user.rol) {
+            case 'ogrenci':
+              return res.redirect('/dashboardOgr');
+
+            case 'akademisyen':
+              return res.redirect('/dashboardAkd');
+
+            case 'admin':
+              return res.redirect('/dashboardAdmin');
+
+          }
+          
 
 
-
-            res.redirect('/dashboardOgr');
 
               } catch(err) {
                 next(err);

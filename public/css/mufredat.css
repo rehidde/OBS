@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f5f5;
+    color: #000;
+}
+
+.container {
+    width: 90%;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+}
+
+.header-text {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.header-text span {
+    font-weight: normal;
+    font-size: 13px;
+}
+
+.yariyil-baslik {
+    margin: 25px 0 10px 0;
+    padding: 8px 0;
+    font-weight: bold;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.ders-tablosu {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.ders-tablosu th,
+.ders-tablosu td {
+    border: 1px solid #000;
+    padding: 6px;
+    font-size: 13px;
+    text-align: left;
+}
+
+.ders-tablosu th {
+    background-color: #eaeaea;
+    font-weight: bold;
+}
