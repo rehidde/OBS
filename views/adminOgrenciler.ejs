@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Öğrenci Yönetimi - Admin</title>
+    <link rel="stylesheet" href="/css/dashboardAdmin.css">
+    <style>
+        .accordion-header {
+            cursor: pointer;
+            background: #800000;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-header:hover {
+            background: #610e0e;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .accordion-content.open {
+            display: block;
+        }
+
+        .accordion-icon {
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .accordion-icon.open {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo">ADMİN PANELİ</div>
+        <ul class="menu-list">
+            <li><a href="/dashboardAdmin">Ana Sayfa</a></li>
+            <li><a href="/dashboardAdmin/ogrenciler" class="active"> Öğrenci Yönetimi</a></li>
+            <li><a href="/dashboardAdmin/akademisyenler">Akademisyen Yönetimi</a></li>
+            <li><a href="/dashboardAdmin/dersler"> Ders Yönetimi</a></li>
+            <li><a href="/dashboardAdmin/duyurular">Duyuru Yönetimi</a></li>
+        </ul>
+        <div class="logout-container"><a href="/cikis" class="logout-btn">Çıkış Yap</a></div>
+    </div>
+
+    <div class="main-content">
+        <h1 class="page-title"> Öğrenci Yönetimi</h1>
+
+        <% if (mesaj) { %>
+            <div class="alert alert-success">
+                <%= mesaj %>
+            </div>
+            <% } %>
+
+
+                <div class="form-container" style="padding:0; border:none; box-shadow:none;">
+                    <div class="accordion-header" onclick="toggleAccordion('ogrenciForm', this)">
+                        <span>➕ Yeni Öğrenci Ekle</span>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div id="ogrenciForm" class="accordion-content">
+                        <form action="/dashboardAdmin/ogrenci/ekle" method="POST">
+                            <h4 style="color:#666; margin-top:0;">Temel Bilgiler</h4>
+                            <div class="form-row">
+                                <div class="form-group"><label>Öğrenci No *</label><input type="text" name="numara"
+                                        required placeholder="2024103001"></div>
+                                <div class="form-group"><label>TC Kimlik No</label><input type="text" name="tc"
+                                        maxlength="11"></div>
+                                <div class="form-group"><label>Ad *</label><input type="text" name="ad" required></div>
+                                <div class="form-group"><label>Soyad *</label><input type="text" name="soyad" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group"><label>Şifre</label><input type="text" name="sifre"
+                                        value="123456"></div>
+                                <div class="form-group"><label>Fotoğraf URL</label><input type="text" name="foto_url">
+                                </div>
+                            </div>
+                            <h4 style="color:#666; margin-top:15px;">Detay Bilgileri</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Program *</label>
+                                    <select name="program" required>
+                                        <option value="Bilgisayar Mühendisliği">Bilgisayar Mühendisliği</option>
+                                        <option value="Elektrik-Elektronik Mühendisliği">Elektrik-Elektronik
+                                            Mühendisliği</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Sınıf *</label>
+                                    <select name="sinif" required>
+                                        <option value="1">1. Sınıf</option>
+                                        <option value="2">2. Sınıf</option>
+                                        <option value="3">3. Sınıf</option>
+                                        <option value="4">4. Sınıf</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Durum</label>
+                                    <select name="durum">
+                                        <option value="Aktif">Aktif</option>
+                                        <option value="Pasif">Pasif</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Öğrenci Ekle</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="form-container">
+                    <h3>Kayıtlı Öğrenciler (<%= ogrenciler.length %> kayıt)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Numara</th>
+                                <th>Ad Soyad</th>
+                                <th>TC</th>
+                                <th>Şifre</th>
+                                <th>Sınıf</th>
+                                <th>Durum</th>
+                                <th>İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% ogrenciler.forEach(o=> { %>
+                                <tr>
+                                    <td>
+                                        <%= o.numara %>
+                                    </td>
+                                    <td>
+                                        <%= o.ad %>
+                                            <%= o.soyad %>
+                                    </td>
+                                    <td>
+                                        <%= o.tc || '-' %>
+                                    </td>
+                                    <td><code><%= o.sifre %></code></td>
+                                    <td>
+                                        <%= o.detay?.sinif || '-' %>. Sınıf
+                                    </td>
+                                    <td>
+                                        <% if (o.detay?.durum==='Aktif' ) { %>
+                                            <span class="badge badge-success">Aktif</span>
+                                            <% } else { %>
+                                                <span class="badge badge-danger">Pasif</span>
+                                                <% } %>
+                                    </td>
+                                    <td class="action-btns">
+                                        <form action="/dashboardAdmin/ogrenci/guncelle/<%= o.id %>" method="POST"
+                                            style="display:inline;">
+                                            <input type="hidden" name="numara" value="<%= o.numara %>">
+                                            <input type="hidden" name="ad" value="<%= o.ad %>">
+                                            <input type="hidden" name="soyad" value="<%= o.soyad %>">
+                                            <input type="hidden" name="program" value="<%= o.detay?.program %>">
+                                            <% if (o.detay?.durum==='Aktif' ) { %>
+                                                <input type="hidden" name="durum" value="Pasif">
+                                                <button type="submit" class="btn btn-secondary btn-sm"
+                                                    title="Pasife Al">⏸️</button>
+                                                <% } else { %>
+                                                    <input type="hidden" name="durum" value="Aktif">
+                                                    <button type="submit" class="btn btn-primary btn-sm"
+                                                        title="Aktife Al">▶️</button>
+                                                    <% } %>
+                                        </form>
+                                        <form action="/dashboardAdmin/ogrenci/sil/<%= o.id %>" method="POST"
+                                            style="display:inline;" onsubmit="return confirm('Emin misiniz?')">
+                                            <button class="btn btn-danger btn-sm">🗑️</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+    </div>
+
+    <script>
+        function toggleAccordion(id, header) {
+            const content = document.getElementById(id);
+            const icon = header.querySelector('.accordion-icon');
+            content.classList.toggle('open');
+            icon.classList.toggle('open');
+        }
+    </script>
+</body>
+
+</html>

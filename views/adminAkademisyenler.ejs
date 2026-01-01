@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Akademisyen Yönetimi - Admin</title>
+    <link rel="stylesheet" href="/css/dashboardAdmin.css">
+    <style>
+        .accordion-header {
+            cursor: pointer;
+            background: #800000;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-header:hover {
+            background: #610e0e;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .accordion-content.open {
+            display: block;
+        }
+
+        .accordion-icon {
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .accordion-icon.open {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo">🔧 ADMİN PANELİ</div>
+        <ul class="menu-list">
+            <li><a href="/dashboardAdmin">📊 Ana Sayfa</a></li>
+            <li><a href="/dashboardAdmin/ogrenciler">👨‍🎓 Öğrenci Yönetimi</a></li>
+            <li><a href="/dashboardAdmin/akademisyenler" class="active">👨‍🏫 Akademisyen Yönetimi</a></li>
+            <li><a href="/dashboardAdmin/dersler">📚 Ders Yönetimi</a></li>
+            <li><a href="/dashboardAdmin/duyurular">📢 Duyuru Yönetimi</a></li>
+        </ul>
+        <div class="logout-container"><a href="/cikis" class="logout-btn">Çıkış Yap</a></div>
+    </div>
+
+    <div class="main-content">
+        <h1 class="page-title">👨‍🏫 Akademisyen Yönetimi</h1>
+
+
+        <div class="form-container" style="padding:0; border:none; box-shadow:none;">
+            <div class="accordion-header" onclick="toggleAccordion('akdForm', this)">
+                <span>➕ Yeni Akademisyen Ekle</span>
+                <span class="accordion-icon">▼</span>
+            </div>
+            <div id="akdForm" class="accordion-content">
+                <form action="/dashboardAdmin/akademisyen/ekle" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Unvan *</label>
+                            <select name="unvan" required>
+                                <option value="Prof. Dr.">Prof. Dr.</option>
+                                <option value="Doç. Dr.">Doç. Dr.</option>
+                                <option value="Dr. Öğr. Üyesi">Dr. Öğr. Üyesi</option>
+                                <option value="Öğr. Gör." selected>Öğr. Gör.</option>
+                                <option value="Arş. Gör.">Arş. Gör.</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Ad *</label><input type="text" name="ad" required></div>
+                        <div class="form-group"><label>Soyad *</label><input type="text" name="soyad" required></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label>Numara (Giriş ID)</label><input type="text" name="numara"
+                                placeholder="Opsiyonel"></div>
+                        <div class="form-group"><label>Şifre</label><input type="text" name="sifre" value="123456">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Akademisyen Ekle</button>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="form-container">
+            <h3>Kayıtlı Akademisyenler (<%= akademisyenler.length %> kayıt)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Unvan</th>
+                        <th>Ad Soyad</th>
+                        <th>Numara</th>
+                        <th>Şifre</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% akademisyenler.forEach(a=> { %>
+                        <tr>
+                            <td>
+                                <%= a.akademisyen?.unvan || '-' %>
+                            </td>
+                            <td>
+                                <%= a.ad %>
+                                    <%= a.soyad %>
+                            </td>
+                            <td>
+                                <%= a.numara || a.id %>
+                            </td>
+                            <td><code><%= a.sifre %></code></td>
+                            <td class="action-btns">
+                                <form action="/dashboardAdmin/akademisyen/sil/<%= a.id %>" method="POST"
+                                    style="display:inline;" onsubmit="return confirm('Emin misiniz?')">
+                                    <button class="btn btn-danger btn-sm">🗑️ Sil</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function toggleAccordion(id, header) {
+            const content = document.getElementById(id);
+            const icon = header.querySelector('.accordion-icon');
+            content.classList.toggle('open');
+            icon.classList.toggle('open');
+        }
+    </script>
+</body>
+
+</html>

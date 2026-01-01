@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duyurular - Akademisyen Paneli</title>
+    <link rel="stylesheet" href="/css/dashboardAca.css">
+    <style>
+        .duyuru-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .btn-submit {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background-color: #218838;
+        }
+
+        .duyuru-liste {
+            margin-top: 20px;
+        }
+
+        .duyuru-item {
+            background: #fff;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .duyuru-tarih {
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .duyuru-baslik {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .uyari {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logo"><a href="/dashboardAkd" style="color:inherit;text-decoration:none;">AKADEMİSYEN OBS</a></div>
+        <ul class="menu-list">
+            <li><a href="/dashboardAkd/derslerim"><span class="icon"></span> Derslerim</a></li>
+            <li><a href="/dashboardAkd/not-girisi"><span class="icon"></span> Not Girişi</a></li>
+            <li><a href="/dashboardAkd/yoklama"><span class="icon"></span> Yoklama Listesi</a></li>
+            <li><a href="/dashboardAkd/duyurular" class="active"><span class="icon"></span> Duyuru Yayınla</a></li>
+            <li><a href="#mesajlar_bolumu"><span class="icon"></span> Mesajlar</a></li>
+        </ul>
+        <div class="logout-container">
+            <a href="/cikis" class="logout-btn">Çıkış Yap</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <header style="display:flex; justify-content:flex-end; align-items:center; padding:20px;">
+            <div class="profile-info" style="text-align:right;">
+                <div class="name">
+                    <%= adSoyad %>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <h2> Duyuru Yönetimi</h2>
+
+            <% if (mesaj) { %>
+                <div class="uyari">
+                    <%= mesaj %>
+                </div>
+                <% } %>
+
+                    <div class="duyuru-form">
+                        <h3>Yeni Duyuru Yayınla</h3>
+                        <form action="/dashboardAkd/duyurular" method="POST">
+                            <div class="form-group">
+                                <label for="baslik">Başlık</label>
+                                <input type="text" id="baslik" name="baslik" required
+                                    placeholder="Duyuru başlığını giriniz...">
+                            </div>
+                            <div class="form-group">
+                                <label for="dersId">Hedef Ders (İsteğe Bağlı)</label>
+                                <select id="dersId" name="dersId"
+                                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                                    <option value="">Genel Duyuru (Tüm Öğrenciler)</option>
+                                    <% if (dersler && dersler.length> 0) { %>
+                                        <% dersler.forEach(ders=> { %>
+                                            <option value="<%= ders.id %>">
+                                                <%= ders.ad %>
+                                            </option>
+                                            <% }) %>
+                                                <% } %>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="icerik">İçerik</label>
+                                <textarea id="icerik" name="icerik" rows="5" required
+                                    placeholder="Duyuru içeriğini buraya yazınız..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">Yayınla</button>
+                        </form>
+                    </div>
+
+                    <div class="duyuru-liste">
+                        <h3>Geçmiş Duyurular</h3>
+                        <% if (duyurular.length> 0) { %>
+                            <% duyurular.forEach(function(duyuru) { %>
+                                <div class="duyuru-item">
+                                    <div class="duyuru-tarih">
+                                        <%= new Date(duyuru.tarih).toLocaleDateString('tr-TR') %>
+                                    </div>
+                                    <div class="duyuru-baslik">
+                                        <%= duyuru.baslik %>
+                                    </div>
+                                    <div class="duyuru-icerik">
+                                        <%= duyuru.icerik %>
+                                    </div>
+                                </div>
+                                <% }); %>
+                                    <% } else { %>
+                                        <p>Henüz yayınlanmış bir duyurunuz yok.</p>
+                                        <% } %>
+                    </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,41 +8,75 @@
 
     <link rel="stylesheet" href="/css/dashboardAca.css">
 </head>
+
 <body>
 
     <div class="sidebar">
-        <div class="logo">AKADEMİSYEN OBS</div>
+        <div class="logo"><a href="/dashboardAkd" style="color:inherit;text-decoration:none;">AKADEMİSYEN OBS</a></div>
 
         <ul class="menu-list">
-            <li><a href="#ders_programi_bolumu"><span class="icon">📅</span> Ders Programı</a></li>
-            <li><a href="#not_girisi_bolumu"><span class="icon">✏️</span> Not Girişi</a></li>
-            <li><a href="#yoklama_listesi_bolumu"><span class="icon">📋</span> Yoklama Listesi</a></li>
-            <li><a href="#duyuru_yayinla_bolumu"><span class="icon">📢</span> Duyuru Yayınla</a></li>
-            <li><a href="#mesajlar_bolumu"><span class="icon">💬</span> Mesajlar</a></li>
+            <li><a href="/dashboardAkd/derslerim"><span class="icon"></span> Derslerim</a></li>
+            <li><a href="/dashboardAkd/not-girisi"><span class="icon"></span> Not Girişi</a></li>
+            <li><a href="/dashboardAkd/yoklama"><span class="icon"></span> Yoklama Listesi</a></li>
+            <li><a href="/dashboardAkd/duyurular"><span class="icon"></span> Duyuru Yayınla</a></li>
         </ul>
+        <div class="logout-container">
+            <a href="/cikis" class="logout-btn">Çıkış Yap</a>
+        </div>
     </div>
 
     <div class="main-content">
 
-        <header>
-            <div class="profile-info">
-                <div class="name"><%= adSoyad || "Dr. Ahmet Demir" %></div>
-                <div class="last-login">Son Giriş: <%= sonGiris || "Bugün 09:00" %></div>
+        <header style="display:flex; justify-content:flex-end; align-items:center; padding:20px;">
+            <div class="profile-info" style="text-align:right; margin-right:15px;">
+                <div class="name">
+                    <%= adSoyad || "Dr. Ahmet Demir" %>
+                </div>
+                <div class="last-login">Son Giriş: <%= sonGiris || "Bugün 09:00" %>
+                </div>
             </div>
-
-            <img src="<%= profilFoto || 'https://via.placeholder.com/150/d35400/ffffff?text=AD' %>" 
-                 alt="Profil" 
-                 class="profile-img">
+            <img src="<%= profilFoto || '/img/default.jpg' %>" alt="Profil" class="profile-img"
+                style="width:50px;height:50px;border-radius:50%;">
         </header>
 
         <div class="content">
 
             <section id="ders_programi_bolumu">
-                <h2>📅 Ders Programı</h2>
-                <p>Haftalık ders programınız burada listelenecektir.</p>
-                <p>Pazartesi: 10:00 - 12:00 Yapay Zeka I (D-201)</p>
+                <h2> Ders Programı</h2>
+                <% if (dersProgrami && dersProgrami.length> 0) { %>
+                    <table class="schedule-table" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                        <thead>
+                            <tr style="background-color: #f2f2f2; text-align: left;">
+                                <th style="padding: 10px; border-bottom: 2px solid #ddd;">Gün</th>
+                                <th style="padding: 10px; border-bottom: 2px solid #ddd;">Saat</th>
+                                <th style="padding: 10px; border-bottom: 2px solid #ddd;">Ders</th>
+                                <th style="padding: 10px; border-bottom: 2px solid #ddd;">Derslik</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% dersProgrami.forEach(ders=> { %>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #eee;">
+                                        <%= ders.gun %>
+                                    </td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #eee;">
+                                        <%= ders.baslangic %> - <%= ders.bitis %>
+                                    </td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #eee;">
+                                        <%= ders.ders_ad %>
+                                    </td>
+                                    <td style="padding: 10px; border-bottom: 1px solid #eee;">
+                                        <%= ders.derslik %>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                    <% } else { %>
+                        <p>Henüz atanmış bir ders programınız bulunmamaktadır.</p>
+                        <% } %>
             </section>
-            
+
             <section id="not_girisi_bolumu">
                 <h2>✏️ Not Girişi</h2>
                 <p>Öğrenci notlarını sisteme girmek için bu bölümü kullanın.</p>
@@ -50,17 +85,17 @@
             </section>
 
             <section id="yoklama_listesi_bolumu">
-                <h2>📋 Yoklama Listesi</h2>
+                <h2> Yoklama Listesi</h2>
                 <p>Dersleriniz için yoklama listelerine ve öğrenci devamsızlık durumlarına buradan ulaşabilirsiniz.</p>
             </section>
 
             <section id="duyuru_yayinla_bolumu">
-                <h2>📢 Duyuru Yayınla</h2>
+                <h2> Duyuru Yayınla</h2>
                 <p>Öğrencilerinize yönelik yeni bir duyuru yayınlamak için bu formu kullanın.</p>
             </section>
 
             <section id="mesajlar_bolumu">
-                <h2>💬 Mesajlar</h2>
+                <h2> Mesajlar</h2>
                 <p>Öğrencilerinizden ve diğer akademisyenlerden gelen mesajlar.</p>
             </section>
 
@@ -68,6 +103,5 @@
     </div>
 
 </body>
+
 </html>
-
-

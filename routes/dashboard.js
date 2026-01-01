@@ -24,17 +24,40 @@ router.get("/", girisKontrol, async (req, res, next) => {
 
         const ogrenci = await studentModel.ogrenciBilgiGetir(id);
         const detay = await studentModel.ogrenciDetay(id);
+        const duyurular = await studentModel.getirOgrenciDuyurulari(id);
 
-         res.render("dashboardOgr", {kullanici: req.session.kullanici,
+        res.render("dashboardOgr", {
+            kullanici: req.session.kullanici,
             ogrenci,
-            detay
-            
-         });
+            detay,
+            duyurular // Pass to view
+        });
 
-        } catch (err) {
+    } catch (err) {
         next(err);
     }
 
+});
+
+// GET /dashboardOgr/duyurular - Öğrenci Duyuruları
+router.get("/duyurular", girisKontrol, async (req, res, next) => {
+    try {
+        const id = req.session.kullanici.id;
+
+        const ogrenci = await studentModel.ogrenciBilgiGetir(id);
+        const detay = await studentModel.ogrenciDetay(id);
+        const duyurular = await studentModel.getirOgrenciDuyurulari(id);
+
+        res.render("studentDuyuru", {
+            kullanici: req.session.kullanici,
+            ogrenci,
+            detay,
+            duyurular
+        });
+
+    } catch (err) {
+        next(err);
+    }
 });
 
 module.exports = router;

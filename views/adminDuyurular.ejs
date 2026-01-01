@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Duyuru Yönetimi - Admin</title>
+    <link rel="stylesheet" href="/css/dashboardAdmin.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo">ADMİN PANELİ</div>
+        <ul class="menu-list">
+            <li><a href="/dashboardAdmin"> Ana Sayfa</a></li>
+            <li><a href="/dashboardAdmin/ogrenciler">Öğrenci Yönetimi</a></li>
+            <li><a href="/dashboardAdmin/akademisyenler">Akademisyen Yönetimi</a></li>
+            <li><a href="/dashboardAdmin/dersler">Ders Yönetimi</a></li>
+            <li><a href="/dashboardAdmin/duyurular" class="active"> Duyuru Yönetimi</a></li>
+        </ul>
+        <div class="logout-container"><a href="/cikis" class="logout-btn">Çıkış Yap</a></div>
+    </div>
+
+    <div class="main-content">
+        <h1 class="page-title">Duyuru Yönetimi</h1>
+
+        <div class="form-container">
+            <h3>Yeni Duyuru Yayınla</h3>
+            <form action="/dashboardAdmin/duyuru/ekle" method="POST">
+                <div class="form-group">
+                    <label>Başlık</label>
+                    <input type="text" name="baslik" required placeholder="Duyuru başlığı...">
+                </div>
+                <div class="form-group">
+                    <label>İçerik</label>
+                    <textarea name="icerik" rows="4" required placeholder="Duyuru içeriği..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Hedef Kitle</label>
+                    <select name="hedef">
+                        <option value="herkes">Herkes</option>
+                        <option value="ogrenci">Sadece Öğrenciler</option>
+                        <option value="akademisyen">Sadece Akademisyenler</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Duyuru Yayınla</button>
+            </form>
+        </div>
+
+        <div class="form-container">
+            <h3>Geçmiş Duyurular</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tarih</th>
+                        <th>Başlık</th>
+                        <th>Gönderen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% duyurular.forEach(d=> { %>
+                        <tr>
+                            <td>
+                                <%= new Date(d.tarih).toLocaleDateString('tr-TR') %>
+                            </td>
+                            <td>
+                                <%= d.baslik %>
+                            </td>
+                            <td>
+                                <%= d.akademisyen?.kullanici ? d.akademisyen.kullanici.ad : 'Admin' %>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

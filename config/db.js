@@ -1,17 +1,42 @@
 //bu sayfada değişiklik yapmadan önce haber edin
-const mysql = require('mysql2/promise');
-//dotenv herkesin kendi localinde ki bilgilerle giriş yapmasını sağlıyor
+
+const fs = require('fs');
 require('dotenv').config();
+const { Sequelize } = require('sequelize');
 
-const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
 
-  waitForConnections: true,
-  connectionLimit: Number(process.env.DB_CONN_LIMIT) || 10,
-  queueLimit: 0,
-});
 
-module.exports = pool;
+const sequelize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASS,
+  {
+    host: process.env.DB_HOST,
+    port: Number(process.env.DB_PORT || 27997),
+    dialect: 'mysql',
+    dialectModule: require('mysql2'),
+    logging: false,
+    pool: { max: Number(process.env.DB_CONN_LIMIT || 10), min: 0, acquire: 30000, idle: 10000 },
+
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: true,
+        ca: fs.readFileSync(process.env.CA_PATH, 'utf8'),
+      },
+      connectTimeout: 20000
+    }
+
+  }
+);
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('baglanti kuruldu');
+  })
+  .catch((error) => {
+    console.error('baglanti kurulamadi', error);
+  });
+
+module.exports = sequelize;

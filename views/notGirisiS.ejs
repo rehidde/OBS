@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Not Girişi - <%= ders.ad %>
+    </title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            color: #333;
+        }
+
+        .header-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: #fff;
+            background-color: #7f8c8d;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .student-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .grade-input {
+            width: 80px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .grade-input:focus {
+            border-color: #800000;
+            outline: none;
+        }
+
+        .save-btn {
+            background-color: #800000;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .save-btn:hover {
+            background-color: #610e0e;
+        }
+
+        .save-btn:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        .status-msg {
+            margin-left: 10px;
+            font-size: 0.9em;
+            display: none;
+        }
+
+        .success {
+            color: #800000;
+        }
+
+        .error {
+            color: #c0392b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header-info">
+            <div>
+                <a href="/dashboardAkd/not-girisi" class="back-btn">← Ders Listesine Dön</a>
+            </div>
+            <div>
+                <h2>
+                    <%= ders.ders_kodu %> - <%= ders.ad %>
+                </h2>
+            </div>
+        </div>
+
+        <% if (ogrenciler.length===0) { %>
+            <p>Bu dersi alan öğrenci bulunamadı.</p>
+            <% } else { %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Öğrenci</th>
+                            <th>Numara</th>
+                            <th>Not (0-100)</th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% ogrenciler.forEach(ogr=> { %>
+                            <tr>
+                                <td>
+                                    <img src="<%= ogr.ogrenci.foto_url || '/img/default.jpg' %>" class="student-photo"
+                                        alt="">
+                                    <%= ogr.ogrenci.ad %>
+                                        <%= ogr.ogrenci.soyad %>
+                                </td>
+                                <td>
+                                    <%= ogr.ogrenci.numara %>
+                                </td>
+                                <td>
+                                    <input type="number" min="0" max="100"
+                                        value="<%= ogr.notu !== null ? ogr.notu : '' %>"
+                                        id="grade-<%= ogr.ogrenci.id %>" class="grade-input" placeholder="-">
+                                </td>
+                                <td>
+                                    <button class="save-btn"
+                                        onclick="saveGrade('<%= ogr.ogrenci.id %>', '<%= ders.id %>')">Kaydet</button>
+                                    <span id="msg-<%= ogr.ogrenci.id %>" class="status-msg"></span>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+                <% } %>
+
+    </div>
+
+    <script>
+        async function saveGrade(ogrenciId, dersId) {
+            const input = document.getElementById(`grade-${ogrenciId}`);
+            const msgSpan = document.getElementById(`msg-${ogrenciId}`);
+            const btn = input.closest('tr').querySelector('.save-btn');
+            const notu = parseInt(input.value);
+
+
+            if (isNaN(notu) || notu < 0 || notu > 100) {
+                alert("Lütfen 0 ile 100 arasında geçerli bir not giriniz.");
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = '...';
+
+            try {
+                const response = await fetch(`/dashboardAkd/not-girisi/${dersId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ ogrenciId, notu })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    msgSpan.textContent = 'Kaydedildi';
+                    msgSpan.className = 'status-msg success';
+                    msgSpan.style.display = 'inline';
+                    setTimeout(() => { msgSpan.style.display = 'none'; }, 2000);
+                } else {
+                    throw new Error(result.message);
+                }
+
+            } catch (error) {
+                console.error(error);
+                msgSpan.textContent = 'Hata!';
+                msgSpan.className = 'status-msg error';
+                msgSpan.style.display = 'inline';
+                alert('Hata: ' + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Kaydet';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

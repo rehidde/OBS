@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ders Yönetimi - Admin</title>
+    <link rel="stylesheet" href="/css/dashboardAdmin.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo">🔧 ADMİN PANELİ</div>
+        <ul class="menu-list">
+            <li><a href="/dashboardAdmin">Ana Sayfa</a></li>
+            <li><a href="/dashboardAdmin/ogrenciler">Öğrenci Yönetimi</a></li>
+            <li><a href="/dashboardAdmin/akademisyenler">Akademisyen Yönetimi</a></li>
+            <li><a href="/dashboardAdmin/dersler" class="active">Ders Yönetimi</a></li>
+            <li><a href="/dashboardAdmin/duyurular">Duyuru Yönetimi</a></li>
+        </ul>
+        <div class="logout-container"><a href="/cikis" class="logout-btn">Çıkış Yap</a></div>
+    </div>
+
+    <div class="main-content">
+        <h1 class="page-title">📚 Ders Yönetimi</h1>
+
+        <div class="form-container">
+            <h3>Yeni Ders Ekle</h3>
+            <form action="/dashboardAdmin/ders/ekle" method="POST">
+                <div class="form-row">
+                    <div class="form-group"><label>Ders Kodu</label><input type="text" name="ders_kodu" required></div>
+                    <div class="form-group"><label>Ders Adı</label><input type="text" name="ad" required></div>
+                    <div class="form-group"><label>Yarıyıl</label><input type="number" name="yariyil" value="1" min="1"
+                            max="8"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Kredi</label><input type="number" name="kredi" value="3"></div>
+                    <div class="form-group"><label>AKTS</label><input type="number" name="akts" value="5"></div>
+                    <div class="form-group">
+                        <label>Akademisyen</label>
+                        <select name="akademisyen_id">
+                            <option value="">Atanmamış</option>
+                            <% akademisyenler.forEach(a=> { %>
+                                <option value="<%= a.akademisyen?.id %>">
+                                    <%= a.akademisyen?.unvan %>
+                                        <%= a.ad %>
+                                            <%= a.soyad %>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Ekle</button>
+            </form>
+        </div>
+
+        <div class="form-container">
+            <h3>Ders Listesi</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Kod</th>
+                        <th>Ad</th>
+                        <th>Yarıyıl</th>
+                        <th>Akademisyen</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% dersler.forEach(d=> { %>
+                        <tr>
+                            <td>
+                                <%= d.ders_kodu %>
+                            </td>
+                            <td>
+                                <%= d.ad %>
+                            </td>
+                            <td>
+                                <%= d.yariyil %>
+                            </td>
+                            <td>
+                                <%= d.akademisyen?.kullanici ? d.akademisyen.unvan + ' ' + d.akademisyen.kullanici.ad
+                                    : '-' %>
+                            </td>
+                            <td>
+                                <form action="/dashboardAdmin/ders/sil/<%= d.id %>" method="POST"
+                                    style="display:inline;" onsubmit="return confirm('Emin misiniz?')">
+                                    <button class="btn btn-danger btn-sm">🗑️</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

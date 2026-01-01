@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoklama Listesi - Ders Seçimi</title>
+    <link rel="stylesheet" href="/css/dashboardAca.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logo"><a href="/dashboardAkd" style="color:inherit;text-decoration:none;">AKADEMİSYEN OBS</a></div>
+        <ul class="menu-list">
+            <li><a href="/dashboardAkd/derslerim"><span class="icon"></span> Derslerim</a></li>
+            <li><a href="/dashboardAkd/not-girisi"><span class="icon"></span> Not Girişi</a></li>
+            <li><a href="/dashboardAkd/yoklama" class="active"><span class="icon"></span> Yoklama Listesi</a></li>
+            <li><a href="/dashboardAkd/duyurular"><span class="icon"></span> Duyuru Yayınla</a></li>
+            <li><a href="#mesajlar_bolumu"><span class="icon"></span> Mesajlar</a></li>
+        </ul>
+        <div class="logout-container">
+            <a href="/cikis" class="logout-btn">Çıkış Yap</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <header style="display:flex; justify-content:flex-end; align-items:center; padding:20px;">
+            <div class="profile-info" style="text-align:right;">
+                <div class="name">
+                    <%= adSoyad %>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <h2> Yoklama Listesi İçin Ders Seçimi</h2>
+            <p>Lütfen yoklama listesini görüntülemek istediğiniz dersi seçin.</p>
+
+            <div class="course-list"
+                style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;">
+                <% if (dersler.length> 0) { %>
+                    <% dersler.forEach(function(ders) { %>
+                        <div class="course-card"
+                            style="background:#fff;padding:20px;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,0.1);border-left:5px solid #800000;">
+                            <h3 style="margin:0 0 10px 0;color:#800000;">
+                                <%= ders.ad %>
+                            </h3>
+                            <p style="margin:5px 0;color:#666;"><strong>Ders Kodu:</strong>
+                                <%= ders.ders_kodu || ders.kod || '-' %>
+                            </p>
+                            <a href="/dashboardAkd/yoklama/<%= ders.id %>"
+                                style="display:inline-block;margin-top:15px;padding:10px 20px;background:#800000;color:#fff;text-decoration:none;border-radius:5px;">Listeyi
+                                Gör</a>
+                        </div>
+                        <% }); %>
+                            <% } else { %>
+                                <p>Atanmış dersiniz bulunmamaktadır.</p>
+                                <% } %>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

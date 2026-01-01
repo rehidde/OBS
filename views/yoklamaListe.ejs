@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoklama Listesi - <%= ders.ad %>
+    </title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+
+        h2,
+        h3 {
+            text-align: center;
+            margin: 5px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        .print-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: #800000;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        @media print {
+
+            .print-btn,
+            .sidebar,
+            .back-link {
+                display: none;
+            }
+
+            body {
+                padding: 0;
+            }
+        }
+
+        .back-link {
+            display: block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="/dashboardAkd/yoklama" class="back-link">← Geri Dön</a>
+
+    <h3>KIRŞEHİR AHİ EVRAN ÜNİVERSİTESİ</h3>
+    <h3>
+        <%= ders.ad %> - Yoklama Listesi
+    </h3>
+    <p style="text-align: center;"><strong>Ders Sorumlusu:</strong>
+        <%= adSoyad %>
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 50px;">Sıra</th>
+                <th style="width: 100px;">Numara</th>
+                <th style="width: 200px;">Ad Soyad</th>
+
+                <% for(let i=1; i<=14; i++) { %>
+                    <th style="width: 30px;">
+                        <%= i %>
+                    </th>
+                    <% } %>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(ogrenciler.length> 0) { %>
+                <% ogrenciler.forEach((ogr, index)=> { %>
+                    <tr>
+                        <td>
+                            <%= index + 1 %>
+                        </td>
+                        <td>
+                            <%= ogr.numara || ogr.id %>
+                        </td>
+                        <td style="text-align: left; padding-left: 10px;">
+                            <%= ogr.ad %>
+                                <%= ogr.soyad %>
+                        </td>
+                        <% for(let i=1; i<=14; i++) { %>
+                            <td></td>
+                            <% } %>
+                    </tr>
+                    <% }) %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="17">Bu derse kayıtlı öğrenci bulunmamaktadır.</td>
+                            </tr>
+                            <% } %>
+        </tbody>
+    </table>
+
+    <button onclick="window.print()" class="print-btn">🖨️ Listeyi Yazdır</button>
+
+</body>
+
+</html>

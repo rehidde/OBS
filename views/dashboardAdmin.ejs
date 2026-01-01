@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneli</title>
+    <link rel="stylesheet" href="/css/dashboardAdmin.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="logo">🔧 ADMİN PANELİ</div>
+        <ul class="menu-list">
+            <li><a href="/dashboardAdmin" class="active"><span class="icon"></span> Ana Sayfa</a></li>
+            <li><a href="/dashboardAdmin/ogrenciler"><span class="icon"></span> Öğrenci Yönetimi</a></li>
+            <li><a href="/dashboardAdmin/akademisyenler"><span class="icon"></span> Akademisyen Yönetimi</a></li>
+            <li><a href="/dashboardAdmin/dersler"><span class="icon"></span> Ders Yönetimi</a></li>
+            <li><a href="/dashboardAdmin/duyurular"><span class="icon"></span> Duyuru Yönetimi</a></li>
+        </ul>
+        <div class="logout-container">
+            <a href="/cikis" class="logout-btn">Çıkış Yap</a>
+        </div>
+    </div>
+
+
+    <div class="main-content">
+        <h1 class="page-title">Hoş Geldiniz, <%= kullanici.ad %>
+        </h1>
+
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="number">
+                    <%= istatistikler.ogrenciSayisi %>
+                </div>
+                <div class="label">Toplam Öğrenci</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">
+                    <%= istatistikler.akademisyenSayisi %>
+                </div>
+                <div class="label">Toplam Akademisyen</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">
+                    <%= istatistikler.dersSayisi %>
+                </div>
+                <div class="label">Toplam Ders</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">
+                    <%= istatistikler.duyuruSayisi %>
+                </div>
+                <div class="label">Yayınlanan Duyuru</div>
+            </div>
+        </div>
+
+        <!-- Hızlı Erişim -->
+        <div class="form-container">
+            <h3>Hızlı İşlemler</h3>
+            <p>Sol menüden yönetmek istediğiniz bölümü seçebilirsiniz.</p>
+            <ul>
+                <li><strong>Öğrenci Yönetimi:</strong> Öğrenci ekleme, düzenleme, silme ve durum değiştirme</li>
+                <li><strong>Akademisyen Yönetimi:</strong> Akademisyen ekleme, düzenleme, silme</li>
+                <li><strong>Ders Yönetimi:</strong> Ders ekleme, akademisyen atama, düzenleme</li>
+                <li><strong>Duyuru Yönetimi:</strong> Tüm kullanıcılara duyuru gönderme</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

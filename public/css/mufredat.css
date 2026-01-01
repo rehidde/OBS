@@ -38,13 +38,29 @@ body {
 
 .ders-tablosu th,
 .ders-tablosu td {
-    border: 1px solid #000;
-    padding: 6px;
+    border: 1px solid #ddd;
+    padding: 10px;
     font-size: 13px;
     text-align: left;
 }
 
 .ders-tablosu th {
-    background-color: #eaeaea;
+    background-color: #800000;
+    /* University Red */
+    color: #ffffff;
     font-weight: bold;
 }
+
+/* Column Widths for Alignment */
+.ders-tablosu th:nth-child(1),
+.ders-tablosu td:nth-child(1) {
+    width: 15%;
+}
+
+/* Ders Kodu */
+.ders-tablosu th:nth-child(2),
+.ders-tablosu td:nth-child(2) {
+    width: 40%;
+}
+
+/* Ders Adı */

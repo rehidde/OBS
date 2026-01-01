@@ -1,87 +1,140 @@
 //model dosyamızın amacı veritabanı sorgularını yaptığımız fonksiyonları tutmak ve sonuçlarını dışarıya export etmek
 //bu sayfa dışında veritabanı sorguları yapmayalım
-const db = require('../config/db');
+const { Kullanici, OgrenciDetay, Dersler, OgrenciDersleri, Akademisyen, Duyurular } = require('./index');
 
 // isimdenBul fonksiyonunu sadece login için yazdım onun dışında kullanmayalım
-async function isimdenBul(id, sifre) {
-    const [rows] = await db.query(
-        `SELECT id, ad, soyad, rol
-         FROM Kullanici
-         WHERE id = ? AND sifre = ?`,
-        [id, sifre]
-    );
-    return rows[0];
+async function isimdenBul(girdiId, sifre) {
+  const { Op } = require('sequelize');
+
+  const user = await Kullanici.findOne({
+    attributes: ['id', 'ad', 'soyad', 'rol', 'numara'],
+    where: {
+      [Op.or]: [
+        { numara: girdiId },
+        { id: girdiId }
+      ],
+      sifre: sifre
+    },
+    raw: true
+  });
+  return user;
 }
 
-// TRANSCRIPT - öğrenci temel bilgileri
+
 async function ogrenciBilgiGetir(id) {
-    const [rows] = await db.query(
-        `SELECT ad, soyad, numara, tc, foto_url
-         FROM Kullanici
-         WHERE id = ?`,
-        [id]
-    );
-    return rows[0];
+  const user = await Kullanici.findOne({
+    attributes: ['ad', 'soyad', 'numara', 'tc', 'foto_url'],
+    where: { id: id },
+    raw: true
+  });
+  return user;
 }
 
-// Öğrencinin dersleri
-//not girme kısımlarını daha yazmadım şimdilik nulluyorum değer gelmezse
-async function ogrenciDersleriGetir(ogrenciId) {
-  const [rows] = await db.query(`
-    SELECT
-      od.kullanici_id AS ogrenci_id,
-      d.id AS ders_id,
-      d.ders_kodu,
-      d.ad AS ders_ad,
-      d.kredi,
-      d.akts,
-      d.yariyil,
-      IFNULL(odr.notu, NULL) AS notu,
-      IFNULL(odr.harf_notu, 'Atanmadı') AS harf_notu,
-      IFNULL(odr.durum, 'Devam Ediyor') AS durum
-    FROM ogrencidetay od
-    JOIN dersler d ON d.sinif = CAST(SUBSTRING_INDEX(od.sinif, ' ', 1) AS UNSIGNED)
-    LEFT JOIN ogrencidersleri odr
-      ON odr.ogrenci_id = od.kullanici_id
-      AND odr.ders_id = d.id
-    WHERE od.kullanici_id = ?
-    ORDER BY d.yariyil, d.ad
-  `, [ogrenciId]);
 
-  return rows;
+async function ogrenciDersleriGetir(ogrenciId) {
+
+  const detay = await OgrenciDetay.findOne({ where: { kullanici_id: ogrenciId } });
+  if (!detay) return [];
+
+  const sinifStr = detay.sinif;
+  const sinifInt = parseInt(sinifStr);
+
+  const tumDersler = await Dersler.findAll({
+    where: { sinif: sinifInt },
+    order: [['yariyil', 'ASC'], ['ad', 'ASC']],
+    raw: true
+  });
+
+  const alinanDersler = await OgrenciDersleri.findAll({
+    where: { ogrenci_id: ogrenciId },
+    raw: true
+  });
+
+
+  const result = tumDersler.map(ders => {
+    const alinan = alinanDersler.find(ad => ad.ders_id === ders.id);
+    return {
+      ogrenci_id: ogrenciId,
+      ders_id: ders.id,
+      ders_kodu: ders.ders_kodu,
+      ders_ad: ders.ad,
+      kredi: ders.kredi,
+      akts: ders.akts,
+      yariyil: ders.yariyil,
+      notu: alinan ? alinan.notu : null,
+      harf_notu: alinan && alinan.harf_notu ? alinan.harf_notu : 'Atanmadı',
+      durum: alinan && alinan.durum ? alinan.durum : 'Devam Ediyor'
+    };
+  });
+
+  return result;
 }
 
 async function ogrenciDetay(kullanici_id) {
-    const [rows] = await db.query(
-        `SELECT anne, baba, dogum, kayit, egitim, durum, sinif, puan, program FROM OgrenciDetay
-        WHERE kullanici_id = ?`,
-        [kullanici_id]
-    );
-    return rows[0];
-    
+  const detay = await OgrenciDetay.findOne({
+    attributes: ['anne', 'baba', 'dogum', 'kayit', 'egitim', 'durum', 'sinif', 'puan', 'program'],
+    where: { kullanici_id: kullanici_id },
+    raw: true
+  });
+  return detay;
 }
 
 
 async function mufredatGetir() {
-  const [rows] = await db.query(`
-    SELECT
-      yariyil,
-      ders_kodu,
-      ad,
-      tul,
-      zorunlu_sec,
-      akts,
-      ogretim_sekli
-    FROM dersler
-    ORDER BY yariyil, ders_kodu
-  `);
-  return rows;
+  const dersler = await Dersler.findAll({
+    attributes: ['yariyil', 'ders_kodu', 'ad', 'tul', 'zorunlu_sec', 'akts', 'ogretim_sekli'],
+    include: [{
+      model: Akademisyen,
+      as: 'akademisyen',
+      attributes: ['unvan', 'ad', 'soyad']
+    }],
+    order: [['yariyil', 'ASC'], ['ders_kodu', 'ASC']],
+    raw: true
+  });
+  return dersler;
+}
+
+
+async function getirOgrenciDuyurulari(ogrenciId) {
+  const { Op } = require('sequelize');
+
+
+  const enrollments = await OgrenciDersleri.findAll({
+    where: { ogrenci_id: ogrenciId },
+    attributes: ['ders_id'],
+    raw: true
+  });
+  const dersIds = enrollments.map(e => e.ders_id);
+
+  const duyurular = await Duyurular.findAll({
+    where: {
+      [Op.or]: [
+        { ders_id: null },
+        { ders_id: { [Op.in]: dersIds } }
+      ]
+    },
+    include: [{
+      model: Akademisyen,
+      as: 'akademisyen',
+      attributes: ['unvan', 'ad', 'soyad']
+    }, {
+      model: Dersler,
+      as: 'ders',
+      attributes: ['ad']
+    }],
+    order: [['tarih', 'DESC']],
+    raw: true,
+    nest: true
+  });
+
+  return duyurular;
 }
 
 module.exports = {
-    isimdenBul,
-    ogrenciBilgiGetir,
-    ogrenciDersleriGetir,
-    ogrenciDetay,
-    mufredatGetir
+  isimdenBul,
+  ogrenciBilgiGetir,
+  ogrenciDersleriGetir,
+  ogrenciDetay,
+  mufredatGetir,
+  getirOgrenciDuyurulari
 };
