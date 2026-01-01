@@ -22,7 +22,7 @@ const sequelize = new Sequelize(
       ssl: {
         require: true,
         rejectUnauthorized: true,
-        ca: fs.readFileSync(process.env.CA_PATH, 'utf8'),
+        ca: fs.readFileSync("./certs/ca.pem"),
       },
       connectTimeout: 20000
     }
